@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:optifii_employee/Utils/Helpers/colors.dart';
+import 'package:optifii_Corporate/Utils/Helpers/colors.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton({

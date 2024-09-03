@@ -1,11 +1,12 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:optifii_employee/Utils/CommonWidgets/CommonTextFormField.dart';
-import 'package:optifii_employee/Utils/CommonWidgets/Custombutton.dart';
-import 'package:optifii_employee/Utils/CommonWidgets/Text.dart';
-import 'package:optifii_employee/Utils/Helpers/colors.dart';
+import 'package:get/get.dart';
+import 'package:optifii_Corporate/Utils/CommonWidgets/CommonTextFormField.dart';
+import 'package:optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
+import 'package:optifii_Corporate/Utils/CommonWidgets/Text.dart';
+import 'package:optifii_Corporate/routes/route_name.dart';
+import 'package:remove_emoji_input_formatter/remove_emoji_input_formatter.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,6 +17,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final numberController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  bool isValidPhoneNumber(String phoneNumber) {
+    final RegExp phoneNumberExpression = RegExp(r"^0{10}$");
+    return !phoneNumberExpression.hasMatch(phoneNumber);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,82 +33,149 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 23, vertical: 28),
           child: SingleChildScrollView(
             child: Center(
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/png/logo-sm.png',
-                    height: 41,
-                    width: 142,
-                  ),
-                  text12w400c3725EA('CORPORATE'),
-                  const SizedBox(height: 20),
-                  text28w400cblack('Sign In to OptiFii corporate'),
-                  SizedBox(height: 10.h),
-                  text16w400c585858center(
-                      "Welcome to OptiFii, it's time to Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
-                  SizedBox(height: 50.h),
-                  SizedBox(
+              child: Form(
+                key: _formKey, // Wrap with Form to manage validation
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/png/logo-sm.png',
+                      height: 41,
+                      width: 142,
+                    ),
+                    text12w400c3725EA('CORPORATE'),
+                    const SizedBox(height: 20),
+                    text28w600cblack('Sign In to OptiFii corporate'),
+                    SizedBox(height: 10.h),
+                    text16w400c585858center(
+                        "Welcome to OptiFii, it's time to Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+                    SizedBox(height: 50.h),
+                    SizedBox(
                       width: double.infinity,
-                      child: text18w400c848484('Phone Number')),
-                  SizedBox(height: 8.h),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      border: Border.all(
+                      child: text18w400c848484('Phone Number'),
+                    ),
+                    SizedBox(height: 8.h),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color(0xFFF6F6F6),
+                        ),
+                        borderRadius: BorderRadius.circular(10),
                         color: const Color(0xFFF6F6F6),
                       ),
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color(0xFFF6F6F6),
-                    ),
-                    child: IntrinsicHeight(
-                      child: Row(
-                        children: [
-                          const Text(
-                            '+91',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(width: 10),
-                          const VerticalDivider(
-                            thickness: 2,
-                            indent: 5.5,
-                            endIndent: 5.5,
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 22),
-                              child: CustomTextFormField(
-                                texttype: TextInputType.number,
-                                textEditingController: numberController,
-                                hintText: 'Enter your mobile number',
+                      child: IntrinsicHeight(
+                        child: Row(
+                          children: [
+                            const Text(
+                              '+91',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(width: 10),
+                            const VerticalDivider(
+                              thickness: 2,
+                              indent: 5.5,
+                              endIndent: 5.5,
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 22),
+                                child: CustomTextFormField(
+                                  texttype: TextInputType.number,
+                                  textEditingController: numberController,
+                                  hintText: 'Enter your phone number',
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Enter your phone number';
+                                    } else if (!RegExp(r'^(?:[+0]9)?[0-9]{10}$')
+                                        .hasMatch(value)) {
+                                      return 'Enter a valid phone number';
+                                    } else if (isValidPhoneNumber(value)) {
+                                      return 'Phone number cannot contain 10 zeros';
+                                    }
+                                    return null;
+                                  },
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(10),
+                                    RemoveEmojiInputFormatter(),
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp('[0-9]')),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 204),
-
-                  CustomButton(text: "Continue"),
-                  SizedBox(height: 40.h),
-
-                  // Terms & Conditions text
-                  GestureDetector(
-                    onTap: () {
-                      // Handle Terms & Conditions tap
-                    },
-                    child: const Center(
-                      child: Text(
-                        'Terms & Conditions to use crm app',
-                        style: TextStyle(
-                          color: AppColors.primary,
-                          fontSize: 14,
+                          ],
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 50.h),
+                    CustomButton(
+                      text: "Send OTP",
+                      ontap: () {
+                        Get.toNamed(RouteName.otpScreen);
+                      }, // Call the sendOTP function
+                    ),
+                    SizedBox(height: 40.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SizedBox(
+                          width: 150,
+                          child: Divider(
+                            color: Color(0xFFCFCFCF),
+                            thickness: 1,
+                            indent: 10,
+                            endIndent: 10,
+                          ),
+                        ),
+                        text16w400c585858('or'),
+                        const SizedBox(
+                          width: 150,
+                          child: Divider(
+                            color: Color(0xFFCFCFCF),
+                            thickness: 1,
+                            indent: 10,
+                            endIndent: 10,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 40.h),
+                    GestureDetector(
+                      onTap: () {
+                        // Handle "Continue with Email" action
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 50.h,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xFFF6F6F6),
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color(0xFFF6F6F6),
+                        ),
+                        child: Center(
+                          child: Row(
+                            children: [
+                              const Icon(Icons.mail_outlined),
+                              SizedBox(width: 50.w),
+                              Text(
+                                'Continue with Email',
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
