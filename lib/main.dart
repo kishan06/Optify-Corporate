@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:optifii_employee/routes/route_name.dart';
-import 'package:optifii_employee/routes/routes.dart';
+import 'package:optifii_Corporate/routes/route_name.dart';
+import 'package:optifii_Corporate/routes/routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       //useInheritedMediaQuery: true,
       builder: (BuildContext context, Widget? child) => GetMaterialApp(
-        title: 'Technofra',
+        title: 'Optifii',
         theme: ThemeData(
           primarySwatch: Colors.grey,
         ),

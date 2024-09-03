@@ -1,4 +1,4 @@
-package com.example.optifii_employee
+package com.example.optifii_Corporate
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:optifii_employee/Utils/CommonWidgets/sized_box.dart';
-import 'package:optifii_employee/Utils/Helpers/FilePicker.dart';
-import 'package:optifii_employee/Utils/Helpers/ImagePicker.dart';
+import 'package:optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
+import 'package:optifii_Corporate/Utils/Helpers/FilePicker.dart';
+import 'package:optifii_Corporate/Utils/Helpers/ImagePicker.dart';
 
 class ImageUploadBottomSheet {
   // final ProfileImageController editProfileImage =

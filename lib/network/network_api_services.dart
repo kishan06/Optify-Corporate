@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
-import 'package:optifii_employee/Utils/Helpers/dialogs.dart';
-import 'package:optifii_employee/network/base_manager.dart';
+import 'package:optifii_Corporate/Utils/Helpers/dialogs.dart';
+import 'package:optifii_Corporate/network/base_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NetworkApiServices {
