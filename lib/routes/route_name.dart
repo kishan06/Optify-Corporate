@@ -13,4 +13,7 @@ class RouteName {
   static const String addapprover = '/addapprover';
   static const String approverdetails = '/approverdetails';
   static const String editdetails = '/editdetails';
+  static const String wallets = '/wallets';
+  static const String viewwallets = '/viewwallets';
+  static const String viewreport = '/viewreport';
 }

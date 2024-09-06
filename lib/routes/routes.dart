@@ -1,3 +1,6 @@
+import 'package:Optifii_Corporate/SideBar/Wallets/ViewReport.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/ViewWallets.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/Wallets.dart';
 import 'package:get/get.dart';
 import 'package:Optifii_Corporate/MainScreen/DashboardTab/Dashboard.dart';
 import 'package:Optifii_Corporate/MainScreen/EmployeeTab/Employee.dart';
@@ -84,6 +87,18 @@ class AppRoutes {
         GetPage(
           name: RouteName.editdetails,
           page: () => const EditDetails(),
+        ),
+        GetPage(
+          name: RouteName.wallets,
+          page: () => const Wallets(),
+        ),
+        GetPage(
+          name: RouteName.viewwallets,
+          page: () => const ViewWallets(),
+        ),
+        GetPage(
+          name: RouteName.viewreport,
+          page: () => const ViewReport(),
         ),
         // Sidebar
       ];

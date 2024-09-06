@@ -1,30 +1,27 @@
 // ignore_for_file: avoid_print, file_names
 
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonModal.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
-import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
 
-class MangeApprove extends StatefulWidget {
-  const MangeApprove({super.key});
+class Wallets extends StatefulWidget {
+  const Wallets({super.key});
 
   @override
-  State<MangeApprove> createState() => _MangeApproveState();
+  State<Wallets> createState() => _WalletsState();
 }
 
-class _MangeApproveState extends State<MangeApprove> {
+class _WalletsState extends State<Wallets> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.white,
-      appBar: CommonAppbar(titleTxt: 'Approvers'),
+      appBar: CommonAppbar(titleTxt: 'Wallets'),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -46,8 +43,8 @@ class _MangeApproveState extends State<MangeApprove> {
                       height: 600, // Height for the TabBarView
                       child: TabBarView(
                         children: [
-                          Expense(),
-                          Benefit(),
+                          ExpenseWallet(),
+                          BenefitWallet(),
                         ],
                       ),
                     ),
@@ -62,21 +59,21 @@ class _MangeApproveState extends State<MangeApprove> {
   }
 }
 
-class Expense extends StatefulWidget {
+class ExpenseWallet extends StatefulWidget {
   final bool? isChecked;
   final ValueChanged<bool?>? onCheckedChanged;
 
-  const Expense({
+  const ExpenseWallet({
     super.key,
     this.isChecked,
     this.onCheckedChanged,
   });
 
   @override
-  State<Expense> createState() => _ExpenseState();
+  State<ExpenseWallet> createState() => _ExpenseWalletState();
 }
 
-class _ExpenseState extends State<Expense> {
+class _ExpenseWalletState extends State<ExpenseWallet> {
   final List<String> departments = [
     'Design',
     'Finance',
@@ -111,16 +108,6 @@ class _ExpenseState extends State<Expense> {
       child: Column(
         children: [
           sizedBoxHeight(15),
-          Center(
-            child: CustomButtonIcon(
-              icon: Icons.add,
-              text: 'Add approver',
-              ontap: () {
-                Get.toNamed(RouteName.addapprover);
-              },
-            ),
-          ),
-          sizedBoxHeight(30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -312,82 +299,72 @@ class _ExpenseState extends State<Expense> {
             ],
           ),
           sizedBoxHeight(25),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
+          const ExpenseBenefitesWallet(
+            title1: 'Wallet type : ',
+            active: 'Active',
+            title2: 'Department : ',
+            title3: 'Wallet amount : ',
+            title4: 'Created by : ',
+            title5: 'Approved by : ',
+            subtitle1: 'Prefilled',
+            subtitle2: 'Sales',
+            subtitle3: '₹ 50,000',
+            subtitle4: 'Reethik Thota',
+            subtitle5: 'Manav Sain',
+            header: 'Food',
+            mail: 'Created on 12 June 2024',
+            image: 'assets/images/png/Food.png',
           ),
           const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
+          const ExpenseBenefitesWallet(
+            title1: 'Wallet type : ',
+            active: 'Active',
+            title2: 'Department : ',
+            title3: 'Wallet amount : ',
+            title4: 'Created by : ',
+            title5: 'Approved by : ',
+            subtitle1: 'Prefilled',
+            subtitle2: 'Sales',
+            subtitle3: '₹ 50,000',
+            subtitle4: 'Reethik Thota',
+            subtitle5: 'Manav Sain',
+            header: 'Fuel',
+            mail: 'Created on 12 June 2024',
+            image: 'assets/images/png/Fuel.png',
           ),
           const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
+          const ExpenseBenefitesWallet(
+            title1: 'Wallet type : ',
+            active: 'Active',
+            title2: 'Department : ',
+            title3: 'Wallet amount : ',
+            title4: 'Created by : ',
+            title5: 'Approved by : ',
+            subtitle1: 'Prefilled',
+            subtitle2: 'Sales',
+            subtitle3: '₹ 50,000',
+            subtitle4: 'Reethik Thota',
+            subtitle5: 'Manav Sain',
+            header: 'Gifts',
+            mail: 'Created on 12 June 2024',
+            image: 'assets/images/png/Gifts.png',
           ),
           const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
-          ),
-          const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
-          ),
-          const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
+          const ExpenseBenefitesWallet(
+            title1: 'Wallet type : ',
+            active: 'Active',
+            title2: 'Department : ',
+            title3: 'Wallet amount : ',
+            title4: 'Created by : ',
+            title5: 'Approved by : ',
+            subtitle1: 'Prefilled',
+            subtitle2: 'Sales',
+            subtitle3: '₹ 50,000',
+            subtitle4: 'Reethik Thota',
+            subtitle5: 'Manav Sain',
+            header: 'Telecom',
+            mail: 'Created on 12 June 2024',
+            image: 'assets/images/png/Telecom.png',
           ),
           const Divider(),
         ],
@@ -396,29 +373,37 @@ class _ExpenseState extends State<Expense> {
   }
 }
 
-class ExpenseBenefites extends StatelessWidget {
-  final String tite1;
-  final String tite2;
-  final String tite3;
-  final String tite4;
+class ExpenseBenefitesWallet extends StatelessWidget {
+  final String title1;
+  final String title2;
+  final String title3;
+  final String title4;
+  final String title5;
   final String subtitle1;
   final String subtitle2;
   final String subtitle3;
   final String subtitle4;
+  final String subtitle5;
   final String header;
   final String mail;
-  const ExpenseBenefites({
+  final String image;
+  final String active;
+  const ExpenseBenefitesWallet({
     super.key,
-    required this.tite1,
-    required this.tite2,
-    required this.tite3,
-    required this.tite4,
+    required this.title1,
+    required this.title2,
+    required this.title3,
+    required this.title4,
+    required this.title5,
     required this.subtitle1,
     required this.subtitle2,
     required this.subtitle3,
     required this.subtitle4,
+    required this.subtitle5,
     required this.header,
     required this.mail,
+    required this.image,
+    required this.active,
   });
 
   @override
@@ -432,13 +417,15 @@ class ExpenseBenefites extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  text16w400c585858(tite1),
+                  text16w400c585858(title1),
                   sizedBoxHeight(10),
-                  text16w400c585858(tite2),
+                  text16w400c585858(title2),
                   sizedBoxHeight(10),
-                  text16w400c585858(tite3),
+                  text16w400c585858(title3),
                   sizedBoxHeight(10),
-                  text16w400c585858(tite4),
+                  text16w400c585858(title4),
+                  sizedBoxHeight(10),
+                  text16w400c585858(title5),
                 ],
               ),
               const SizedBox(width: 30),
@@ -452,6 +439,8 @@ class ExpenseBenefites extends StatelessWidget {
                   text16w400cblack(subtitle3),
                   sizedBoxHeight(10),
                   text16w400cblack(subtitle4),
+                  sizedBoxHeight(10),
+                  text16w400cblack(subtitle5),
                 ],
               ),
             ],
@@ -463,24 +452,33 @@ class ExpenseBenefites extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleAvatar(
-                minRadius: 10,
-                backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                child: Icon(Icons.arrow_drop_down),
-              ),
               sizedBoxWidth(10),
               Image.asset(
-                'assets/images/png/Avatar.png',
+                image,
                 width: 40,
               ),
               const SizedBox(width: 5),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    header,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w600),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        header,
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w600),
+                      ),
+                      sizedBoxWidth(5),
+                      Text(
+                        active,
+                        style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff00A438)),
+                      ),
+                    ],
                   ),
                   Text(
                     mail,
@@ -491,36 +489,17 @@ class ExpenseBenefites extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              InkWell(
-                onTap: () {
-                  Get.toNamed(RouteName.editdetails);
-                },
-                child: const Icon(
-                  Icons.edit_sharp,
-                  color: Color(0xff6311CB),
-                  size: 25,
-                ),
-              ),
-              sizedBoxWidth(5),
-              InkWell(
-                onTap: () {
-                  deletewidget();
-                },
-                child: const Icon(
-                  Icons.delete_outline_outlined,
-                  color: Color(0xffEE1B24),
-                  size: 25,
-                ),
-              )
-            ],
-          ),
         ],
       ),
-      collapsedIcon: const SizedBox.shrink(), // Remove collapsed icon
-      expandedIcon: const SizedBox.shrink(), // Remove expanded icon
+      collapsedIcon: const CircleAvatar(
+        minRadius: 10,
+        backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
+        child: Icon(Icons.keyboard_arrow_down_outlined),
+      ),
+      expandedIcon: const CircleAvatar(
+        minRadius: 10,
+        backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
+      ),
       collapsedTitleBackgroundColor: Colors.transparent,
       expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
@@ -533,16 +512,16 @@ class ExpenseBenefites extends StatelessWidget {
   }
 }
 
-class Benefit extends StatefulWidget {
-  const Benefit({
+class BenefitWallet extends StatefulWidget {
+  const BenefitWallet({
     super.key,
   });
 
   @override
-  State<Benefit> createState() => _BenefitState();
+  State<BenefitWallet> createState() => _BenefitWalletState();
 }
 
-class _BenefitState extends State<Benefit> {
+class _BenefitWalletState extends State<BenefitWallet> {
   final List<String> departments3 = [
     'Design',
     'Finance',
@@ -577,16 +556,6 @@ class _BenefitState extends State<Benefit> {
       child: Column(
         children: [
           sizedBoxHeight(15),
-          Center(
-            child: CustomButtonIcon(
-              icon: Icons.add,
-              text: 'Add approver',
-              ontap: () {
-                Get.toNamed(RouteName.addapprover);
-              },
-            ),
-          ),
-          sizedBoxHeight(30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -778,82 +747,72 @@ class _BenefitState extends State<Benefit> {
             ],
           ),
           sizedBoxHeight(25),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
+          const ExpenseBenefitesWallet(
+            title1: 'Wallet type : ',
+            active: 'Active',
+            title2: 'Department : ',
+            title3: 'Wallet amount : ',
+            title4: 'Created by : ',
+            title5: 'Approved by : ',
+            subtitle1: 'Prefilled',
+            subtitle2: 'Sales',
+            subtitle3: '₹ 50,000',
+            subtitle4: 'Reethik Thota',
+            subtitle5: 'Manav Sain',
+            header: 'Food',
+            mail: 'Created on 12 June 2024',
+            image: 'assets/images/png/Food.png',
           ),
           const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
+          const ExpenseBenefitesWallet(
+            title1: 'Wallet type : ',
+            active: 'Active',
+            title2: 'Department : ',
+            title3: 'Wallet amount : ',
+            title4: 'Created by : ',
+            title5: 'Approved by : ',
+            subtitle1: 'Prefilled',
+            subtitle2: 'Sales',
+            subtitle3: '₹ 50,000',
+            subtitle4: 'Reethik Thota',
+            subtitle5: 'Manav Sain',
+            header: 'Fuel',
+            mail: 'Created on 12 June 2024',
+            image: 'assets/images/png/Fuel.png',
           ),
           const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
+          const ExpenseBenefitesWallet(
+            title1: 'Wallet type : ',
+            active: 'Active',
+            title2: 'Department : ',
+            title3: 'Wallet amount : ',
+            title4: 'Created by : ',
+            title5: 'Approved by : ',
+            subtitle1: 'Prefilled',
+            subtitle2: 'Sales',
+            subtitle3: '₹ 50,000',
+            subtitle4: 'Reethik Thota',
+            subtitle5: 'Manav Sain',
+            header: 'Gifts',
+            mail: 'Created on 12 June 2024',
+            image: 'assets/images/png/Gifts.png',
           ),
           const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
-          ),
-          const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
-          ),
-          const Divider(),
-          const ExpenseBenefites(
-            tite1: 'Department',
-            tite2: 'Approver for',
-            tite3: 'Wallet type',
-            tite4: 'Wallet assigned',
-            subtitle1: ': Design',
-            subtitle2: ': Bills',
-            subtitle3: ': Expense',
-            subtitle4: ': Fuel, food, travel',
-            header: 'Reethik thota',
-            mail: 'reethikthota@wdipl.com',
+          const ExpenseBenefitesWallet(
+            title1: 'Wallet type : ',
+            active: 'Active',
+            title2: 'Department : ',
+            title3: 'Wallet amount : ',
+            title4: 'Created by : ',
+            title5: 'Approved by : ',
+            subtitle1: 'Prefilled',
+            subtitle2: 'Sales',
+            subtitle3: '₹ 50,000',
+            subtitle4: 'Reethik Thota',
+            subtitle5: 'Manav Sain',
+            header: 'Telecom',
+            mail: 'Created on 12 June 2024',
+            image: 'assets/images/png/Telecom.png',
           ),
           const Divider(),
         ],
