@@ -1,11 +1,13 @@
+// ignore_for_file: file_names, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/Text.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
-import 'package:optifii_Corporate/routes/route_name.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPScreen extends StatefulWidget {

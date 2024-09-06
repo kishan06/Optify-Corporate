@@ -1,14 +1,19 @@
 import 'package:get/get.dart';
-import 'package:optifii_Corporate/MainScreen/DashboardTab/Dashboard.dart';
-import 'package:optifii_Corporate/MainScreen/EmployeeTab/Employee.dart';
-import 'package:optifii_Corporate/MainScreen/GiftVoucherTab/GiftVoucher.dart';
-import 'package:optifii_Corporate/MainScreen/RequestTab/Request.dart';
-import 'package:optifii_Corporate/Onboarding/LoginScreen.dart';
-import 'package:optifii_Corporate/Onboarding/OTPScreen.dart';
-import 'package:optifii_Corporate/Onboarding/SplashScreen.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/MainController.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
-import 'package:optifii_Corporate/routes/route_name.dart';
+import 'package:Optifii_Corporate/MainScreen/DashboardTab/Dashboard.dart';
+import 'package:Optifii_Corporate/MainScreen/EmployeeTab/Employee.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/GiftVoucher.dart';
+import 'package:Optifii_Corporate/MainScreen/RequestTab/Request.dart';
+import 'package:Optifii_Corporate/Onboarding/LoginScreen.dart';
+import 'package:Optifii_Corporate/Onboarding/OTPScreen.dart';
+import 'package:Optifii_Corporate/Onboarding/SplashScreen.dart';
+import 'package:Optifii_Corporate/SideBar/ManageApprover/AddApprover.dart';
+import 'package:Optifii_Corporate/SideBar/ManageApprover/ApproverDetails.dart';
+import 'package:Optifii_Corporate/SideBar/ManageApprover/EditApprover.dart';
+import 'package:Optifii_Corporate/SideBar/ManageApprover/ManageApprover.dart';
+import 'package:Optifii_Corporate/SideBar/Profile/EditProfile.dart';
+import 'package:Optifii_Corporate/SideBar/Profile/Profile.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
 
 class AppRoutes {
   static List<GetPage<dynamic>>? appRoutes() => [
@@ -29,7 +34,7 @@ class AppRoutes {
         // mainscreen
         GetPage(
           name: RouteName.mainscreen,
-          page: () => MainScreen(),
+          page: () => const MainScreen(),
         ),
         // Dashboard Pages
         GetPage(
@@ -55,5 +60,31 @@ class AppRoutes {
           page: () => const GiftVoucherPage(),
         ),
         // GiftVoucher Pages
+        // Sidebar
+        GetPage(
+          name: RouteName.profile,
+          page: () => const ProfilePage(),
+        ),
+        GetPage(
+          name: RouteName.editprofile,
+          page: () => const EditProfile(),
+        ),
+        GetPage(
+          name: RouteName.manageapprover,
+          page: () => const MangeApprove(),
+        ),
+        GetPage(
+          name: RouteName.addapprover,
+          page: () => const AddApprovers(),
+        ),
+        GetPage(
+          name: RouteName.approverdetails,
+          page: () => const ApproverDetails(),
+        ),
+        GetPage(
+          name: RouteName.editdetails,
+          page: () => const EditDetails(),
+        ),
+        // Sidebar
       ];
 }

@@ -1,8 +1,10 @@
+// ignore_for_file: file_names, deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/MainController.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainController.dart';
 
 final MainController mainController = Get.put(MainController());
 
