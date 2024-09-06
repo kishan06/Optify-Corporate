@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:optifii_Corporate/routes/route_name.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

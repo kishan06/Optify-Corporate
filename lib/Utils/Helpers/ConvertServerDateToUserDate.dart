@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, avoid_print
+
 class ConvertServerDateToUserDate {
   
   convertServerDateToReadableFormate(String? createAtstring) {
@@ -30,7 +32,6 @@ class ConvertServerDateToUserDate {
       return timeAgo;
     } catch (e) {
       print("Error parsing date: $e");
-      String timeAgo = 'Unknown';
     }
   }
 }

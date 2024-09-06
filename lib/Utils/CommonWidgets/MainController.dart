@@ -1,8 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:get/get.dart';
-import 'package:optifii_Corporate/MainScreen/DashboardTab/Dashboard.dart';
-import 'package:optifii_Corporate/MainScreen/EmployeeTab/Employee.dart';
-import 'package:optifii_Corporate/MainScreen/GiftVoucherTab/GiftVoucher.dart';
-import 'package:optifii_Corporate/MainScreen/RequestTab/Request.dart';
+import 'package:Optifii_Corporate/MainScreen/DashboardTab/Dashboard.dart';
+import 'package:Optifii_Corporate/MainScreen/EmployeeTab/Employee.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/GiftVoucher.dart';
+import 'package:Optifii_Corporate/MainScreen/RequestTab/Request.dart';
 
 class MainController extends GetxController {
   var selectedIndex = 0.obs;

@@ -1,4 +1,4 @@
-package com.example.optifii_Corporate
+package com.example.Optifii_Corporate
 
 import io.flutter.embedding.android.FlutterActivity
 

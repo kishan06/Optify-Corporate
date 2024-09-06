@@ -1,6 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/MainController.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainController.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final MainController mainController;

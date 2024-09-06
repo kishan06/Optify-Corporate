@@ -1,11 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/CommonTextFormField.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
-import 'package:optifii_Corporate/Utils/CommonWidgets/Text.dart';
-import 'package:optifii_Corporate/routes/route_name.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:remove_emoji_input_formatter/remove_emoji_input_formatter.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -44,10 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     text12w400c3725EA('CORPORATE'),
                     const SizedBox(height: 20),
-                    text28w600cblack('Sign In to OptiFii corporate'),
+                    text28w600cblack('Sign In to Optifii corporate'),
                     SizedBox(height: 10.h),
                     text16w400c585858center(
-                        "Welcome to OptiFii, it's time to Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+                        "Welcome to Optifii, it's time to Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
                     SizedBox(height: 50.h),
                     SizedBox(
                       width: double.infinity,
@@ -80,10 +81,29 @@ class _LoginScreenState extends State<LoginScreen> {
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 22),
-                                child: CustomTextFormField(
-                                  texttype: TextInputType.number,
-                                  textEditingController: numberController,
-                                  hintText: 'Enter your phone number',
+                                child: TextFormField(
+                                  textAlignVertical: TextAlignVertical.center,
+                                  cursorColor: const Color(0xff000000),
+                                  enableInteractiveSelection: false,
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  controller: numberController,
+                                  textCapitalization: TextCapitalization.none,
+                                  decoration: const InputDecoration(
+                                    hintStyle: TextStyle(
+                                        color: Color(0xff000000),
+                                        fontSize: 14,
+                                        fontFamily: "Helvetica",
+                                        fontWeight: FontWeight.w400),
+                                    hintText: "Enter your phone number'",
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 20),
+                                  ),
+                                  style: const TextStyle(
+                                    color: Color(0xffCDCDCD),
+                                  ),
+                                  keyboardType: TextInputType.phone,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Enter your phone number';
