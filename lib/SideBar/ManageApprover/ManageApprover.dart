@@ -299,7 +299,7 @@ class _ExpenseState extends State<Expense> {
                                   )),
                               Expanded(
                                 flex: 1,
-                                child: CustomButton(text: 'Reset'),
+                                child: CustomButton(text: 'Filter'),
                               ),
                             ],
                           )
@@ -765,7 +765,7 @@ class _BenefitState extends State<Benefit> {
                                   )),
                               Expanded(
                                 flex: 1,
-                                child: CustomButton(text: 'Reset'),
+                                child: CustomButton(text: 'Filter'),
                               ),
                             ],
                           )

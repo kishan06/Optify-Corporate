@@ -99,12 +99,36 @@ Widget text16w400c344054(String text) {
   );
 }
 
+Widget text16w400cEBEBEB(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 16.sp,
+      color: const Color(0xffEBEBEB),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-SemiBold',
+    ),
+  );
+}
+
 Widget text16w400c667085(String text) {
   return Text(
     text,
     style: TextStyle(
       fontSize: 16.sp,
       color: const Color(0xff667085),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-SemiBold',
+    ),
+  );
+}
+
+Widget text14w400cF4F4F4(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 14.sp,
+      color: const Color(0xffF4F4F4),
       fontWeight: FontWeight.w400,
       fontFamily: 'Gilroy-SemiBold',
     ),
@@ -171,6 +195,30 @@ Widget text20w400c343C6A(String text) {
       fontSize: 20.sp,
       color: const Color(0xff343C6A),
       fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-SemiBold',
+    ),
+  );
+}
+
+Widget text20w600cwhite(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xffffffff),
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Gilroy-SemiBold',
+    ),
+  );
+}
+
+Widget text20w600c252C32(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff252C32),
+      fontWeight: FontWeight.w600,
       fontFamily: 'Gilroy-SemiBold',
     ),
   );
@@ -367,6 +415,18 @@ Widget text24w600cblack(String text) {
       fontSize: 24.sp,
       color: Colors.black,
       fontWeight: FontWeight.w600,
+      fontFamily: 'Gilroy-SemiBold',
+    ),
+  );
+}
+
+Widget text25w400c464748(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 25.sp,
+      color: const Color(0xff464748),
+      fontWeight: FontWeight.w400,
       fontFamily: 'Gilroy-SemiBold',
     ),
   );
