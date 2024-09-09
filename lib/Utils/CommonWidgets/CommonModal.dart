@@ -1,13 +1,9 @@
-import 'dart:html';
-import 'dart:ui';
-
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 dialogwidget() {
   Get.dialog(
@@ -100,7 +96,6 @@ dialogwidget() {
     ),
   );
 }
-
 
 deletewidget() {
   Get.dialog(

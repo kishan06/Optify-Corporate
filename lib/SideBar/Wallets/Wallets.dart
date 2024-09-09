@@ -5,8 +5,10 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
 
 class Wallets extends StatefulWidget {
@@ -286,7 +288,7 @@ class _ExpenseWalletState extends State<ExpenseWallet> {
                                   )),
                               Expanded(
                                 flex: 1,
-                                child: CustomButton(text: 'Reset'),
+                                child: CustomButton(text: 'Filter'),
                               ),
                             ],
                           )
@@ -445,19 +447,27 @@ class ExpenseBenefitesWallet extends StatelessWidget {
               ),
             ],
           ),
+          sizedBoxHeight(20),
+          CustomButton(
+            text: 'View wallet',
+            ontap: () {
+              Get.toNamed(RouteName.viewwallets);
+            },
+          )
         ],
       ),
       titleChild: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               sizedBoxWidth(10),
               Image.asset(
                 image,
-                width: 40,
+                width: 50,
               ),
-              const SizedBox(width: 5),
+              const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -499,6 +509,7 @@ class ExpenseBenefitesWallet extends StatelessWidget {
       expandedIcon: const CircleAvatar(
         minRadius: 10,
         backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
+        child: Icon(Icons.keyboard_arrow_up_outlined),
       ),
       collapsedTitleBackgroundColor: Colors.transparent,
       expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
@@ -734,7 +745,7 @@ class _BenefitWalletState extends State<BenefitWallet> {
                                   )),
                               Expanded(
                                 flex: 1,
-                                child: CustomButton(text: 'Reset'),
+                                child: CustomButton(text: 'Filter'),
                               ),
                             ],
                           )
