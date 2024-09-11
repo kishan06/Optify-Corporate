@@ -520,3 +520,28 @@ Widget text12w500c7F56D9(String text) {
   );
 }
 
+Widget text25w500c3725EA(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 25.sp,
+      color: const Color(0xff3725EA),
+      fontWeight: FontWeight.w500,
+      fontFamily: 'TT Commons',
+    ),
+
+  );
+}
+Widget text20w400cA0ABBB(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xffA0ABBB),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+
+  );
+}
+

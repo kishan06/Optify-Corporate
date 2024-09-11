@@ -6,6 +6,7 @@ class RouteName {
   static const String employeepage = '/employeepage';
   static const String requestpage = '/requestpage';
   static const String giftvoucherpage = '/giftvoucherpage';
+  static const String digitalTabView = '/digitalTabView';
   static const String mainscreen = '/mainscreen';
   static const String editprofile = '/editprofile';
   static const String profile = '/profile';
@@ -16,4 +17,6 @@ class RouteName {
   static const String wallets = '/wallets';
   static const String viewwallets = '/viewwallets';
   static const String viewreport = '/viewreport';
+
+
 }

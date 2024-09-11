@@ -1,4 +1,6 @@
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTab.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/PhysicalTab/PhysicalTab.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTab.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/MiscWidgets.dart';
@@ -43,15 +45,13 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
                     Tab(text: 'Voucher'),
                   ]),
                   Expanded( // Wrap TabBarView with Expanded to avoid overflow
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: TabBarView(
-                        children: [
-                          Digitaltab(),
-                          Digitaltab(),
-                          Digitaltab(),
-                        ],
-                      ),
+                    child: TabBarView(
+                      children: [
+                        Digitaltab(),
+                        Physicaltab(),
+                        Vouchertab()
+
+                      ],
                     ),
                   )
                 ],
