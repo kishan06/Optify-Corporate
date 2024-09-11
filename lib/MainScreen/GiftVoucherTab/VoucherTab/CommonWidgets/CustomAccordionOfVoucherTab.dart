@@ -102,7 +102,6 @@ class _CustomaccordionofvouchertabState extends State<Customaccordionofvoucherta
                 height: 37.h,
                 width: 96.w,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle,
                     image: DecorationImage(image: AssetImage(widget.voucherImg))),
               )
             ],
