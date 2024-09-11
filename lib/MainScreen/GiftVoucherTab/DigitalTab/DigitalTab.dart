@@ -29,22 +29,22 @@ class _DigitaltabState extends State<Digitaltab> {
       status: 'Order accepted',
     ),
     OrderData(
-      orderId: '#85748945',
-      dateTime: '12 July 2024, 12 pm',
-      valuation: '₹ 1,20,000',
+      orderId: '#12584962',
+      dateTime: '15 August 2024, 4 pm',
+      valuation: '₹ 80,000',
       status: 'Dispatch',
     ),
     OrderData(
-      orderId: '#85748945',
-      dateTime: '12 July 2024, 12 pm',
-      valuation: '₹ 1,20,000',
-      status: 'Dispatch',
+      orderId: '#74859632',
+      dateTime: '25 August 2024, 3 pm',
+      valuation: '₹ 1,00,000',
+      status: 'Cancelled',
     ),
     OrderData(
-      orderId: '#85748945',
-      dateTime: '12 July 2024, 12 pm',
-      valuation: '₹ 1,20,000',
-      status: 'Order accepted',
+      orderId: '#36985214',
+      dateTime: '1 September 2024, 2 pm',
+      valuation: '₹ 1,50,000',
+      status: 'Pending',
     ),
   ];
 
@@ -56,7 +56,13 @@ class _DigitaltabState extends State<Digitaltab> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SearchBarFilter(),
+
+            sizedBoxHeight(38.h),
+            
+            Padding(
+              padding: const EdgeInsets.only(left: 16 , right: 22),
+              child: SearchBarFilter(),
+            ),
             sizedBoxHeight(25.h),
 
             Column(
@@ -82,7 +88,7 @@ class _DigitaltabState extends State<Digitaltab> {
 }
 
 // Define an OrderData class to structure the  data
-class OrderData {
+class OrderData  {
   final String orderId;
   final String dateTime;
   final String valuation;
