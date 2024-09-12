@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         initialRoute: RouteName.splashScreen,
         getPages: AppRoutes.appRoutes(),
       ),
+      minTextAdapt: true,
       designSize: const Size(390, 844),
     );
   }

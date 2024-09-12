@@ -1,7 +1,13 @@
-// ignore_for_file: file_names
-
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTab.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/PhysicalTab/PhysicalTab.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTab.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MiscWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
+
+import '../../Utils/CommonWidgets/sized_box.dart';
 
 class GiftVoucherPage extends StatefulWidget {
   const GiftVoucherPage({super.key});
@@ -17,17 +23,41 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
-      body: Stack(
+      appBar: CommonAppbar(titleTxt: 'Gift card & voucher'),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(child: text12w400c3725EA('GiftVouncher')),
-              ],
-            ),
+            padding: const EdgeInsets.only(left: 16),
+            child: text18w400c0B0B0B('Application status'),
           ),
+
+          sizedBoxHeight(22),
+
+          Expanded( // Use Expanded to ensure the content fits within available space
+            child: DefaultTabController(
+              length: 3,
+              child: Column(
+                children: [
+                  CommonTabBar(tabs: [
+                    Tab(text: 'Digital'),
+                    Tab(text: 'Physical'),
+                    Tab(text: 'Voucher'),
+                  ]),
+                  Expanded( // Wrap TabBarView with Expanded to avoid overflow
+                    child: TabBarView(
+                      children: [
+                        Digitaltab(),
+                        Physicaltab(),
+                        Vouchertab()
+
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

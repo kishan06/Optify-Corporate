@@ -1,7 +1,9 @@
+
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddDepartment.dart';
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddRole.dart';
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/EditRole.dart';
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/ManageDepartment_Role.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTabView/DigitalTabView.dart';
 import 'package:Optifii_Corporate/SideBar/Wallets/ViewReport.dart';
 import 'package:Optifii_Corporate/SideBar/Wallets/ViewWallets.dart';
 import 'package:Optifii_Corporate/SideBar/Wallets/Wallets.dart';
@@ -66,6 +68,9 @@ class AppRoutes {
           name: RouteName.giftvoucherpage,
           page: () => const GiftVoucherPage(),
         ),
+        GetPage(
+            name: RouteName.digitalTabView,
+            page: () => const Digitaltabview()),
         // GiftVoucher Pages
         // Sidebar
         GetPage(
