@@ -110,7 +110,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 )
               : widget.suffixIcon,
           border: const OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xffCDCDCD)),
+              borderSide: BorderSide(color: Color(0xFFDFDEDE)),
               borderRadius: BorderRadius.all(Radius.circular(10))),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 10, vertical: 20),

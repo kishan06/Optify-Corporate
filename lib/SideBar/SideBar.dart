@@ -269,7 +269,9 @@ class CustomDrawer extends StatelessWidget {
                           ),
                         ),
                         title: text16w400c344054('Manage Department & Role'),
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(RouteName.managedepartment_role);
+                        },
                       ),
                       sizedBoxHeight(10),
                       ListTile(

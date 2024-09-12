@@ -17,6 +17,9 @@ class RouteName {
   static const String wallets = '/wallets';
   static const String viewwallets = '/viewwallets';
   static const String viewreport = '/viewreport';
-
+  static const String managedepartment_role = '/managedepartment_role';
+  static const String addDepartment = '/addDepartment';
+  static const String addrole = '/addrole';
+  static const String editrole = '/editrole';
 
 }

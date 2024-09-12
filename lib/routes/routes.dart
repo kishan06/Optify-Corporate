@@ -1,3 +1,8 @@
+
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddDepartment.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddRole.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/EditRole.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/ManageDepartment_Role.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTabView/DigitalTabView.dart';
 import 'package:Optifii_Corporate/SideBar/Wallets/ViewReport.dart';
 import 'package:Optifii_Corporate/SideBar/Wallets/ViewWallets.dart';
@@ -104,7 +109,22 @@ class AppRoutes {
           name: RouteName.viewreport,
           page: () => const ViewReport(),
         ),
-
+        GetPage(
+          name: RouteName.managedepartment_role,
+          page: () => const Department_Role(),
+        ),
+        GetPage(
+          name: RouteName.addDepartment,
+          page: () => const AddDepartment(),
+        ),
+        GetPage(
+          name: RouteName.addrole,
+          page: () => const AddRole(),
+        ),
+        GetPage(
+          name: RouteName.editrole,
+          page: () => const EditRole(),
+        ),
         // Sidebar
       ];
 }

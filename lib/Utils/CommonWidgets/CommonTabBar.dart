@@ -22,7 +22,7 @@ class CommonTabBar extends StatelessWidget {
       child: TabBar(
           dividerColor: const Color(0xFFFFFFFF).withOpacity(0.07),
           labelStyle: TextStyle(
-            fontSize: 18.sp,
+            fontSize: 16.sp,
             color: const Color(0xFF6311CB),
             fontWeight: FontWeight.w600,
             fontFamily: 'Gilroy-Regular',
@@ -32,7 +32,7 @@ class CommonTabBar extends StatelessWidget {
           indicatorWeight: 3.h,
           dividerHeight: 3.h,
           unselectedLabelStyle: TextStyle(
-            fontSize: 18.sp,
+            fontSize: 16.sp,
             color: const Color(0xFF747474),
             fontWeight: FontWeight.w400,
             fontFamily: 'Gilroy-Regular',
