@@ -15,6 +15,18 @@ Widget text10w400cwhite(String text) {
   );
 }
 
+Widget text11w400c667085(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 10.sp,
+      color: const Color(0xff667085),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-Medium',
+    ),
+  );
+}
+
 Widget text12w400c3725EA(String text) {
   return Text(
     text,
@@ -45,6 +57,18 @@ Widget text14w400c6311CB(String text) {
     style: TextStyle(
       fontSize: 14.sp,
       color: const Color(0xff6311CB),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-SemiBold',
+    ),
+  );
+}
+
+Widget text14w400c667085(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 14.sp,
+      color: const Color(0xff667085),
       fontWeight: FontWeight.w400,
       fontFamily: 'Gilroy-SemiBold',
     ),
@@ -194,6 +218,19 @@ Widget text20w400c343C6A(String text) {
     style: TextStyle(
       fontSize: 20.sp,
       color: const Color(0xff343C6A),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-SemiBold',
+    ),
+  );
+}
+
+Widget text20w400c3725EA(String text) {
+  return Text(
+    text,
+    textAlign: TextAlign.center,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff3725EA),
       fontWeight: FontWeight.w400,
       fontFamily: 'Gilroy-SemiBold',
     ),
