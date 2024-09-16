@@ -20,7 +20,6 @@ class StatusContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 34,
-      width: 123,
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(17),
@@ -29,24 +28,27 @@ class StatusContainer extends StatelessWidget {
           color: borderColor,
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: circleColor,
-              shape: BoxShape.circle,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: circleColor,
+                shape: BoxShape.circle,
+              ),
+              width: 8, // Specify a width for the circle
+              height: 8, // Specify a height for the circle
             ),
-            width: 8, // Specify a width for the circle
-            height: 8, // Specify a height for the circle
-          ),
-          const SizedBox(width: 6),
-          Text(
-            status,
-            style: TextStyle(color: textColor),
-          ),
-        ],
+            const SizedBox(width: 6),
+            Text(
+              status,
+              style: TextStyle(color: textColor),
+            ),
+          ],
+        ),
       ),
     );
   }

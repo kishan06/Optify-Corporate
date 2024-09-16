@@ -1,12 +1,15 @@
-import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonButtonIconLeftBgWhite.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/CustomButtonIconLeft.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/CommonWidgets/CustomButtonIconLeftBgWhite.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/CommonWidgets/CustomButtonIconLeft.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
 
 import '../../../../Utils/CommonWidgets/Text.dart';
 import '../../../../Utils/CommonWidgets/sized_box.dart';
+import '../../../../routes/route_name.dart';
 import '../../DigitalTab/CommonWidgets/EmployeeAvatars.dart';
 import '../../DigitalTab/CommonWidgets/StatusContainer.dart';
 
@@ -27,10 +30,12 @@ class Customaccordionofvouchertab extends StatefulWidget {
   });
 
   @override
-  State<Customaccordionofvouchertab> createState() => _CustomaccordionofvouchertabState();
+  State<Customaccordionofvouchertab> createState() =>
+      _CustomaccordionofvouchertabState();
 }
 
-class _CustomaccordionofvouchertabState extends State<Customaccordionofvouchertab> {
+class _CustomaccordionofvouchertabState
+    extends State<Customaccordionofvouchertab> {
   // Method to get status colors based on the status
   Map<String, dynamic> getStatusColors(String status) {
     switch (status) {
@@ -57,17 +62,26 @@ class _CustomaccordionofvouchertabState extends State<Customaccordionofvoucherta
         };
       case 'Dispatch':
         return {
-          'backgroundColor': const Color.fromRGBO(223, 93, 23, 0.08),
-          'borderColor': const Color(0xffDF5F17),
-          'textColor': const Color(0xffDF5F17),
-          'circleColor': const Color(0xffDF5F17),
-        };
-      case 'Order accepted':
-        return {
           'backgroundColor': const Color.fromRGBO(55, 37, 234, 0.03),
           'borderColor': const Color(0xff3725EA),
           'textColor': const Color(0xff3725EA),
           'circleColor': const Color(0xff3725EA),
+        };
+        case 'Proceeding':
+        return {
+          'backgroundColor': const Color.fromRGBO(55, 37, 234, 0.03),
+          'borderColor': const Color(0xff396AFF),
+          'textColor': const Color(0xff396AFF),
+          'circleColor': const Color(0xff396AFF),
+        };
+
+
+      case 'Completed':
+        return {
+          'backgroundColor': const Color.fromRGBO(0, 164, 56, 0.08),
+          'borderColor': const Color(0xff00A438),
+          'textColor': const Color(0xff00A438),
+          'circleColor': const Color(0xff00A438),
         };
       default:
         return {
@@ -95,14 +109,16 @@ class _CustomaccordionofvouchertabState extends State<Customaccordionofvoucherta
               CircleAvatar(
                 minRadius: 10,
                 backgroundColor: const Color.fromRGBO(98, 17, 203, 0.178),
-                child: Icon(isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down),
+                child: Icon(
+                    isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down),
               ),
               const SizedBox(width: 11),
               Container(
                 height: 37.h,
                 width: 96.w,
                 decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage(widget.voucherImg))),
+                    image:
+                        DecorationImage(image: AssetImage(widget.voucherImg))),
               )
             ],
           ),
@@ -179,7 +195,7 @@ class _CustomaccordionofvouchertabState extends State<Customaccordionofvoucherta
               Row(
                 children: [
                   text17w400c667085('Department'),
-                  SizedBox(width: 15.w),
+                  SizedBox(width: 40.w),
                   text17w400c464748(':'),
                 ],
               ),
@@ -187,33 +203,21 @@ class _CustomaccordionofvouchertabState extends State<Customaccordionofvoucherta
               Expanded(child: text17w400c464748(widget.department)),
             ],
           ),
-          sizedBoxHeight(39.h),
-
+          sizedBoxHeight(26.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              CustomButtonIconLeft(),
+              SizedBox(width: 4.w), // Add some spacing between buttons
               Flexible(
-                child: CustomButtonIconLeft(
-                  text: 'Download allotment history',
-                  icon: Icons.file_download_sharp,
-                  ontap: () {
-                    // Handle button tap
-                  },
-                ),
-              ),
-              SizedBox(width: 10.w), // Add some spacing between buttons
-              Flexible(
-                child: CustomButtonIconLeftBgWhite(
-                  text: 'Visit',
-                  onPressed: () {
-                    // Handle button tap
-                  },
-                ),
+                child: InkWell(
+                    onTap: (){
+                      Get.toNamed(RouteName.VoucherTabView);
+                    },
+                    child: CustomButtonIconLeftBgWhite()),
               ),
             ],
           ),
-
-
         ],
       ),
       collapsedIcon: const SizedBox.shrink(),
@@ -221,10 +225,16 @@ class _CustomaccordionofvouchertabState extends State<Customaccordionofvoucherta
       collapsedTitleBackgroundColor: Colors.transparent,
       expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
-      titleBorderRadius: BorderRadius.circular(0),
-      titlePadding: const EdgeInsets.all(16.0),
-      contentPadding: const EdgeInsets.all(16.0),
+      titleBorderRadius: BorderRadius.circular(5),
+      contentBorderRadius: BorderRadius.circular(5),
+      titlePadding: const EdgeInsets.symmetric(horizontal: 16,vertical: 10),
+      contentPadding: const EdgeInsets.all(16),
       margin: const EdgeInsets.all(0),
+      onToggleCollapsed: (value) {
+        setState(() {
+          isExpanded = !isExpanded; // Toggle the state
+        });
+      },
     );
   }
 }
