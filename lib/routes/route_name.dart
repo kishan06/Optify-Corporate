@@ -5,8 +5,11 @@ class RouteName {
   static const String dashboardpage = '/dashboardpage';
   static const String employeepage = '/employeepage';
   static const String requestpage = '/requestpage';
+  static const String reportpage = '/reportpage';
+
   static const String giftvoucherpage = '/giftvoucherpage';
   static const String digitalTabView = '/digitalTabView';
+  static const String VoucherTabView = '/VoucherTabView';
   static const String mainscreen = '/mainscreen';
   static const String editprofile = '/editprofile';
   static const String profile = '/profile';

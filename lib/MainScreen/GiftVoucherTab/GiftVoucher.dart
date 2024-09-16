@@ -21,7 +21,7 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFFFFFFFF),
+      backgroundColor: Color(0xffffffff),
       extendBody: true,
       appBar: CommonAppbar(titleTxt: 'Gift card & voucher'),
       body: Column(
@@ -34,7 +34,7 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
 
           sizedBoxHeight(22),
 
-          Expanded( // Use Expanded to ensure the content fits within available space
+          Expanded(
             child: DefaultTabController(
               length: 3,
               child: Column(
