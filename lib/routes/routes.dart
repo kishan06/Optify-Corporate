@@ -1,3 +1,15 @@
+
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddDepartment.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddRole.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/EditRole.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/ManageDepartment_Role.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTabView/DigitalTabView.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTabView/VoucherTabView.dart';
+import 'package:Optifii_Corporate/MainScreen/RequestTab/ReimburseTab/ReportPage/ReportPage.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/ViewReport.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/ViewWallets.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/Wallets.dart';
+import 'package:get/get.dart';
 import 'package:Optifii_Corporate/MainScreen/DashboardTab/Dashboard.dart';
 import 'package:Optifii_Corporate/MainScreen/EmployeeTab/Employee.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTabView/DigitalTabView.dart';
@@ -63,15 +75,31 @@ class AppRoutes {
           name: RouteName.requestpage,
           page: () => const RequestPage(),
         ),
+        GetPage(
+            name: RouteName.reportpage,
+            page: () => const Reportpage()),
+
+
+
         // Request Pages
+
+
+
         // GiftVoucher Pages
         GetPage(
           name: RouteName.giftvoucherpage,
           page: () => const GiftVoucherPage(),
         ),
         GetPage(
-            name: RouteName.digitalTabView, page: () => const Digitaltabview()),
+            name: RouteName.digitalTabView,
+            page: () => const Digitaltabview()),
+        GetPage(
+            name: RouteName.VoucherTabView,
+            page: () => const Vouchertabview()),
         // GiftVoucher Pages
+
+
+
         // Sidebar
         GetPage(
           name: RouteName.profile,

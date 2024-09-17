@@ -51,7 +51,7 @@ class _DigitaltabState extends State<Digitaltab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xffffffff),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,11 +75,19 @@ class _DigitaltabState extends State<Digitaltab> {
                       valuation: order.valuation,
                       status: order.status,
                     ),
-                    sizedBoxHeight(24.h),
+                    sizedBoxHeight(14.h),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Divider(
+                        color: Color(0xffECECEC),
+                      ),)
                   ],
                 );
               }).toList(),
             ),
+
+
+
+
           ],
         ),
       ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
 
-import '../../../../../Utils/CommonWidgets/Text.dart';
+import '../../../../Utils/CommonWidgets/Text.dart';
 
 class Customaccordionofdigitaltabview extends StatefulWidget {
   final String employeesName;
@@ -51,7 +51,7 @@ class _CustomaccordionofdigitaltabviewState extends State<Customaccordionofdigit
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              text20w500c3725EA('${widget.employeesName}'),
+              text20w400c252C32('${widget.employeesName}'),
               text16w400cA0ABBB('${widget.employeesId}'),
             ],
           ),
@@ -124,12 +124,17 @@ class _CustomaccordionofdigitaltabviewState extends State<Customaccordionofdigit
       collapsedIcon: const SizedBox.shrink(),
       expandedIcon: const SizedBox.shrink(),
       collapsedTitleBackgroundColor: Colors.transparent,
-      expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
-      contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
+      expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.05),
+      contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.05),
       titleBorderRadius: BorderRadius.circular(0),
       titlePadding: const EdgeInsets.only(top: 16,bottom: 14,left: 16,right: 16),
       contentPadding: const EdgeInsets.only(top: 26 , left: 48 , bottom: 19),
       margin: const EdgeInsets.all(0),
+      onToggleCollapsed: (value) {
+        setState(() {
+          isExpanded = !isExpanded; // Toggle the state
+        });
+      },
     );
   }
 }

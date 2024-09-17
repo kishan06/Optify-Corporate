@@ -1,5 +1,5 @@
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/CommonWidgets/StatusContainer.dart';
-import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTabView/CommonWidgets/CustomAccordionOfDigitalTabView.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/CommonWidgets/CustomAccordionOfDigitalTabView.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
@@ -148,10 +148,12 @@ class _DigitaltabviewState extends State<Digitaltabview> {
                 ],
               ),
             ),
-            sizedBoxHeight(34.h),
+            sizedBoxHeight(25.h),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22),
-              child: Divider(),
+              child: Divider(
+                color: Color.fromRGBO(99, 17, 203, 0.2),
+              ),
             ),
             sizedBoxHeight(17.h),
             Padding(
@@ -173,7 +175,11 @@ class _DigitaltabviewState extends State<Digitaltabview> {
                            employeesMemberSince: data.employeesMemberSince,
                            employeesEmailAddress: data.employeesEmailAddress,
                            employeesImage: data.employeesImage),
-                        sizedBoxHeight(26.h),
+                        sizedBoxHeight(14.h),
+                        Padding(padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: Divider(
+                            color: Color(0xffECECEC),
+                          ),)
                       ],
                     );
                   }).toList(),

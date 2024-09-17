@@ -1,4 +1,5 @@
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/CommonWidgets/CustomAccordionOfVoucherTab.dart';
+import 'package:Optifii_Corporate/Utils/Helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,47 +19,80 @@ class _VouchertabState extends State<Vouchertab> {
     VoucherData(
       voucherImg: 'assets/images/png/h&m.png',
       dateTime: '10 June 2024, 10 am',
-      department: 'Sales, Design',
+      department: 'Finance',
       status: 'Completed',
-      valuation: ': ₹ 70,000',
+      valuation: '₹ 70,000',
+    ),
+    VoucherData(
+      voucherImg: 'assets/images/png/h&m.png',
+      dateTime: '10 June 2024, 10 am',
+      department: 'Sales, Design',
+      status: 'Dispatch',
+      valuation: '₹ 70,000',
     ),
     VoucherData(
       voucherImg: 'assets/images/png/h&m.png',
       dateTime: '10 June 2024, 10 am',
       department: 'Sales, Design',
       status: 'Completed',
-      valuation: ': ₹ 70,000',
+      valuation: '₹ 70,000',
     ),
     VoucherData(
       voucherImg: 'assets/images/png/h&m.png',
       dateTime: '10 June 2024, 10 am',
       department: 'Sales, Design',
-      status: 'Completed',
-      valuation: ': ₹ 70,000',
+      status: 'Dispatch',
+      valuation: '₹ 70,000',
     ),
+    VoucherData(
+      voucherImg: 'assets/images/png/h&m.png',
+      dateTime: '10 June 2024, 10 am',
+      department: 'Sales, Design',
+      status: 'Proceeding',
+      valuation: '₹ 70,000',
+    ),
+    VoucherData(
+      voucherImg: 'assets/images/png/h&m.png',
+      dateTime: '10 June 2024, 10 am',
+      department: 'Sales, Design',
+      status: 'Dispatch',
+      valuation: '₹ 70,000',
+    ),
+
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFCFCFC),
+      backgroundColor: AppColors.secondary,
       body: SingleChildScrollView(
         child: Column(
-          children: voucher.map((voucherData) {
-            return Column(
-              children: [
-                sizedBoxHeight(37.h),
-                Customaccordionofvouchertab(
-                    voucherImg: voucherData.voucherImg,
-                    dateTime: voucherData.dateTime,
-                    valuation: voucherData.valuation,
-                    status: voucherData.status,
-                    department: voucherData.department),
-                Divider(),
-                sizedBoxHeight(31.h),
-              ],
-            );
-          }).toList(),
+          children: [
+            sizedBoxHeight(16.h),
+            
+            Column(
+              children: voucher.map((voucherData) {
+                return Column(
+                  children: [
+                    sizedBoxHeight(22.h),
+                    Customaccordionofvouchertab(
+                        voucherImg: voucherData.voucherImg,
+                        dateTime: voucherData.dateTime,
+                        valuation: voucherData.valuation,
+                        status: voucherData.status,
+                        department: voucherData.department),
+                    sizedBoxHeight(14.h),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Divider(
+                        color: Color(0xffECECEC),
+                      ),
+                    ),
+                  ],
+                );
+              }).toList(),
+            ),
+          ],
         ),
       ),
     );
