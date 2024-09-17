@@ -1,17 +1,10 @@
-
-import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddDepartment.dart';
-import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddRole.dart';
-import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/EditRole.dart';
-import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/ManageDepartment_Role.dart';
-import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTabView/DigitalTabView.dart';
-import 'package:Optifii_Corporate/SideBar/Wallets/ViewReport.dart';
-import 'package:Optifii_Corporate/SideBar/Wallets/ViewWallets.dart';
-import 'package:Optifii_Corporate/SideBar/Wallets/Wallets.dart';
-import 'package:get/get.dart';
 import 'package:Optifii_Corporate/MainScreen/DashboardTab/Dashboard.dart';
 import 'package:Optifii_Corporate/MainScreen/EmployeeTab/Employee.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTabView/DigitalTabView.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/GiftVoucher.dart';
+import 'package:Optifii_Corporate/MainScreen/Notification.dart';
 import 'package:Optifii_Corporate/MainScreen/RequestTab/Request.dart';
+import 'package:Optifii_Corporate/MainScreen/Statement.dart';
 import 'package:Optifii_Corporate/Onboarding/LoginScreen.dart';
 import 'package:Optifii_Corporate/Onboarding/OTPScreen.dart';
 import 'package:Optifii_Corporate/Onboarding/SplashScreen.dart';
@@ -19,10 +12,18 @@ import 'package:Optifii_Corporate/SideBar/ManageApprover/AddApprover.dart';
 import 'package:Optifii_Corporate/SideBar/ManageApprover/ApproverDetails.dart';
 import 'package:Optifii_Corporate/SideBar/ManageApprover/EditApprover.dart';
 import 'package:Optifii_Corporate/SideBar/ManageApprover/ManageApprover.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddDepartment.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddRole.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/EditRole.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/ManageDepartment_Role.dart';
 import 'package:Optifii_Corporate/SideBar/Profile/EditProfile.dart';
 import 'package:Optifii_Corporate/SideBar/Profile/Profile.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/ViewReport.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/ViewWallets.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/Wallets.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
+import 'package:get/get.dart';
 
 class AppRoutes {
   static List<GetPage<dynamic>>? appRoutes() => [
@@ -69,8 +70,7 @@ class AppRoutes {
           page: () => const GiftVoucherPage(),
         ),
         GetPage(
-            name: RouteName.digitalTabView,
-            page: () => const Digitaltabview()),
+            name: RouteName.digitalTabView, page: () => const Digitaltabview()),
         // GiftVoucher Pages
         // Sidebar
         GetPage(
@@ -126,5 +126,13 @@ class AppRoutes {
           page: () => const EditRole(),
         ),
         // Sidebar
+        GetPage(
+          name: RouteName.notification,
+          page: () => const Notifications(),
+        ),
+        GetPage(
+          name: RouteName.statement,
+          page: () => const ViewStatement(),
+        ),
       ];
 }
