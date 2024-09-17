@@ -1,9 +1,9 @@
+import 'package:Optifii_Corporate/routes/route_name.dart';
+import 'package:Optifii_Corporate/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:Optifii_Corporate/routes/route_name.dart';
-import 'package:Optifii_Corporate/routes/routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.grey,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteName.splashScreen,
+        initialRoute: RouteName.statement,
         getPages: AppRoutes.appRoutes(),
       ),
       minTextAdapt: true,

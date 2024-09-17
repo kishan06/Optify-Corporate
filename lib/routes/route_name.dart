@@ -24,5 +24,7 @@ class RouteName {
   static const String addDepartment = '/addDepartment';
   static const String addrole = '/addrole';
   static const String editrole = '/editrole';
+  static const String notification = '/notification';
+  static const String statement = '/statement';
 
 }
