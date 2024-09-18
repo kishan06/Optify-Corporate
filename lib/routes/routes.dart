@@ -1,4 +1,5 @@
-
+import 'package:Optifii_Corporate/MainScreen/RequestTab/ApprovedTab/ApprovedReportView/ApprovedReportView.dart';
+import 'package:Optifii_Corporate/MainScreen/RequestTab/RejectedTab/RejectedReportView/RejectReportView.dart';
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddDepartment.dart';
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddRole.dart';
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/EditRole.dart';
@@ -38,7 +39,8 @@ import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
-  static List<GetPage<dynamic>>? appRoutes() => [
+  static List<GetPage<dynamic>>? appRoutes() =>
+      [
         // Onboarding
         GetPage(
           name: RouteName.splashScreen,
@@ -78,11 +80,13 @@ class AppRoutes {
         GetPage(
             name: RouteName.reportpage,
             page: () => const Reportpage()),
-
-
-
+        GetPage(
+            name: RouteName.approvedreportview,
+            page: () => const Approvedreportview()),
+        GetPage(
+            name: RouteName.rejectreportview,
+            page: () => const RejectReportView()),
         // Request Pages
-
 
 
         // GiftVoucher Pages
@@ -97,7 +101,6 @@ class AppRoutes {
             name: RouteName.VoucherTabView,
             page: () => const Vouchertabview()),
         // GiftVoucher Pages
-
 
 
         // Sidebar

@@ -6,6 +6,8 @@ class RouteName {
   static const String employeepage = '/employeepage';
   static const String requestpage = '/requestpage';
   static const String reportpage = '/reportpage';
+  static const String approvedreportview = '/approvedreportview';
+  static const String rejectreportview = '/rejectreportview';
 
   static const String giftvoucherpage = '/giftvoucherpage';
   static const String digitalTabView = '/digitalTabView';
