@@ -740,6 +740,18 @@ Widget text18w500cffffff(String text) {
   );
 }
 
+Widget text16w400c687280(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 16.sp,
+      color: const Color(0xff687280),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
 
 
 
