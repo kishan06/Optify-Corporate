@@ -26,5 +26,8 @@ class RouteName {
   static const String addrole = '/addrole';
   static const String editrole = '/editrole';
   static const String helpandsupport  = '/helpandsupport';
+  static const String notification = '/notification';
+  static const String statement = '/statement';
+
 
 }

@@ -1,12 +1,14 @@
 // ignore_for_file: file_names, unused_local_variable
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mat_month_picker_dialog/mat_month_picker_dialog.dart';
 import 'package:Optifii_Corporate/SideBar/SideBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonCard.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:mat_month_picker_dialog/mat_month_picker_dialog.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -73,7 +75,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     sizedBoxWidth(10.w),
                     GestureDetector(
                       onTap: () {
-                        // Add your navigation logic here
+                        Get.toNamed(RouteName.notification);
                       },
                       child: Image.asset(
                         'assets/images/png/bell.png',
