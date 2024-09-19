@@ -1,5 +1,6 @@
 import 'package:Optifii_Corporate/MainScreen/RequestTab/ApprovedTab/ApprovedReportView/ApprovedReportView.dart';
 import 'package:Optifii_Corporate/MainScreen/RequestTab/RejectedTab/RejectedReportView/RejectReportView.dart';
+import 'package:Optifii_Corporate/SideBar/Help%20&%20Support/HelpAndSupport.dart';
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddDepartment.dart';
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddRole.dart';
 import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/EditRole.dart';
@@ -156,6 +157,9 @@ class AppRoutes {
           name: RouteName.editrole,
           page: () => const EditRole(),
         ),
+        GetPage(
+            name: RouteName.helpandsupport,
+            page:  ()=> const HelpAndSupport())
         // Sidebar
         GetPage(
           name: RouteName.notification,
