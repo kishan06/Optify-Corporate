@@ -753,6 +753,171 @@ Widget text16w400c687280(String text) {
 }
 
 
+Widget text18w400c363636(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff363636),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-Medium',
+    ),
+  );
+}
+
+
+
+Widget text18w400c585858(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff5B5B5B),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text16w400c59C36A(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 16.sp,
+      color: const Color(0xff59C36A),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text18w400c141414(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff141414),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text18w400cffffff(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xffffffff),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text20w400c141414(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff141414),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text20w400c5B5B5B(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff5B5B5B),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text18w400c5E0FCD(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff5E0FCD),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+
+Widget text16w400c5B5B5B(String text) {
+  return Text(
+
+    text,
+    style: TextStyle(
+      fontSize: 16.sp,
+      color: const Color(0xff5B5B5B),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text20w400c373434(String text) {
+  return Text(
+
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff373434),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+
+Widget text20w400c090909(String text) {
+  return Text(
+
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff090909),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-Medium',
+    ),
+  );
+}
+
+Widget text18w400c686868(String text) {
+  return Text(
+
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff686868),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text18w400c000000(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff000000),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+
 
 
 

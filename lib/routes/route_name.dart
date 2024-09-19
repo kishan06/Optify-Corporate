@@ -8,7 +8,6 @@ class RouteName {
   static const String reportpage = '/reportpage';
   static const String approvedreportview = '/approvedreportview';
   static const String rejectreportview = '/rejectreportview';
-
   static const String giftvoucherpage = '/giftvoucherpage';
   static const String digitalTabView = '/digitalTabView';
   static const String VoucherTabView = '/VoucherTabView';
@@ -26,5 +25,6 @@ class RouteName {
   static const String addDepartment = '/addDepartment';
   static const String addrole = '/addrole';
   static const String editrole = '/editrole';
+  static const String helpandsupport  = '/helpandsupport';
 
 }
