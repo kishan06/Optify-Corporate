@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:Optifii_Corporate/MainScreen/RequestTab/ApprovedTab/Common/CustomReportBoxWithStatus.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/SearchBar_Filter.dart';
 import 'package:Optifii_Corporate/Utils/Helpers/colors.dart';
@@ -66,7 +68,7 @@ class _ApprovedtabState extends State<Approvedtab> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SearchBarFilter(),
+            const SearchBarFilter(),
             Expanded(
               child: ListView.builder(
                 itemCount: reportList.length,

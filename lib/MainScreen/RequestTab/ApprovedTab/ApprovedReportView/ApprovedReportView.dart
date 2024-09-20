@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
@@ -96,7 +98,7 @@ class _ApprovedreportviewState extends State<Approvedreportview> {
 
     return Scaffold(
       backgroundColor: AppColors.secondary,
-      appBar: CommonAppbar(titleTxt: 'Report for june 2024'),
+      appBar: const CommonAppbar(titleTxt: 'Report for june 2024'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -163,7 +165,7 @@ class _ApprovedreportviewState extends State<Approvedreportview> {
 
             sizedBoxHeight(12.h),
 
-            DottedLine(
+            const DottedLine(
               direction: Axis.horizontal,
               dashColor: Color.fromRGBO(55, 37, 234, 0.17),
             ),
@@ -196,7 +198,7 @@ class _ApprovedreportviewState extends State<Approvedreportview> {
                                   builder: (BuildContext context) {
                                     return Dialog(
                                       insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Color.fromRGBO(
+                                      backgroundColor: const Color.fromRGBO(
                                           0, 0, 0, 0.73), // Dark background
                                       child: Stack(
                                         children: [

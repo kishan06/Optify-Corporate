@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import, unused_import, file_names
+
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTab.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/PhysicalTab/PhysicalTab.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTab.dart';
@@ -25,7 +27,7 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
+        preferredSize: const Size.fromHeight(70),
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: const Color(0xff6311CB),
@@ -42,7 +44,7 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
 
           sizedBoxHeight(22),
 
-          DefaultTabController(
+          const DefaultTabController(
             length: 3,
             child: Column(
               children: [

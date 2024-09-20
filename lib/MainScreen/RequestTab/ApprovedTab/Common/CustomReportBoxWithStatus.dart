@@ -1,10 +1,10 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/CommonWidgets/StatusContainer.dart';
-import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 import '../../../../Utils/CommonWidgets/Text.dart';
 import '../../../../Utils/CommonWidgets/sized_box.dart';

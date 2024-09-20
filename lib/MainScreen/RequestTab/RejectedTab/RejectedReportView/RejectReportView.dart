@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/Utils/Helpers/colors.dart';
@@ -85,7 +87,7 @@ class _RejectreportviewState extends State<RejectReportView> {
 
     return Scaffold(
       backgroundColor: AppColors.secondary,
-      appBar: CommonAppbar(titleTxt: 'Report for june 2024'),
+      appBar: const CommonAppbar(titleTxt: 'Report for june 2024'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -170,7 +172,7 @@ class _RejectreportviewState extends State<RejectReportView> {
                                   builder: (BuildContext context) {
                                     return Dialog(
                                       insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Color.fromRGBO(
+                                      backgroundColor: const Color.fromRGBO(
                                           0, 0, 0, 0.73), // Dark background
                                       child: Stack(
                                         children: [

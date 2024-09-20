@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -67,7 +69,7 @@ class _RejectedtabState extends State<Rejectedtab> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SearchBarFilter(),
+            const SearchBarFilter(),
             Expanded(
               child: ListView.builder(
                 itemCount: reportList.length,
