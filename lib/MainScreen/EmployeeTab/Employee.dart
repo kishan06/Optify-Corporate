@@ -3,8 +3,10 @@
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonCard.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
 
 class EmployeePage extends StatefulWidget {
@@ -54,30 +56,35 @@ class _EmployeePageState extends State<EmployeePage> {
                       title: text24w600cwhite('Employees'),
                     ),
                     sizedBoxHeight(20.h),
-                    Container(
-                      padding: const EdgeInsets.all(15),
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffFFFFFF),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
+                    InkWell(
+                      onTap: () {
+                        Get.toNamed(RouteName.employeelist);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        width: double.infinity,
+                        decoration: const BoxDecoration(
+                          color: Color(0xffFFFFFF),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
                         ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              text26w600c3725EA('250'),
-                              text16w400c718EBF('Total employees')
-                            ],
-                          ),
-                          Image.asset(
-                            'assets/images/png/images.png',
-                            width: 150.w,
-                          ),
-                        ],
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                text26w600c3725EA('250'),
+                                text16w400c718EBF('Total employees')
+                              ],
+                            ),
+                            Image.asset(
+                              'assets/images/png/images.png',
+                              width: 150.w,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

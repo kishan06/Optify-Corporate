@@ -1,3 +1,4 @@
+
 import 'package:Optifii_Corporate/MainScreen/RequestTab/ApprovedTab/ApprovedReportView/ApprovedReportView.dart';
 import 'package:Optifii_Corporate/MainScreen/RequestTab/RejectedTab/RejectedReportView/RejectReportView.dart';
 import 'package:Optifii_Corporate/SideBar/Help%20&%20Support/HelpAndSupport.dart';
@@ -13,10 +14,18 @@ import 'package:Optifii_Corporate/SideBar/Wallets/ViewWallets.dart';
 import 'package:Optifii_Corporate/SideBar/Wallets/Wallets.dart';
 import 'package:get/get.dart';
 import 'package:Optifii_Corporate/MainScreen/DashboardTab/Dashboard.dart';
+import 'package:Optifii_Corporate/MainScreen/EmployeeTab/AddEmployee.dart';
 import 'package:Optifii_Corporate/MainScreen/EmployeeTab/Employee.dart';
+import 'package:Optifii_Corporate/MainScreen/EmployeeTab/EmployeeDetails.dart';
+import 'package:Optifii_Corporate/MainScreen/EmployeeTab/EmployeeList.dart';
+import 'package:Optifii_Corporate/MainScreen/EmployeeTab/EmployeeView.dart';
+import 'package:Optifii_Corporate/MainScreen/EmployeeTab/PullBackFund.dart';
+import 'package:Optifii_Corporate/MainScreen/EmployeeTab/PullBackFund2.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTabView/DigitalTabView.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/GiftVoucher.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTabView/VoucherTabView.dart';
 import 'package:Optifii_Corporate/MainScreen/Notification.dart';
+import 'package:Optifii_Corporate/MainScreen/RequestTab/ReimburseTab/ReportPage/ReportPage.dart';
 import 'package:Optifii_Corporate/MainScreen/RequestTab/Request.dart';
 import 'package:Optifii_Corporate/MainScreen/Statement.dart';
 import 'package:Optifii_Corporate/Onboarding/LoginScreen.dart';
@@ -72,6 +81,31 @@ class AppRoutes {
           name: RouteName.employeepage,
           page: () => const EmployeePage(),
         ),
+        GetPage(
+          name: RouteName.employeedetails,
+          page: () => const EmployeeDetails(),
+        ),
+        GetPage(
+          name: RouteName.employeelist,
+          page: () => const EmployeeList(),
+        ),
+        GetPage(
+          name: RouteName.employeeview,
+          page: () => const EmployeeView(),
+        ),
+        GetPage(
+          name: RouteName.addemployee,
+          page: () => const AddEmployee(),
+        ),
+        GetPage(
+          name: RouteName.pullbackfund,
+          page: () => const PullBackFund(),
+        ),
+        GetPage(
+          name: RouteName.pullbackfund2,
+          page: () => const PullBackFund2(),
+        ),
+
         // Employee Pages
         // Request Pages
         GetPage(
@@ -88,21 +122,20 @@ class AppRoutes {
             name: RouteName.rejectreportview,
             page: () => const RejectReportView()),
         // Request Pages
-
-
         // GiftVoucher Pages
         GetPage(
           name: RouteName.giftvoucherpage,
           page: () => const GiftVoucherPage(),
         ),
         GetPage(
-            name: RouteName.digitalTabView,
-            page: () => const Digitaltabview()),
+          name: RouteName.digitalTabView,
+          page: () => const Digitaltabview(),
+        ),
         GetPage(
-            name: RouteName.VoucherTabView,
-            page: () => const Vouchertabview()),
+          name: RouteName.VoucherTabView,
+          page: () => const Vouchertabview(),
+        ),
         // GiftVoucher Pages
-
 
         // Sidebar
         GetPage(

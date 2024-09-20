@@ -4,10 +4,8 @@ import 'package:Optifii_Corporate/SideBar/SideBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonCard.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
-import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:mat_month_picker_dialog/mat_month_picker_dialog.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -32,7 +30,13 @@ class _DashboardPageState extends State<DashboardPage> {
       key: _scaffoldKey1,
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
-      drawer: CustomDrawer(), // Drawer added here
+      drawer: CustomDrawer(onSwitchAccount: () {
+        // Close the main drawer and open the switch account drawer
+        Navigator.pop(context); // Close the main drawer
+        Future.delayed(const Duration(milliseconds: 300), () {
+          _scaffoldKey1.currentState?.openDrawer(); // Open the switch drawer
+        });
+      }), // Drawer added here
       body: Column(
         children: [
           Container(
@@ -42,50 +46,7 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             child: Column(
               children: [
-                AppBar(
-                  scrolledUnderElevation: 0.0,
-                  elevation: 0,
-                  automaticallyImplyLeading: false,
-                  backgroundColor: const Color(0xff6311CB),
-                  titleSpacing: 0,
-                  leading: InkWell(
-                    onTap: () {
-                      _scaffoldKey1.currentState?.openDrawer();
-                    },
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/png/menu.png',
-                        height: 15.h,
-                        width: 20.w,
-                      ),
-                    ),
-                  ),
-                  title: text24w600cwhite('Dashboard'),
-                  actions: [
-                    GestureDetector(
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                      child: Image.asset(
-                        'assets/images/png/search.png',
-                        height: 25.h,
-                        width: 25.w,
-                      ),
-                    ),
-                    sizedBoxWidth(10.w),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed(RouteName.notification);
-                      },
-                      child: Image.asset(
-                        'assets/images/png/bell.png',
-                        height: 25.h,
-                        width: 25.w,
-                      ),
-                    ),
-                    sizedBoxWidth(16.w),
-                  ],
-                ),
+                const SideBar(),
                 Padding(
                   padding: const EdgeInsets.all(14.0),
                   child: Row(
@@ -510,6 +471,161 @@ class _DashboardPageState extends State<DashboardPage> {
                                 ],
                               ),
                             ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    sizedBoxHeight(20.h),
+                    text20w400c343C6A('Total Spending'),
+                    sizedBoxHeight(10.h),
+                    CommonCard(
+                      content: Row(
+                        // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Image.asset(
+                              'assets/images/png/abshd.png',
+                              width: 50,
+                            ),
+                          ),
+                          sizedBoxWidth(10.w),
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                text18w500c6311CB('Expense'),
+                                sizedBoxHeight(10.h),
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  child: LinearProgressIndicator(
+                                    value: 0.6, // Example progress value (60%)
+                                    minHeight: 6,
+                                    backgroundColor: Colors.grey[300],
+                                    valueColor:
+                                        const AlwaysStoppedAnimation<Color>(
+                                            Color(0xff3725EA)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          sizedBoxWidth(10.w),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                text16w400c6311CB(
+                                    '₹ 50,000'), // Current progress
+                                text16w400c6311CB('40%'), // Total target
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    sizedBoxHeight(15.h),
+                    CommonCard(
+                      content: Row(
+                        // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Image.asset(
+                              'assets/images/png/sales.png',
+                              width: 50,
+                            ),
+                          ),
+                          sizedBoxWidth(10.w),
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                text18w500c6311CB('Tax benefit'),
+                                sizedBoxHeight(10.h),
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  child: LinearProgressIndicator(
+                                    value: 0.6, // Example progress value (60%)
+                                    minHeight: 6,
+                                    backgroundColor: Colors.grey[300],
+                                    valueColor:
+                                        const AlwaysStoppedAnimation<Color>(
+                                            Color(0xff3725EA)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          sizedBoxWidth(10.w),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                text16w400c6311CB(
+                                    '₹ 50,000'), // Current progress
+                                text16w400c6311CB('40%'), // Total target
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    sizedBoxHeight(15.h),
+                    CommonCard(
+                      content: Row(
+                        // mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Image.asset(
+                              'assets/images/png/IT.png',
+                              width: 50,
+                            ),
+                          ),
+                          sizedBoxWidth(10.w),
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                text18w500c6311CB('Gift card'),
+                                sizedBoxHeight(10.h),
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  child: LinearProgressIndicator(
+                                    value: 0.6, // Example progress value (60%)
+                                    minHeight: 6,
+                                    backgroundColor: Colors.grey[300],
+                                    valueColor:
+                                        const AlwaysStoppedAnimation<Color>(
+                                            Color(0xff3725EA)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          sizedBoxWidth(10.w),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                text16w400c6311CB(
+                                    '₹ 50,000'), // Current progress
+                                text16w400c6311CB('40%'), // Total target
+                              ],
+                            ),
                           ),
                         ],
                       ),

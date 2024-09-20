@@ -87,6 +87,30 @@ Widget text14w400c667085(String text) {
   );
 }
 
+Widget text15w400cyellow(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 15.sp,
+      color: const Color(0xffFFBB38),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TTCommons-Regular',
+    ),
+  );
+}
+
+Widget text15w400c3725EA(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 15.sp,
+      color: const Color(0xff3725EA),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TTCommons-Regular',
+    ),
+  );
+}
+
 Widget text16w400c585858(String text) {
   return Text(
     text,
@@ -386,6 +410,30 @@ Widget text18w400cblack(String text) {
   );
 }
 
+Widget text18w400cred(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: Colors.red,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-Medium',
+    ),
+  );
+}
+
+Widget text18w400cgreen(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff159F2B),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Gilroy-Medium',
+    ),
+  );
+}
+
 Widget text18w400c3A3472(String text) {
   return Text(
     text,
@@ -627,6 +675,7 @@ Widget text20w400cA0ABBB(String text) {
     ),
   );
 }
+
 Widget text20w400c252C32(String text) {
   return Text(
     text,
@@ -636,7 +685,6 @@ Widget text20w400c252C32(String text) {
       fontWeight: FontWeight.w400,
       fontFamily: 'TT Commons',
     ),
-
   );
 }
 
@@ -651,7 +699,6 @@ Widget text24w400cffffff(String text) {
     ),
   );
 }
-
 
 Widget text20w400c606E83(String text) {
   return Text(
@@ -749,7 +796,6 @@ Widget text18w400c4A5262(String text) {
   );
 }
 
-
 Widget text22w400c101828(String text) {
   return Text(
     text,
@@ -774,6 +820,18 @@ Widget text18w500c344054(String text) {
   );
 }
 
+Widget text18w500c343C6A(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff343C6A),
+      fontWeight: FontWeight.w500,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
 Widget text18w500cffffff(String text) {
   return Text(
     text,
@@ -785,6 +843,7 @@ Widget text18w500cffffff(String text) {
     ),
   );
 }
+
 
 Widget text16w400c687280(String text) {
   return Text(
