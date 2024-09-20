@@ -175,7 +175,7 @@ class _DigitaltabviewState extends State<Digitaltabview> {
                            employeesMemberSince: data.employeesMemberSince,
                            employeesEmailAddress: data.employeesEmailAddress,
                            employeesImage: data.employeesImage),
-                        sizedBoxHeight(14.h),
+                        sizedBoxHeight(4.h),
                         Padding(padding: EdgeInsets.symmetric(horizontal: 16),
                           child: Divider(
                             color: Color(0xffECECEC),

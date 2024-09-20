@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, deprecated_member_use
 
+import 'package:Optifii_Corporate/Utils/Helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -46,10 +47,10 @@ class _MainScreenState extends State<MainScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: const Color(0xFF222935),
-          title: const Text('Exit App', style: TextStyle(color: Colors.white)),
+          backgroundColor: const Color(0xFFffffff),
+          title: const Text('Exit App', style: TextStyle(color: Colors.black)),
           content: const Text('Do you really want to close the app?',
-              style: TextStyle(color: Colors.white)),
+              style: TextStyle(color: Colors.black)),
           actions: [
             TextButton(
               onPressed: () {
@@ -58,7 +59,7 @@ class _MainScreenState extends State<MainScreen> {
               child: const Text(
                 'No',
                 style: TextStyle(
-                  color: Color(0xFFD90B2E),
+                  color: AppColors.primary,
                 ),
               ),
             ),
@@ -70,7 +71,7 @@ class _MainScreenState extends State<MainScreen> {
               child: const Text(
                 'Yes',
                 style: TextStyle(
-                  color: Color(0xFFD90B2E),
+                  color: AppColors.primary,
                 ),
               ),
             )

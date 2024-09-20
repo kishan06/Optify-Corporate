@@ -182,7 +182,7 @@ class _CustomAccordionState extends State<CustomAccordion> {
       contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       titleBorderRadius: BorderRadius.circular(0),
       titlePadding: const EdgeInsets.all(16.0),
-      contentPadding: const EdgeInsets.all(16.0),
+      contentPadding: const EdgeInsets.only(left: 48, top: 16,bottom: 16),
       margin: const EdgeInsets.all(0),
       onToggleCollapsed: (expanded) {
         setState(() {

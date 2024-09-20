@@ -135,73 +135,85 @@ class _CustomaccordionofvouchertabState
       contentChild: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Row(
-                children: [
-                  text17w400c667085('Date & time'),
-                  SizedBox(width: 38.w),
-                  text17w400c464748(':'),
-                ],
-              ),
-              sizedBoxWidth(5.w),
-              Expanded(child: text17w400c464748(widget.dateTime)),
-            ],
-          ),
-          sizedBoxHeight(26.h),
-          Row(
-            children: [
-              Row(
-                children: [
-                  text17w400c667085('Total valuation'),
-                  SizedBox(width: 15.w),
-                  text17w400c464748(':'),
-                ],
-              ),
-              sizedBoxWidth(5.w),
-              Expanded(child: text17w400c464748(widget.valuation)),
-            ],
-          ),
-          sizedBoxHeight(26.h),
-          Row(
-            children: [
-              Row(
-                children: [
-                  text17w400c667085('Total employees'),
-                  SizedBox(width: 5.w),
-                  text17w400c464748(':'),
-                ],
-              ),
-              sizedBoxWidth(5.w),
-              // Employee avatars section
-              SizedBox(
-                height: 24.h,
-                width: 124.w,
-                child: Stack(
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Row(
+              children: [
+                Row(
                   children: [
-                    EmployeeAvatars(
-                      count: 5, // Number of avatars to display
-                      extraCount: 50, // Extra count like +50
-                      avatarImage: 'assets/images/png/Avatar.png',
-                    ) // Path to avatar img
+                    text17w400c667085('Date & time'),
+                    SizedBox(width: 38.w),
+                    text17w400c464748(':'),
                   ],
                 ),
-              ),
-            ],
+                sizedBoxWidth(5.w),
+                Expanded(child: text17w400c464748(widget.dateTime)),
+              ],
+            ),
           ),
           sizedBoxHeight(26.h),
-          Row(
-            children: [
-              Row(
-                children: [
-                  text17w400c667085('Department'),
-                  SizedBox(width: 40.w),
-                  text17w400c464748(':'),
-                ],
-              ),
-              sizedBoxWidth(5.w),
-              Expanded(child: text17w400c464748(widget.department)),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Row(
+              children: [
+                Row(
+                  children: [
+                    text17w400c667085('Total valuation'),
+                    SizedBox(width: 20.w),
+                    text17w400c464748(':'),
+                  ],
+                ),
+                sizedBoxWidth(5.w),
+                Expanded(child: text17w400c464748(widget.valuation)),
+              ],
+            ),
+          ),
+          sizedBoxHeight(26.h),
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Row(
+              children: [
+                Row(
+                  children: [
+                    text17w400c667085('Total employees'),
+                    SizedBox(width: 12.w),
+                    text17w400c464748(':'),
+                  ],
+                ),
+                sizedBoxWidth(5.w),
+                // Employee avatars section
+                SizedBox(
+                  height: 24.h,
+                  width: 124.w,
+                  child: Stack(
+                    children: [
+                      EmployeeAvatars(
+                        count: 5, // Number of avatars to display
+                        extraCount: 50, // Extra count like +50
+                        avatarImage: 'assets/images/png/Avatar.png',
+                      ) // Path to avatar img
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          sizedBoxHeight(26.h),
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Row(
+              children: [
+                Row(
+                  children: [
+                    text17w400c667085('Department'),
+                    SizedBox(width: 40.w),
+                    text17w400c464748(':'),
+                  ],
+                ),
+                sizedBoxWidth(5.w),
+                Expanded(child: text17w400c464748(widget.department)),
+              ],
+            ),
           ),
           sizedBoxHeight(26.h),
           Row(

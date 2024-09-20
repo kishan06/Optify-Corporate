@@ -69,7 +69,7 @@ class _CustomAccordionOfDepartmentTabViewState
             children: [
               Row(
                 children: [
-                  text17w400c667085('Total employees'),
+                  text17w400c667085('No of employees'),
                   SizedBox(width: 5.w),
                   text17w400c464748(':'),
                 ],

@@ -21,9 +21,16 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xffffffff),
+      backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
-      appBar: CommonAppbar(titleTxt: 'Gift card & voucher'),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: const Color(0xff6311CB),
+          title: text24w400cffffff('Gift card & voucher'),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

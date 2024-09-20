@@ -16,16 +16,16 @@ class _AllTabState extends State<AllTab> {
   final List<Map<String, String>> accordionData = [
     {
       'title': 'How to create a new account?',
-      'content': 'You can create a new account by following these steps...'
+      'content': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since. Lorem Ipsum has been the industry'
     },    {
       'title': 'How to create a new account?',
-      'content': 'You can create a new account by following these steps...'
+      'content': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since. Lorem Ipsum has been the industry'
     },    {
       'title': 'How to create a new account?',
-      'content': 'You can create a new account by following these steps...'
+      'content': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since. Lorem Ipsum has been the industry'
     },    {
       'title': 'How to create a new account?',
-      'content': 'You can create a new account by following these steps...'
+      'content': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since. Lorem Ipsum has been the industry'
     },
   ];
 
@@ -51,6 +51,8 @@ class _AllTabState extends State<AllTab> {
               isOpen: isExpanded,  // Ensure section opens when expanded
               headerBackgroundColor: isExpanded ? Color(0xff3725EA) : Colors.white,
               contentBackgroundColor: Colors.white,
+              headerBorderRadius: 8,
+              rightIcon: isExpanded ? Icon(Icons.arrow_drop_down_outlined , color: Colors.white,) : Icon(Icons.arrow_drop_down_outlined),
               headerPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               header: Text(
                 accordionData[index]['title']!,
