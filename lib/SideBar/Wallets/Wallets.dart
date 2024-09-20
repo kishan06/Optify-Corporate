@@ -21,7 +21,7 @@ class Wallets extends StatefulWidget {
 class _WalletsState extends State<Wallets> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       backgroundColor: Colors.white,
       appBar: CommonAppbar(titleTxt: 'Wallets'),
       body: SingleChildScrollView(
@@ -42,7 +42,7 @@ class _WalletsState extends State<Wallets> {
                   Padding(
                     padding: EdgeInsets.all(16),
                     child: SizedBox(
-                      height: 600, // Height for the TabBarView
+                      height: MediaQuery.of(context).size.height * 0.9,
                       child: TabBarView(
                         children: [
                           ExpenseWallet(),

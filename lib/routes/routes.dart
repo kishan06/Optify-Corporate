@@ -159,7 +159,7 @@ class AppRoutes {
         ),
         GetPage(
             name: RouteName.helpandsupport,
-            page:  ()=> const HelpAndSupport())
+            page:  ()=> const HelpAndSupport()),
         // Sidebar
         GetPage(
           name: RouteName.notification,
