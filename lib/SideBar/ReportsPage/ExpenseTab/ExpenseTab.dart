@@ -57,8 +57,7 @@ class _ExpenseTabState extends State<ExpenseTab> {
                       );
                     },
                     style: ButtonStyle(
-                      shape:
-                      MaterialStateProperty.all<RoundedRectangleBorder>(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         const RoundedRectangleBorder(
                           borderRadius: BorderRadius.zero,
                         ),
@@ -66,7 +65,7 @@ class _ExpenseTabState extends State<ExpenseTab> {
                       padding: MaterialStateProperty.all(EdgeInsets.zero),
                       elevation: MaterialStateProperty.all(0),
                       backgroundColor:
-                      MaterialStateProperty.all(Colors.transparent),
+                          MaterialStateProperty.all(Colors.transparent),
                     ),
                     child: Container(
                       padding: const EdgeInsets.all(10),
@@ -121,17 +120,17 @@ class _ExpenseTabState extends State<ExpenseTab> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    CustomColorAndCategory(
+                    const CustomColorAndCategory(
                       color: Color(0xff4C78FF),
                       categoryName: 'Food',
                     ),
                     sizedBoxWidth(30.w),
-                    CustomColorAndCategory(
+                    const CustomColorAndCategory(
                       color: Color(0xffFF82AC),
                       categoryName: 'Travel',
                     ),
                     sizedBoxWidth(30.w),
-                    CustomColorAndCategory(
+                    const CustomColorAndCategory(
                       color: Color(0xff4C78FF),
                       categoryName: 'Telecom',
                     ),
@@ -146,17 +145,17 @@ class _ExpenseTabState extends State<ExpenseTab> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    CustomColorAndCategory(
+                    const CustomColorAndCategory(
                       color: Color(0xff16DBCC),
                       categoryName: 'Fuel',
                     ),
                     sizedBoxWidth(30.w),
-                    CustomColorAndCategory(
+                    const CustomColorAndCategory(
                       color: Color(0xffFFBB38),
                       categoryName: 'Gift & voucher',
                     ),
                     sizedBoxWidth(30.w),
-                    CustomColorAndCategory(
+                    const CustomColorAndCategory(
                       color: Color(0xff16DBCC),
                       categoryName: 'Books & periodicals',
                     ),
@@ -168,17 +167,14 @@ class _ExpenseTabState extends State<ExpenseTab> {
         ),
       ),
     );
-
   }
-
-
 
   /// Build the Spline chart showing the spending summary
   Widget _buildSplineChart() {
     return Container(
       height: 287.h,
       child: SfCartesianChart(
-        primaryXAxis: CategoryAxis(),
+        primaryXAxis: const CategoryAxis(),
         tooltipBehavior: _tooltipBehavior,
         series: <CartesianSeries>[
           SplineSeries<SalesData, String>(
@@ -218,7 +214,6 @@ class SalesData {
   final String day;
   final double amount;
 }
-
 
 class DoughnutChartWithCenterText extends StatelessWidget {
   /// The data source for the chart.
@@ -266,17 +261,17 @@ class DoughnutChartWithCenterText extends StatelessWidget {
                 pointColorMapper: (_ChartData data, _) {
                   switch (data.x) {
                     case 'Food':
-                      return Color(0xff4C78FF);
+                      return const Color(0xff4C78FF);
                     case 'Travel':
-                      return Color(0xffFF82AC);
+                      return const Color(0xffFF82AC);
                     case 'Telecom':
-                      return Color(0xff4C78FF);
+                      return const Color(0xff4C78FF);
                     case 'Fuel':
-                      return Color(0xff16DBCC);
+                      return const Color(0xff16DBCC);
                     case 'Gift & voucher':
-                      return Color(0xffFFBB38);
+                      return const Color(0xffFFBB38);
                     case 'Book & Periodicals':
-                      return Color(0xff16DBCC);
+                      return const Color(0xff16DBCC);
                     default:
                       return Colors.grey;
                   }
@@ -305,7 +300,6 @@ class DoughnutChartWithCenterText extends StatelessWidget {
   }
 }
 
-
 class _ChartData {
   /// Creates a [_ChartData] instance.
   _ChartData(this.x, this.y);
@@ -316,7 +310,6 @@ class _ChartData {
   /// The value associated with the category.
   final double y;
 }
-
 
 class ExportDropdown extends StatefulWidget {
   const ExportDropdown({super.key});
@@ -338,7 +331,7 @@ class _ExportDropdownState extends State<ExportDropdown> {
   Widget build(BuildContext context) {
     return Container(
       height: 45.h,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 4),
       width: double.infinity,
       decoration: BoxDecoration(
         color: const Color(0xffffffff),
@@ -363,7 +356,7 @@ class _ExportDropdownState extends State<ExportDropdown> {
             child: Row(
               children: [
                 _getExportIcon(value), // Get the appropriate icon
-                SizedBox(width: 10.w), // Space between icon and text
+                SizedBox(width: 4.w), // Space between icon and text
                 Text(value),
               ],
             ),
