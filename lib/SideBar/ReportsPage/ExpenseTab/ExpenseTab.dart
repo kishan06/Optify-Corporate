@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mat_month_picker_dialog/mat_month_picker_dialog.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../Utils/CommonWidgets/Custombutton.dart';
 import '../../../Utils/CommonWidgets/Text.dart';
@@ -43,7 +44,67 @@ class _ExpenseTabState extends State<ExpenseTab> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildHeader(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: () async {
+                      final selected = await showMonthPicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1970),
+                        lastDate: DateTime(2050),
+                      );
+                    },
+                    style: ButtonStyle(
+                      shape:
+                      MaterialStateProperty.all<RoundedRectangleBorder>(
+                        const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero,
+                        ),
+                      ),
+                      padding: MaterialStateProperty.all(EdgeInsets.zero),
+                      elevation: MaterialStateProperty.all(0),
+                      backgroundColor:
+                      MaterialStateProperty.all(Colors.transparent),
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFffffff),
+                        border: Border.all(
+                          color: const Color(0xffD4D6D9),
+                        ),
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(6),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.calendar_today,
+                                color: Color(0xff000000),
+                              ),
+                              sizedBoxWidth(5.w),
+                              text16w400cblack('Weekly'),
+                            ],
+                          ),
+                          const Icon(
+                            Icons.arrow_drop_down,
+                            color: Color(0xff000000),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  sizedBoxWidth(10.w),
+                  const Expanded(child: ExportDropdown()),
+                ],
+              ),
               sizedBoxHeight(44.h),
               text20w400c343C6A('Spend summary'),
               _buildSplineChart(),
@@ -110,16 +171,7 @@ class _ExpenseTabState extends State<ExpenseTab> {
 
   }
 
-  /// Build the header row with Weekly and Export popups
-  Widget _buildHeader() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _buildWeeklyPopupMenu(),
-        _buildExportPopupMenu(),
-      ],
-    );
-  }
+
 
   /// Build the Spline chart showing the spending summary
   Widget _buildSplineChart() {
@@ -145,135 +197,6 @@ class _ExpenseTabState extends State<ExpenseTab> {
     return _chartData.fold<double>(0, (total, item) => total + item.y);
   }
 
-  /// Build the popup for selecting the week
-  Widget _buildWeeklyPopupMenu() {
-    return PopupMenuButton<String>(
-      onSelected: (String value) {
-        // Handle week selection
-        print("Selected week: $value");
-      },
-      itemBuilder: (context) => [
-        _buildPopupHeader('Filter', 'assets/images/png/filter.png'),
-        _buildWeeklyDropdown(),
-        _buildPopupFooter(),
-      ],
-      child: _buildPopupButton('Week', Icons.calendar_today_outlined, width: 225.w),
-    );
-  }
-
-  /// Build the popup for exporting data
-  Widget _buildExportPopupMenu() {
-    return PopupMenuButton<String>(
-      onSelected: (String value) {
-        // Handle export selection
-        print("Selected export option: $value");
-      },
-      itemBuilder: (context) => [
-        PopupMenuItem<String>(
-          value: 'export_pdf',
-          child: const Text('Export as PDF'),
-        ),
-        PopupMenuItem<String>(
-          value: 'export_excel',
-          child: const Text('Export as Excel'),
-        ),
-      ],
-      child: _buildPopupButton('Export', Icons.arrow_drop_down, width: 120.w),
-    );
-  }
-
-  /// Build a general popup button widget for reuse
-  Widget _buildPopupButton(String label, IconData icon, {required double width}) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-      width: width,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(width: 0.5, color: const Color(0xffD4D6D9)),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, color: Colors.black54, size: 22.sp),
-          sizedBoxWidth(10),
-          Expanded(
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w400,
-                color: const Color(0xff272727),
-                fontFamily: 'TT Commons',
-              ),
-            ),
-          ),
-          Icon(Icons.arrow_drop_down, color: Colors.black54, size: 20.sp),
-        ],
-      ),
-    );
-  }
-
-  /// Build the popup header with a title and an icon
-  PopupMenuItem<String> _buildPopupHeader(String title, String iconPath) {
-    return PopupMenuItem<String>(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Image.asset(iconPath, width: 20),
-              sizedBoxWidth(10),
-              text20w400cblack(title),
-            ],
-          ),
-          const Divider(),
-        ],
-      ),
-    );
-  }
-
-  /// Build a dropdown menu to select the week
-  PopupMenuItem<String> _buildWeeklyDropdown() {
-    return PopupMenuItem<String>(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          text16w400cblack('Weekly'),
-          sizedBoxHeight(10),
-          DropdownButton<String>(
-            isExpanded: true,
-            items: const [
-              DropdownMenuItem(value: 'week_1', child: Text('Week 1')),
-              DropdownMenuItem(value: 'week_2', child: Text('Week 2')),
-              DropdownMenuItem(value: 'week_3', child: Text('Week 3')),
-              DropdownMenuItem(value: 'week_4', child: Text('Week 4')),
-            ],
-            onChanged: (String? value) {
-              print("Selected week: $value");
-            },
-            hint: const Text('Select Week'),
-          ),
-          const Divider(),
-        ],
-      ),
-    );
-  }
-
-  /// Build the popup footer with reset and filter buttons
-  PopupMenuItem<String> _buildPopupFooter() {
-    return PopupMenuItem<String>(
-      child: Row(
-        children: const [
-          Expanded(
-            child: CustomGreyButton(text: 'Reset'),
-          ),
-          Expanded(
-            child: CustomButton(text: 'Filter'),
-          ),
-        ],
-      ),
-    );
-  }
-
   /// Sample sales data for the chart
   List<SalesData> _getSalesData() {
     return [
@@ -295,7 +218,6 @@ class SalesData {
   final String day;
   final double amount;
 }
-
 
 
 class DoughnutChartWithCenterText extends StatelessWidget {
@@ -396,3 +318,84 @@ class _ChartData {
 }
 
 
+class ExportDropdown extends StatefulWidget {
+  const ExportDropdown({super.key});
+
+  @override
+  _ExportDropdownState createState() => _ExportDropdownState();
+}
+
+class _ExportDropdownState extends State<ExportDropdown> {
+  final List<String> _exportOptions = [
+    'Export',
+    'Export as PDF',
+    'Export as Excel'
+  ];
+
+  String? _selectedExportOption;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 45.h,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: const Color(0xffffffff),
+        border: Border.all(
+          color: const Color(0xFFDFDEDE),
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(5)),
+      ),
+      child: DropdownButton<String>(
+        value: _selectedExportOption,
+        isExpanded: true,
+        hint: const Text('Export'),
+        onChanged: (String? newValue) {
+          setState(() {
+            _selectedExportOption = newValue!;
+            // Handle actions based on the selected option here
+          });
+        },
+        items: _exportOptions.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Row(
+              children: [
+                _getExportIcon(value), // Get the appropriate icon
+                SizedBox(width: 10.w), // Space between icon and text
+                Text(value),
+              ],
+            ),
+          );
+        }).toList(),
+        style: const TextStyle(color: Colors.black, fontSize: 16),
+        underline: Container(
+          height: 2,
+          color: Colors.transparent,
+        ),
+      ),
+    );
+  }
+
+  // Method to return the correct icon based on the option
+  Widget _getExportIcon(String value) {
+    switch (value) {
+      case 'Export as PDF':
+        return Image.asset(
+          'assets/images/png/pdf.png',
+          width: 20,
+        );
+      case 'Export as Excel':
+        return Image.asset(
+          'assets/images/png/excel.png',
+          width: 20,
+        );
+      default:
+        return Image.asset(
+          'assets/images/png/export.png',
+          width: 20,
+        );
+    }
+  }
+}

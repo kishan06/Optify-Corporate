@@ -23,7 +23,7 @@ class Department_Role extends StatefulWidget {
 class _Department_RoleState extends State<Department_Role> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       backgroundColor: Colors.white,
       appBar: CommonAppbar(titleTxt: 'Manage department & roles'),
       body: SingleChildScrollView(
@@ -47,7 +47,7 @@ class _Department_RoleState extends State<Department_Role> {
                   Padding(
                     padding: EdgeInsets.all(16),
                     child: SizedBox(
-                      height: 600, // Height for the TabBarView
+                      height: MediaQuery.of(context).size.height * 0.8,
                       child: TabBarView(
                         children: [
                           Department(),

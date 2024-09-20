@@ -308,7 +308,9 @@ class CustomDrawer extends StatelessWidget {
                           ),
                         ),
                         title: text16w400c344054('Gift & Reward'),
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(RouteName.giftvoucherpage);
+                        },
                       ),
                       sizedBoxHeight(10),
                       Row(
