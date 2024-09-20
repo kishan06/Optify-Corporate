@@ -194,21 +194,6 @@ class _CustomAccordionOfVoucherTabState
           ),
         ],
       ),
-      collapsedIcon: const SizedBox.shrink(),
-      expandedIcon: const SizedBox.shrink(),
-      collapsedTitleBackgroundColor: Colors.transparent,
-      expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
-      contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
-      titleBorderRadius: BorderRadius.circular(5),
-      contentBorderRadius: BorderRadius.circular(5),
-      titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      contentPadding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.all(0),
-      onToggleCollapsed: (value) {
-        setState(() {
-          isExpanded = !isExpanded; // Toggle the state
-        });
-      },
     );
   }
 
