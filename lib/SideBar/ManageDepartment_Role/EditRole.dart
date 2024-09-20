@@ -86,10 +86,13 @@ class _EditRoleState extends State<EditRole> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xFFDFDEDE),
-                    ),
-                    borderRadius: const BorderRadius.all(Radius.circular(10))),
+                  border: Border.all(
+                    color: const Color(0xFFDFDEDE),
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
                 child: DropdownButton<String>(
                   value: _selectedDepartment, // Currently selected item
                   onChanged: (String? newValue) {

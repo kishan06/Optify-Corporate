@@ -1,8 +1,8 @@
 import 'package:Optifii_Corporate/Utils/CommonWidgets/SearchBar_Filter.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'CommonWidgets/CustomAccordion.dart';
 
 class Digitaltab extends StatefulWidget {
@@ -13,7 +13,6 @@ class Digitaltab extends StatefulWidget {
 }
 
 class _DigitaltabState extends State<Digitaltab> {
-
   // Create a list of order data
   final List<OrderData> orders = [
     OrderData(
@@ -46,6 +45,30 @@ class _DigitaltabState extends State<Digitaltab> {
       valuation: '₹ 1,50,000',
       status: 'Pending',
     ),
+    OrderData(
+      orderId: '#74859632',
+      dateTime: '25 August 2024, 3 pm',
+      valuation: '₹ 1,00,000',
+      status: 'Cancelled',
+    ),
+    OrderData(
+      orderId: '#36985214',
+      dateTime: '1 September 2024, 2 pm',
+      valuation: '₹ 1,50,000',
+      status: 'Pending',
+    ),
+    OrderData(
+      orderId: '#74859632',
+      dateTime: '25 August 2024, 3 pm',
+      valuation: '₹ 1,00,000',
+      status: 'Cancelled',
+    ),
+    OrderData(
+      orderId: '#36985214',
+      dateTime: '1 September 2024, 2 pm',
+      valuation: '₹ 1,50,000',
+      status: 'Pending',
+    ),
   ];
 
   @override
@@ -56,15 +79,12 @@ class _DigitaltabState extends State<Digitaltab> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             sizedBoxHeight(38.h),
-            
-            Padding(
-              padding: const EdgeInsets.only(left: 16 , right: 22),
+            const Padding(
+              padding: EdgeInsets.only(left: 16, right: 22),
               child: SearchBarFilter(),
             ),
             sizedBoxHeight(25.h),
-
             Column(
               children: orders.map((order) {
                 return Column(
@@ -76,18 +96,16 @@ class _DigitaltabState extends State<Digitaltab> {
                       status: order.status,
                     ),
                     sizedBoxHeight(14.h),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 16),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Divider(
                         color: Color(0xffECECEC),
-                      ),)
+                      ),
+                    )
                   ],
                 );
               }).toList(),
             ),
-
-
-
-
           ],
         ),
       ),
@@ -96,7 +114,7 @@ class _DigitaltabState extends State<Digitaltab> {
 }
 
 // Define an OrderData class to structure the  data
-class OrderData  {
+class OrderData {
   final String orderId;
   final String dateTime;
   final String valuation;

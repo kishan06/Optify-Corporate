@@ -6,6 +6,7 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/MiscWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../Utils/CommonWidgets/sized_box.dart';
 
@@ -34,28 +35,26 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
 
           sizedBoxHeight(22),
 
-          Expanded(
-            child: DefaultTabController(
-              length: 3,
-              child: Column(
-                children: [
-                  CommonTabBar(tabs: [
-                    Tab(text: 'Digital'),
-                    Tab(text: 'Physical'),
-                    Tab(text: 'Voucher'),
-                  ]),
-                  Expanded( // Wrap TabBarView with Expanded to avoid overflow
-                    child: TabBarView(
-                      children: [
-                        Digitaltab(),
-                        Physicaltab(),
-                        Vouchertab()
-
-                      ],
-                    ),
-                  )
-                ],
-              ),
+          DefaultTabController(
+            length: 3,
+            child: Column(
+              children: [
+                CommonTabBar(tabs: [
+                  Tab(text: 'Digital'),
+                  Tab(text: 'Physical'),
+                  Tab(text: 'Voucher'),
+                ]),
+                SizedBox( 
+                  height: 900,// Wrap TabBarView with Expanded to avoid overflow
+                  child: TabBarView(
+                    children: [
+                      Digitaltab(),
+                      Physicaltab(),
+                      Vouchertab()
+                    ],
+                  ),
+                )
+              ],
             ),
           )
         ],

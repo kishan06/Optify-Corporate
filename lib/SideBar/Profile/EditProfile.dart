@@ -2,15 +2,15 @@
 
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTextFormField.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:remove_emoji_input_formatter/remove_emoji_input_formatter.dart';
 
 class EditProfile extends StatefulWidget {

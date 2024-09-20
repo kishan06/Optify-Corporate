@@ -3,7 +3,6 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mat_month_picker_dialog/mat_month_picker_dialog.dart';
 
 class ViewStatement extends StatefulWidget {
   const ViewStatement({super.key});
@@ -22,7 +21,8 @@ class _ViewStatementState extends State<ViewStatement> {
     'Sales'
   ];
   final String _selectedDepartment = 'Select department';
-
+  List<String> options = ['Weekly', 'Monthly', 'Yearly'];
+  String selectedOption = 'Weekly';
   @override
   Widget build(BuildContext context) {
     double totalAmount = 200000;
@@ -105,19 +105,12 @@ class _ViewStatementState extends State<ViewStatement> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ElevatedButton(
-                        onPressed: () async {
-                          final selected = await showMonthPicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(1970),
-                            lastDate: DateTime(2050),
-                          );
-                        },
+                        onPressed: () {},
                         style: ButtonStyle(
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
-                            const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero,
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6),
                             ),
                           ),
                           padding: MaterialStateProperty.all(EdgeInsets.zero),
@@ -145,8 +138,32 @@ class _ViewStatementState extends State<ViewStatement> {
                                     Icons.calendar_today,
                                     color: Color(0xff000000),
                                   ),
-                                  sizedBoxWidth(5.w),
-                                  text16w400cblack('Jan 30, 2024'),
+                                  const SizedBox(width: 5),
+                                  DropdownButtonHideUnderline(
+                                    child: DropdownButton<String>(
+                                      value: selectedOption,
+                                      items: options
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(
+                                            value,
+                                            style: const TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        );
+                                      }).toList(),
+                                      onChanged: (String? newValue) {
+                                        setState(() {
+                                          selectedOption = newValue!;
+                                        });
+                                      },
+                                    ),
+                                  ),
                                 ],
                               ),
                               const Icon(
