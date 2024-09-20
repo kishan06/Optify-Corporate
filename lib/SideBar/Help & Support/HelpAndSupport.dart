@@ -23,7 +23,7 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.secondary,
+      backgroundColor: Color(0xffffffff),
       appBar: CommonAppbar(titleTxt: 'Help & Support'),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),

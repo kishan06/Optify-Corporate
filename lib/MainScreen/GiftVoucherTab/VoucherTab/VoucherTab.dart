@@ -81,7 +81,7 @@ class _VouchertabState extends State<Vouchertab> {
                         valuation: voucherData.valuation,
                         status: voucherData.status,
                         department: voucherData.department),
-                    sizedBoxHeight(14.h),
+                    sizedBoxHeight(8.h),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Divider(

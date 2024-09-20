@@ -39,7 +39,7 @@ class _ApproverDetailsState extends State<ApproverDetails> {
                     ),
                   ),
                   sizedBoxWidth(10),
-                  const Column(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
