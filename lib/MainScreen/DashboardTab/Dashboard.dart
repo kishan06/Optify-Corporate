@@ -1,7 +1,9 @@
 // ignore_for_file: file_names, unused_local_variable
 
 import 'package:Optifii_Corporate/SideBar/SideBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonCard.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
@@ -24,39 +26,88 @@ class _DashboardPageState extends State<DashboardPage> {
     double totalAmount = 200000;
     double balaceview = 150000;
     double progress = balaceview / totalAmount;
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       key: _scaffoldKey1,
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
-      drawer: CustomDrawer(), // Drawer added here
+      bottomNavigationBar:
+          CustomBottomNavigationBar(mainController: mainController),
+      drawer: const CustomDrawer(), // Drawer added here
       body: Column(
         children: [
-          Container(
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: Color(0xff6311CB),
-            ),
-            child: Column(
-              children: [
-                const SideBar(),
-                Padding(
-                  padding: const EdgeInsets.all(14.0),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/images/png/black_logo.png',
-                        width: 25,
-                        height: 25,
-                      ),
-                      sizedBoxWidth(10),
-                      text22w400cwhite('Website Developers India Pvt Ltd.')
-                    ],
-                  ),
+          Column(
+            children: [
+              Container(
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  color: Color(0xff6311CB),
                 ),
-              ],
-            ),
+                child: Column(
+                  children: [
+                    AppBar(
+                      scrolledUnderElevation: 0.0,
+                      elevation: 0,
+                      automaticallyImplyLeading: false,
+                      backgroundColor: const Color(0xff6311CB),
+                      titleSpacing: 0,
+                      leading: InkWell(
+                        onTap: () {
+                          _scaffoldKey1.currentState
+                              ?.openDrawer(); // Open the main drawer
+                        },
+                        child: Center(
+                          child: Image.asset(
+                            'assets/images/png/menu.png',
+                            height: 15.h,
+                            width: 20.w,
+                          ),
+                        ),
+                      ),
+                      title: text24w600cwhite('Dashboard'),
+                      actions: [
+                        GestureDetector(
+                          onTap: () {
+                            // Add your navigation logic here for search
+                          },
+                          child: Image.asset(
+                            'assets/images/png/search.png',
+                            height: 25.h,
+                            width: 25.w,
+                          ),
+                        ),
+                        sizedBoxWidth(10.w),
+                        GestureDetector(
+                          onTap: () {
+                            // Add your navigation logic here for notifications
+                          },
+                          child: Image.asset(
+                            'assets/images/png/bell.png',
+                            height: 25.h,
+                            width: 25.w,
+                          ),
+                        ),
+                        sizedBoxWidth(16.w),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(14.0),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/images/png/black_logo.png',
+                            width: 25,
+                            height: 25,
+                          ),
+                          sizedBoxWidth(10),
+                          text22w400cwhite('Website Developers India Pvt Ltd.')
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -629,6 +680,7 @@ class _DashboardPageState extends State<DashboardPage> {
               ),
             ),
           ),
+          sizedBoxHeight(90.h),
         ],
       ),
     );

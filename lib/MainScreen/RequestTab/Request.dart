@@ -1,10 +1,12 @@
 import 'package:Optifii_Corporate/MainScreen/RequestTab/ApprovedTab/ApprovedTab.dart';
 import 'package:Optifii_Corporate/MainScreen/RequestTab/ReimburseTab/ReimburseTab.dart';
 import 'package:Optifii_Corporate/MainScreen/RequestTab/RejectedTab/RejectedTab.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 
 class RequestPage extends StatefulWidget {
   const RequestPage({super.key});
@@ -36,13 +38,15 @@ class _RequestPageState extends State<RequestPage>
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70),
+        preferredSize: const Size.fromHeight(70),
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: const Color(0xff6311CB),
           title: text24w400cffffff('Requests'),
         ),
       ),
+      bottomNavigationBar:
+          CustomBottomNavigationBar(mainController: mainController),
       body: Column(
         children: [
           sizedBoxHeight(19.h),
@@ -53,7 +57,7 @@ class _RequestPageState extends State<RequestPage>
             // Apply padding to the outer container
             child: Container(
               decoration: BoxDecoration(
-                color: Color(0xffF7F5FF),
+                color: const Color(0xffF7F5FF),
                 borderRadius: BorderRadius.circular(
                     8), // Slight rounding of the tab container
               ),
@@ -68,7 +72,7 @@ class _RequestPageState extends State<RequestPage>
                   ),
                   dividerColor: Colors.transparent,
                   indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorPadding: EdgeInsets.symmetric(horizontal: 8),
+                  indicatorPadding: const EdgeInsets.symmetric(horizontal: 8),
                   labelPadding: EdgeInsets.zero,
                   // No extra padding around the label
                   tabs: [
@@ -109,7 +113,7 @@ class _RequestPageState extends State<RequestPage>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: [Reimbursetab(), Approvedtab(), Rejectedtab()],
+              children: const [Reimbursetab(), Approvedtab(), Rejectedtab()],
             ),
           ),
         ],

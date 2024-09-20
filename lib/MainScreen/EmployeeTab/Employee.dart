@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonCard.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
@@ -26,6 +28,8 @@ class _EmployeePageState extends State<EmployeePage> {
       key: _scaffoldKey1,
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
+      bottomNavigationBar:
+          CustomBottomNavigationBar(mainController: mainController),
       body: Stack(
         children: [
           Column(
@@ -378,6 +382,7 @@ class _EmployeePageState extends State<EmployeePage> {
                   ),
                 ),
               ),
+              sizedBoxHeight(90.h),
             ],
           ),
         ],

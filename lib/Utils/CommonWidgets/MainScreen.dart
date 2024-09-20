@@ -1,11 +1,10 @@
 // ignore_for_file: file_names, deprecated_member_use
 
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainController.dart';
 import 'package:Optifii_Corporate/Utils/Helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/MainController.dart';
 
 final MainController mainController = Get.put(MainController());
 
@@ -33,10 +32,10 @@ class _MainScreenState extends State<MainScreen> {
           return true; // Return true to allow the pop action
         },
         child: Scaffold(
-          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: true,
           body: mainController.currentTab[mainController.selectedIndex.value],
-          bottomNavigationBar:
-              CustomBottomNavigationBar(mainController: mainController),
+          // bottomNavigationBar:
+          //     CustomBottomNavigationBar(mainController: mainController),
         ),
       );
     });
