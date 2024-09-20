@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/CommonWidgets/CustomAccordionOfVoucherTab.dart';
 import 'package:Optifii_Corporate/Utils/Helpers/colors.dart';
 import 'package:flutter/material.dart';
@@ -82,8 +84,8 @@ class _VouchertabState extends State<Vouchertab> {
                         status: voucherData.status,
                         department: voucherData.department),
                     sizedBoxHeight(8.h),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Divider(
                         color: Color(0xffECECEC),
                       ),

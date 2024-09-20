@@ -5,7 +5,6 @@ import 'package:getwidget/components/accordion/gf_accordion.dart';
 import '../../../../Utils/CommonWidgets/Text.dart';
 import '../../../../Utils/CommonWidgets/sized_box.dart';
 import '../../DigitalTab/CommonWidgets/EmployeeAvatars.dart';
-import '../../DigitalTab/CommonWidgets/StatusContainer.dart';
 
 class CustomAccordionOfDepartmentTabView extends StatefulWidget {
   final String departmentImg;
@@ -78,7 +77,7 @@ class _CustomAccordionOfDepartmentTabViewState
               SizedBox(
                 height: 24.h,
                 width: 124.w,
-                child: Stack(
+                child: const Stack(
                   children: [
                     EmployeeAvatars(
                       count: 5, // Number of avatars to display

@@ -33,7 +33,7 @@ class EmployeeAvatars extends StatelessWidget {
                     image: AssetImage(avatarImage),
                   ),
                   shape: BoxShape.circle,
-                  border: Border.all(width: 1.5.w, color: Color(0xffffffff)),
+                  border: Border.all(width: 1.5.w, color: const Color(0xffffffff)),
                 ),
               ),
             ),
@@ -45,8 +45,8 @@ class EmployeeAvatars extends StatelessWidget {
                 width: 40.w,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xffF9F5FF),
-                  border: Border.all(width: 2.w, color: Color(0xffffffff)),
+                  color: const Color(0xffF9F5FF),
+                  border: Border.all(width: 2.w, color: const Color(0xffffffff)),
                 ),
                 child: Center(
                   child: text12w500c7F56D9('+$extraCount'),
