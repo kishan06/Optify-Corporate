@@ -3,12 +3,12 @@
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTab.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/PhysicalTab/PhysicalTab.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTab.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/MiscWidgets.dart';
-import 'package:flutter/material.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../Utils/CommonWidgets/sized_box.dart';
 
@@ -26,6 +26,8 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
+      bottomNavigationBar:
+          CustomBottomNavigationBar(mainController: mainController),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70),
         child: AppBar(
@@ -41,7 +43,6 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
             padding: const EdgeInsets.only(left: 16),
             child: text18w400c0B0B0B('Application status'),
           ),
-
           sizedBoxHeight(22),
 
           const DefaultTabController(
@@ -53,19 +54,17 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
                   Tab(text: 'Physical'),
                   Tab(text: 'Voucher'),
                 ]),
-                SizedBox( 
-                  height: 900,// Wrap TabBarView with Expanded to avoid overflow
+                SizedBox(
+                  height:
+                      900, // Wrap TabBarView with Expanded to avoid overflow
                   child: TabBarView(
-                    children: [
-                      Digitaltab(),
-                      Physicaltab(),
-                      Vouchertab()
-                    ],
+                    children: [Digitaltab(), Physicaltab(), Vouchertab()],
                   ),
-                )
+                ),
               ],
             ),
-          )
+          ),
+          sizedBoxHeight(90.h),
         ],
       ),
     );

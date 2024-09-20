@@ -1,3 +1,5 @@
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/SearchBar_Filter.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
@@ -75,6 +77,7 @@ class _DigitaltabState extends State<Digitaltab> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,6 +99,7 @@ class _DigitaltabState extends State<Digitaltab> {
                       status: order.status,
                     ),
                     sizedBoxHeight(8.h),
+
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Divider(

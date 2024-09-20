@@ -1,5 +1,5 @@
-import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/CommonWidgets/StatusContainer.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/CommonWidgets/CustomAccordionOfDigitalTabView.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/CommonWidgets/StatusContainer.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
@@ -14,7 +14,6 @@ class Digitaltabview extends StatefulWidget {
 }
 
 class _DigitaltabviewState extends State<Digitaltabview> {
-
   // Method to get status colors based on the status
   Map<String, dynamic> getStatusColors(String status) {
     switch (status) {
@@ -67,60 +66,54 @@ class _DigitaltabviewState extends State<Digitaltabview> {
   // Create a list of order data
   final List<EmployeesData> employees = [
     EmployeesData(
-      employeesName: 'Reethik thota',
-      employeesId: 'WD-0956',
-      employeesDepartment: 'Design',
-      employeesMobileNumber: '+91 4578454121',
-      employeesMemberSince: '3 Jan, 2022',
-      employeesEmailAddress: 'reethik@wdipl.com',
-        employeesImage: 'assets/images/png/Avatar.png'
-    ),  EmployeesData(
-      employeesName: 'Reethik thota',
-      employeesId: 'WD-0956',
-      employeesDepartment: 'Design',
-      employeesMobileNumber: '+91 4578454121',
-      employeesMemberSince: '3 Jan, 2022',
-      employeesEmailAddress: 'reethik@wdipl.com',
-        employeesImage: 'assets/images/png/Avatar.png'
-    ),  EmployeesData(
-      employeesName: 'Reethik thota',
-      employeesId: 'WD-0956',
-      employeesDepartment: 'Design',
-      employeesMobileNumber: '+91 4578454121',
-      employeesMemberSince: '3 Jan, 2022',
-      employeesEmailAddress: 'reethik@wdipl.com',
-        employeesImage: 'assets/images/png/Avatar.png'
-    ),  EmployeesData(
-      employeesName: 'Reethik thota',
-      employeesId: 'WD-0956',
-      employeesDepartment: 'Design',
-      employeesMobileNumber: '+91 4578454121',
-      employeesMemberSince: '3 Jan, 2022',
-      employeesEmailAddress: 'reethik@wdipl.com',
-        employeesImage: 'assets/images/png/Avatar.png'
-    ),  EmployeesData(
-      employeesName: 'Reethik thota',
-      employeesId: 'WD-0956',
-      employeesDepartment: 'Design',
-      employeesMobileNumber: '+91 4578454121',
-      employeesMemberSince: '3 Jan, 2022',
-      employeesEmailAddress: 'reethik@wdipl.com',
-        employeesImage: 'assets/images/png/Avatar.png'
-    ),
+        employeesName: 'Reethik thota',
+        employeesId: 'WD-0956',
+        employeesDepartment: 'Design',
+        employeesMobileNumber: '+91 4578454121',
+        employeesMemberSince: '3 Jan, 2022',
+        employeesEmailAddress: 'reethik@wdipl.com',
+        employeesImage: 'assets/images/png/Avatar.png'),
+    EmployeesData(
+        employeesName: 'Reethik thota',
+        employeesId: 'WD-0956',
+        employeesDepartment: 'Design',
+        employeesMobileNumber: '+91 4578454121',
+        employeesMemberSince: '3 Jan, 2022',
+        employeesEmailAddress: 'reethik@wdipl.com',
+        employeesImage: 'assets/images/png/Avatar.png'),
+    EmployeesData(
+        employeesName: 'Reethik thota',
+        employeesId: 'WD-0956',
+        employeesDepartment: 'Design',
+        employeesMobileNumber: '+91 4578454121',
+        employeesMemberSince: '3 Jan, 2022',
+        employeesEmailAddress: 'reethik@wdipl.com',
+        employeesImage: 'assets/images/png/Avatar.png'),
+    EmployeesData(
+        employeesName: 'Reethik thota',
+        employeesId: 'WD-0956',
+        employeesDepartment: 'Design',
+        employeesMobileNumber: '+91 4578454121',
+        employeesMemberSince: '3 Jan, 2022',
+        employeesEmailAddress: 'reethik@wdipl.com',
+        employeesImage: 'assets/images/png/Avatar.png'),
+    EmployeesData(
+        employeesName: 'Reethik thota',
+        employeesId: 'WD-0956',
+        employeesDepartment: 'Design',
+        employeesMobileNumber: '+91 4578454121',
+        employeesMemberSince: '3 Jan, 2022',
+        employeesEmailAddress: 'reethik@wdipl.com',
+        employeesImage: 'assets/images/png/Avatar.png'),
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
-
-
-
     var statusColors = getStatusColors('Received');
 
     return Scaffold(
         backgroundColor: const Color(0xffffffff),
-        appBar: CommonAppbar(titleTxt: 'Gift card & voucher'),
+        appBar: const CommonAppbar(titleTxt: 'Gift card & voucher'),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,8 +142,8 @@ class _DigitaltabviewState extends State<Digitaltabview> {
               ),
             ),
             sizedBoxHeight(25.h),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 22),
               child: Divider(
                 color: Color.fromRGBO(99, 17, 203, 0.2),
               ),
@@ -167,39 +160,33 @@ class _DigitaltabviewState extends State<Digitaltabview> {
                   children: employees.map((data) {
                     return Column(
                       children: [
-                       Customaccordionofdigitaltabview(
-                           employeesName: data.employeesName,
-                           employeesId: data.employeesId,
-                           employeesDepartment: data.employeesDepartment,
-                           employeesMobileNumber: data.employeesMobileNumber,
-                           employeesMemberSince: data.employeesMemberSince,
-                           employeesEmailAddress: data.employeesEmailAddress,
-                           employeesImage: data.employeesImage),
+                        Customaccordionofdigitaltabview(
+                            employeesName: data.employeesName,
+                            employeesId: data.employeesId,
+                            employeesDepartment: data.employeesDepartment,
+                            employeesMobileNumber: data.employeesMobileNumber,
+                            employeesMemberSince: data.employeesMemberSince,
+                            employeesEmailAddress: data.employeesEmailAddress,
+                            employeesImage: data.employeesImage),
                         sizedBoxHeight(4.h),
-                        Padding(padding: EdgeInsets.symmetric(horizontal: 16),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
                           child: Divider(
                             color: Color(0xffECECEC),
-                          ),)
+                          ),
+                        )
                       ],
                     );
                   }).toList(),
                 ),
               ),
             ),
-
-
-
-
-
-
-
           ],
         ));
   }
 }
 
-
-class EmployeesData  {
+class EmployeesData {
   final String employeesName;
   final String employeesId;
   final String employeesDepartment;

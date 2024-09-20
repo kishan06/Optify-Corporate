@@ -1,9 +1,9 @@
-
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+
 Widget commonDivider() {
   return Container(
     height: 1.5.h,
@@ -22,22 +22,16 @@ Widget commonDivider() {
   );
 }
 
-
 Future<void> datePicker(
     BuildContext context, TextEditingController controller) async {
   final ThemeData customTheme = Theme.of(context).copyWith(
-      colorScheme: const ColorScheme.light(
-          primary: Color(0xFFD90B2E),
-          surfaceTint: Color(0xFF222935),
-          surface: Color(0xFF222935),
-          onPrimary: Colors.white,
-          onSurface: Colors.white,
-          onSecondary: Colors.white),
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: const Color(0xFFD90B2E),
-        ),
-      ));
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: const Color(0xFFD90B2E),
+      ),
+    ),
+  );
+
   final DateTime? picked = await showDatePicker(
     context: context,
     initialDate: DateTime.now(),
@@ -59,22 +53,17 @@ Future<void> datePicker(
 Future<TimeOfDay?> showCustomTimePicker(BuildContext context,
     {TimeOfDay? initialTime}) {
   final ThemeData customTheme2 = Theme.of(context).copyWith(
-      colorScheme: const ColorScheme.light(
-        primary: Color(0xFFD90B2E),
-        surfaceTint: Color(0xFF222935),
-        surface: Color(0xFF222935),
-        onPrimary: Colors.white,
-        onSurface: Colors.white,
-      ),
-      textTheme: Theme.of(context).textTheme.copyWith(
-            titleLarge:
-                const TextStyle(color: Colors.blue), // Change the title color
-          ),
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: const Color(0xFFD90B2E),
+    textTheme: Theme.of(context).textTheme.copyWith(
+          titleLarge:
+              const TextStyle(color: Colors.blue), // Change the title color
         ),
-      ));
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: const Color(0xFFD90B2E),
+      ),
+    ),
+  );
+
   return showTimePicker(
     context: context,
     initialTime: initialTime ?? TimeOfDay.now(),

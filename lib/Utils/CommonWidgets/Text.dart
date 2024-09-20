@@ -844,7 +844,6 @@ Widget text18w500cffffff(String text) {
   );
 }
 
-
 Widget text16w400c687280(String text) {
   return Text(
     text,
@@ -857,7 +856,6 @@ Widget text16w400c687280(String text) {
   );
 }
 
-
 Widget text18w400c363636(String text) {
   return Text(
     text,
@@ -869,8 +867,6 @@ Widget text18w400c363636(String text) {
     ),
   );
 }
-
-
 
 Widget text18w400c585858(String text) {
   return Text(
@@ -956,10 +952,8 @@ Widget text18w400c5E0FCD(String text) {
   );
 }
 
-
 Widget text16w400c5B5B5B(String text) {
   return Text(
-
     text,
     style: TextStyle(
       fontSize: 16.sp,
@@ -972,7 +966,6 @@ Widget text16w400c5B5B5B(String text) {
 
 Widget text20w400c373434(String text) {
   return Text(
-
     text,
     style: TextStyle(
       fontSize: 20.sp,
@@ -983,10 +976,8 @@ Widget text20w400c373434(String text) {
   );
 }
 
-
 Widget text20w400c090909(String text) {
   return Text(
-
     text,
     style: TextStyle(
       fontSize: 20.sp,
@@ -999,7 +990,6 @@ Widget text20w400c090909(String text) {
 
 Widget text18w400c686868(String text) {
   return Text(
-
     text,
     style: TextStyle(
       fontSize: 18.sp,
@@ -1021,10 +1011,6 @@ Widget text18w400c000000(String text) {
     ),
   );
 }
-
-
-
-
 
 Widget text26w600c3725EA(String text) {
   return Text(

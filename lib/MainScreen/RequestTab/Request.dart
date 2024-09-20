@@ -2,10 +2,12 @@
 import 'package:Optifii_Corporate/MainScreen/RequestTab/ApprovedTab/ApprovedTab.dart';
 import 'package:Optifii_Corporate/MainScreen/RequestTab/ReimburseTab/ReimburseTab.dart';
 import 'package:Optifii_Corporate/MainScreen/RequestTab/RejectedTab/RejectedTab.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 
 class RequestPage extends StatefulWidget {
   const RequestPage({super.key});
@@ -44,6 +46,8 @@ class _RequestPageState extends State<RequestPage>
           title: text24w400cffffff('Requests'),
         ),
       ),
+      bottomNavigationBar:
+          CustomBottomNavigationBar(mainController: mainController),
       body: Column(
         children: [
           sizedBoxHeight(19.h),
