@@ -30,13 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
       key: _scaffoldKey1,
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
-      drawer: CustomDrawer(onSwitchAccount: () {
-        // Close the main drawer and open the switch account drawer
-        Navigator.pop(context); // Close the main drawer
-        Future.delayed(const Duration(milliseconds: 300), () {
-          _scaffoldKey1.currentState?.openDrawer(); // Open the switch drawer
-        });
-      }), // Drawer added here
+      drawer: CustomDrawer(), // Drawer added here
       body: Column(
         children: [
           Container(

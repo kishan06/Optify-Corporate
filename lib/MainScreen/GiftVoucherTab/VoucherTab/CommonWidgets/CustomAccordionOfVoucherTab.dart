@@ -165,101 +165,103 @@ class _CustomaccordionofvouchertabState
             ),
           ),
           sizedBoxHeight(26.h),
-
           Padding(
             padding: const EdgeInsets.only(left: 40),
+            // collapsedIcon: const SizedBox.shrink(),
+            // expandedIcon: const SizedBox.shrink(),
+            // collapsedTitleBackgroundColor: Colors.transparent,
+            // expandedTitleBackgroundColor:
+            //     const Color.fromRGBO(99, 17, 203, 0.04),
+            // contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
+            // titleBorderRadius: BorderRadius.circular(5),
+            // contentBorderRadius: BorderRadius.circular(5),
+            // titlePadding:
+            //     const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            // contentPadding: const EdgeInsets.all(16),
+            // margin: const EdgeInsets.all(0),
+            // onToggleCollapsed: (value) {
+            //   setState(() {
+            //     isExpanded = !isExpanded; // Toggle the state
+            //   });
+            // },
             child: Row(
               children: [
                 Row(
-
-          Row(
-            children: [
-              Row(
-                children: [
-                  text17w400c667085('Total employees'),
-                  SizedBox(width: 5.w),
-                  text17w400c464748(':'),
-                ],
-              ),
-              sizedBoxWidth(5.w),
-              // Employee avatars section
-              SizedBox(
-                height: 24.h,
-                width: 124.w,
-                child: const Stack(
                   children: [
-                    text17w400c667085('Total employees'),
-                    SizedBox(width: 12.w),
-                    text17w400c464748(':'),
+                    Row(
+                      children: [
+                        text17w400c667085('Total employees'),
+                        SizedBox(width: 5.w),
+                        text17w400c464748(':'),
+                      ],
+                    ),
+                    sizedBoxWidth(5.w),
+                    // Employee avatars section
+                    SizedBox(
+                      height: 24.h,
+                      width: 124.w,
+                      child: Stack(
+                        children: [
+                          text17w400c667085('Total employees'),
+                          SizedBox(width: 12.w),
+                          text17w400c464748(':'),
+                        ],
+                      ),
+                    ),
+                    sizedBoxWidth(5.w),
+                    // Employee avatars section
+                    SizedBox(
+                      height: 24.h,
+                      width: 124.w,
+                      child: const Stack(
+                        children: [
+                          EmployeeAvatars(
+                            count: 5, // Number of avatars to display
+                            extraCount: 50, // Extra count like +50
+                            avatarImage: 'assets/images/png/Avatar.png',
+                          ) // Path to avatar img
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-                sizedBoxWidth(5.w),
-                // Employee avatars section
-                SizedBox(
-                  height: 24.h,
-                  width: 124.w,
-                  child: Stack(
+                sizedBoxHeight(26.h),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40),
+                  child: Row(
                     children: [
-                      EmployeeAvatars(
-                        count: 5, // Number of avatars to display
-                        extraCount: 50, // Extra count like +50
-                        avatarImage: 'assets/images/png/Avatar.png',
-                      ) // Path to avatar img
+                      Row(
+                        children: [
+                          text17w400c667085('Department'),
+                          SizedBox(width: 40.w),
+                          text17w400c464748(':'),
+                        ],
+                      ),
+                      sizedBoxWidth(5.w),
+                      Expanded(child: text17w400c464748(widget.department)),
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
-          sizedBoxHeight(26.h),
-          Padding(
-            padding: const EdgeInsets.only(left: 40),
-            child: Row(
-              children: [
+                sizedBoxHeight(26.h),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    text17w400c667085('Department'),
-                    SizedBox(width: 40.w),
-                    text17w400c464748(':'),
+                    const CustomButtonIconLeftBgWhite(),
+                    SizedBox(width: 4.w), // Add some spacing between buttons
+                    Flexible(
+                      child: InkWell(
+                          onTap: () {
+                            Get.toNamed(RouteName.VoucherTabView);
+                          },
+                          child: const CustomButtonIconLeftBgWhite()),
+                    ),
                   ],
                 ),
-                sizedBoxWidth(5.w),
-                Expanded(child: text17w400c464748(widget.department)),
               ],
             ),
-          ),
-          sizedBoxHeight(26.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const CustomButtonIconLeftBgWhite(),
-              SizedBox(width: 4.w), // Add some spacing between buttons
-              Flexible(
-                child: InkWell(
-                    onTap: () {
-                      Get.toNamed(RouteName.VoucherTabView);
-                    },
-                    child: const CustomButtonIconLeftBgWhite()),
-              ),
-            ],
           ),
         ],
       ),
-      collapsedIcon: const SizedBox.shrink(),
-      expandedIcon: const SizedBox.shrink(),
-      collapsedTitleBackgroundColor: Colors.transparent,
-      expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
-      contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
-      titleBorderRadius: BorderRadius.circular(5),
-      contentBorderRadius: BorderRadius.circular(5),
-      titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      contentPadding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.all(0),
-      onToggleCollapsed: (value) {
-        setState(() {
-          isExpanded = !isExpanded; // Toggle the state
-        });
-      },
     );
   }
 }

@@ -97,7 +97,7 @@ class _DigitaltabState extends State<Digitaltab> {
                     ),
 
                     sizedBoxHeight(8.h),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 16),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 16),),
 
                     sizedBoxHeight(14.h),
                     const Padding(
