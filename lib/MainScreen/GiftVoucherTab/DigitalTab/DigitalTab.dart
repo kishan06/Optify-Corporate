@@ -95,14 +95,9 @@ class _DigitaltabState extends State<Digitaltab> {
                       valuation: order.valuation,
                       status: order.status,
                     ),
-
                     sizedBoxHeight(8.h),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 16),
-
-                    sizedBoxHeight(14.h),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
-
                       child: Divider(
                         color: Color(0xffECECEC),
                       ),

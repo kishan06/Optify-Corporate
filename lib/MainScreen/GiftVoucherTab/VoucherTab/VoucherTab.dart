@@ -75,7 +75,7 @@ class _VouchertabState extends State<Vouchertab> {
                 return Column(
                   children: [
                     sizedBoxHeight(22.h),
-                    Customaccordionofvouchertab(
+                    CustomAccordionOfVoucherTab(
                         voucherImg: voucherData.voucherImg,
                         dateTime: voucherData.dateTime,
                         valuation: voucherData.valuation,

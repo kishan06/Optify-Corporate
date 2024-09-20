@@ -1,3 +1,4 @@
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/CommonWidgets/CustomButtonIconLeft.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/CommonWidgets/CustomButtonIconLeftBgWhite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,14 +11,14 @@ import '../../../../routes/route_name.dart';
 import '../../DigitalTab/CommonWidgets/EmployeeAvatars.dart';
 import '../../DigitalTab/CommonWidgets/StatusContainer.dart';
 
-class Customaccordionofvouchertab extends StatefulWidget {
+class CustomAccordionOfVoucherTab extends StatefulWidget {
   final String voucherImg;
   final String dateTime;
   final String valuation;
   final String department;
   final String status;
 
-  const Customaccordionofvouchertab({
+  const CustomAccordionOfVoucherTab({
     super.key,
     required this.voucherImg,
     required this.dateTime,
@@ -27,12 +28,12 @@ class Customaccordionofvouchertab extends StatefulWidget {
   });
 
   @override
-  State<Customaccordionofvouchertab> createState() =>
-      _CustomaccordionofvouchertabState();
+  State<CustomAccordionOfVoucherTab> createState() =>
+      _CustomAccordionOfVoucherTabState();
 }
 
-class _CustomaccordionofvouchertabState
-    extends State<Customaccordionofvouchertab> {
+class _CustomAccordionOfVoucherTabState
+    extends State<CustomAccordionOfVoucherTab> {
   // Method to get status colors based on the status
   Map<String, dynamic> getStatusColors(String status) {
     switch (status) {
@@ -135,13 +136,9 @@ class _CustomaccordionofvouchertabState
             padding: const EdgeInsets.only(left: 40),
             child: Row(
               children: [
-                Row(
-                  children: [
-                    text17w400c667085('Date & time'),
-                    SizedBox(width: 38.w),
-                    text17w400c464748(':'),
-                  ],
-                ),
+                text17w400c667085('Date & time'),
+                SizedBox(width: 38.w),
+                text17w400c464748(':'),
                 sizedBoxWidth(5.w),
                 Expanded(child: text17w400c464748(widget.dateTime)),
               ],
@@ -152,77 +149,24 @@ class _CustomaccordionofvouchertabState
             padding: const EdgeInsets.only(left: 40),
             child: Row(
               children: [
-                Row(
-                  children: [
-                    text17w400c667085('Total valuation'),
-                    SizedBox(width: 20.w),
-                    text17w400c464748(':'),
-                  ],
-                ),
+                text17w400c667085('Total valuation'),
+                SizedBox(width: 38.w),
+                text17w400c464748(':'),
                 sizedBoxWidth(5.w),
                 Expanded(child: text17w400c464748(widget.valuation)),
               ],
             ),
           ),
           sizedBoxHeight(26.h),
-
-          Padding(
-            padding: const EdgeInsets.only(left: 40),
-            child: Row(
-              children: [
-                Row(
-
-          Row(
-            children: [
-              Row(
-                children: [
-                  text17w400c667085('Total employees'),
-                  SizedBox(width: 5.w),
-                  text17w400c464748(':'),
-                ],
-              ),
-              sizedBoxWidth(5.w),
-              // Employee avatars section
-              SizedBox(
-                height: 24.h,
-                width: 124.w,
-                child: const Stack(
-                  children: [
-                    text17w400c667085('Total employees'),
-                    SizedBox(width: 12.w),
-                    text17w400c464748(':'),
-                  ],
-                ),
-                sizedBoxWidth(5.w),
-                // Employee avatars section
-                SizedBox(
-                  height: 24.h,
-                  width: 124.w,
-                  child: Stack(
-                    children: [
-                      EmployeeAvatars(
-                        count: 5, // Number of avatars to display
-                        extraCount: 50, // Extra count like +50
-                        avatarImage: 'assets/images/png/Avatar.png',
-                      ) // Path to avatar img
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          _buildEmployeeRow(),
           sizedBoxHeight(26.h),
           Padding(
             padding: const EdgeInsets.only(left: 40),
             child: Row(
               children: [
-                Row(
-                  children: [
-                    text17w400c667085('Department'),
-                    SizedBox(width: 40.w),
-                    text17w400c464748(':'),
-                  ],
-                ),
+                text17w400c667085('Department'),
+                SizedBox(width: 38.w),
+                text17w400c464748(':'),
                 sizedBoxWidth(5.w),
                 Expanded(child: text17w400c464748(widget.department)),
               ],
@@ -232,7 +176,12 @@ class _CustomaccordionofvouchertabState
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const CustomButtonIconLeftBgWhite(),
+               CustomButtonIconLeft(
+                  image: 'assets/images/png/download.png',
+                  text: 'Download allotment history',
+                  ontap: () {
+
+                  },),
               SizedBox(width: 4.w), // Add some spacing between buttons
               Flexible(
                 child: InkWell(
@@ -260,6 +209,34 @@ class _CustomaccordionofvouchertabState
           isExpanded = !isExpanded; // Toggle the state
         });
       },
+    );
+  }
+
+
+  Widget _buildEmployeeRow() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 40),
+      child: Row(
+        children: [
+          text17w400c667085('Total employees'),
+          SizedBox(width: 5.w),
+          text17w400c464748(':'),
+          sizedBoxWidth(5.w),
+          SizedBox(
+            height: 24.h,
+            width: 124.w,
+            child: Stack(
+              children: [
+                EmployeeAvatars(
+                  count: 5, // Number of avatars to display
+                  extraCount: 50, // Extra count like +50
+                  avatarImage: 'assets/images/png/Avatar.png',
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
