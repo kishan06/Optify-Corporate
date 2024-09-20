@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTabView/DepartmentTab/DepartmentTab.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTabView/EmployeesTab/EmployeesTab.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
@@ -82,7 +84,7 @@ class _VouchertabviewState extends State<Vouchertabview> {
 
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
-      appBar: CommonAppbar(titleTxt: ''),
+      appBar: const CommonAppbar(titleTxt: ''),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -115,7 +117,7 @@ class _VouchertabviewState extends State<Vouchertabview> {
                 length: 2,
                 child: Column(
                   children: [
-                    CommonTabBar(tabs: [
+                    const CommonTabBar(tabs: [
                       Tab(text: 'Employees'),
                       Tab(text: 'Department'),
                     ]),

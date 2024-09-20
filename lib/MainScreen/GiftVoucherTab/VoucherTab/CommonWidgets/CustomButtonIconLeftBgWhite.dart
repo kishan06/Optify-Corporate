@@ -15,7 +15,7 @@ class CustomButtonIconLeftBgWhite extends StatelessWidget {
       width: 155.w,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(width: 0.75, color: Color(0xff6311CB))),
+          border: Border.all(width: 0.75, color: const Color(0xff6311CB))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,6 +1,7 @@
 
+// ignore_for_file: file_names
+
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
@@ -40,7 +41,7 @@ class _CustomaccordionofdigitaltabviewState extends State<Customaccordionofdigit
           Container(
             height: 52.h,
             width: 52.w,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle
             ),
             child: Image.asset(widget.employeesImage),

@@ -14,7 +14,7 @@ class Report extends StatefulWidget {
 class _ReportState extends State<Report> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.secondary,
       appBar: CommonAppbar(titleTxt: 'Reports'),
       body: Expanded(

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/CommonWidgets/CustomAccordionOfDepartmentTabView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +36,7 @@ class Departmenttab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffffffff),
+      backgroundColor: const Color(0xffffffff),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -48,7 +50,7 @@ class Departmenttab extends StatelessWidget {
                     departmentImg: departmentData.departmentImg,
                     dateTime: departmentData.dateTime,
                   ),
-                  Divider(color: Color(0xffECECEC),),
+                  const Divider(color: Color(0xffECECEC),),
 
                 ],
               );

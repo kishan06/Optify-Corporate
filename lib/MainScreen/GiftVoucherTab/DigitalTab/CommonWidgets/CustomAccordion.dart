@@ -161,7 +161,7 @@ class _CustomAccordionState extends State<CustomAccordion> {
               SizedBox(
                 height: 24.h,
                 width: 124.w,
-                child: Stack(
+                child: const Stack(
                   children: [
                     EmployeeAvatars(
                         count: 5, // Number of avatars to display
@@ -173,6 +173,8 @@ class _CustomAccordionState extends State<CustomAccordion> {
               ),
             ],
           ),
+
+
         ],
       ),
       collapsedIcon: const SizedBox.shrink(),
