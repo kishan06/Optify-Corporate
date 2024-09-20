@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getwidget/components/accordion/gf_accordion.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getwidget/components/accordion/gf_accordion.dart';
 // import 'package:getflutter/getflutter.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -21,6 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffffffff),
       appBar: const CommonAppbar(
         titleTxt: 'My profile',
       ),
@@ -150,8 +151,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       minRadius: 10,
                       backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
                       child: Icon(Icons.arrow_drop_up)),
-                  titlePadding: const EdgeInsets.all(16.0),
-                  contentPadding: const EdgeInsets.all(16.0),
+                  titlePadding: const EdgeInsets.all(10.0),
+                  contentPadding: const EdgeInsets.all(10.0),
                   showAccordion: false,
                   margin: const EdgeInsets.all(0),
                 ),

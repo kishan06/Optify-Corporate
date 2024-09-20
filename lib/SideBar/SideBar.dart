@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SideBar extends StatefulWidget {
-  const SideBar({super.key});
+  const SideBar({Key? key}) : super(key: key);
 
   @override
   State<SideBar> createState() => _SideBarState();
@@ -17,6 +17,8 @@ class SideBar extends StatefulWidget {
 
 class _SideBarState extends State<SideBar> {
   final GlobalKey<ScaffoldState> _scaffoldKey1 = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _switchDrawerKey =
+      GlobalKey<ScaffoldState>(); // Key for switch account sidebar
 
   @override
   Widget build(BuildContext context) {
@@ -25,82 +27,93 @@ class _SideBarState extends State<SideBar> {
       key: _scaffoldKey1,
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
-      drawer: CustomDrawer(), // Add this line
-      body: Column(
+      drawer: CustomDrawer(onSwitchAccount: () {
+        // Close the main drawer and open the switch account drawer
+        Navigator.pop(context); // Close the main drawer
+        Future.delayed(const Duration(milliseconds: 300), () {
+          _switchDrawerKey.currentState?.openDrawer(); // Open the switch drawer
+        });
+      }),
+      body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: Color(0xff6311CB),
-            ),
-            child: Column(
+          Scaffold(
+            key: _switchDrawerKey, // The key for the secondary drawer
+            backgroundColor: Colors.transparent,
+            drawer:
+                const SwitchAccountDrawer(), // Add the switch account drawer
+            body: Column(
               children: [
-                AppBar(
-                  scrolledUnderElevation: 0.0,
-                  elevation: 0,
-                  automaticallyImplyLeading: false,
-                  backgroundColor: const Color(0xff6311CB),
-                  titleSpacing: 0,
-                  leading: InkWell(
-                    onTap: () {
-                      _scaffoldKey1.currentState?.openDrawer();
-                    },
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/png/menu.png',
-                        height: 15.h,
-                        width: 20.w,
-                      ),
-                    ),
+                Container(
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: Color(0xff6311CB),
                   ),
-                  title: text24w600cwhite('Dashboard'),
-                  actions: [
-                    GestureDetector(
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                      child: Image.asset(
-                        'assets/images/png/search.png',
-                        height: 25.h,
-                        width: 25.w,
-                      ),
-                    ),
-                    sizedBoxWidth(10.w),
-                    GestureDetector(
-                      onTap: () {
-                        // Add your navigation logic here
-                      },
-                      child: Image.asset(
-                        'assets/images/png/bell.png',
-                        height: 25.h,
-                        width: 25.w,
-                      ),
-                    ),
-                    sizedBoxWidth(16.w),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(14.0),
-                  child: Row(
+                  child: Column(
                     children: [
-                      Image.asset(
-                        'assets/images/png/black_logo.png',
-                        width: 25,
-                        height: 25,
+                      AppBar(
+                        scrolledUnderElevation: 0.0,
+                        elevation: 0,
+                        automaticallyImplyLeading: false,
+                        backgroundColor: const Color(0xff6311CB),
+                        titleSpacing: 0,
+                        leading: InkWell(
+                          onTap: () {
+                            _scaffoldKey1.currentState
+                                ?.openDrawer(); // Open the main drawer
+                          },
+                          child: Center(
+                            child: Image.asset(
+                              'assets/images/png/menu.png',
+                              height: 15.h,
+                              width: 20.w,
+                            ),
+                          ),
+                        ),
+                        title: text24w600cwhite('Dashboard'),
+                        actions: [
+                          GestureDetector(
+                            onTap: () {
+                              // Add your navigation logic here for search
+                            },
+                            child: Image.asset(
+                              'assets/images/png/search.png',
+                              height: 25.h,
+                              width: 25.w,
+                            ),
+                          ),
+                          sizedBoxWidth(10.w),
+                          GestureDetector(
+                            onTap: () {
+                              // Add your navigation logic here for notifications
+                            },
+                            child: Image.asset(
+                              'assets/images/png/bell.png',
+                              height: 25.h,
+                              width: 25.w,
+                            ),
+                          ),
+                          sizedBoxWidth(16.w),
+                        ],
                       ),
-                      sizedBoxWidth(10),
-                      text22w400cwhite('Website Developers India Pvt Ltd.')
+                      Padding(
+                        padding: const EdgeInsets.all(14.0),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/images/png/black_logo.png',
+                              width: 25,
+                              height: 25,
+                            ),
+                            sizedBoxWidth(10),
+                            text22w400cwhite(
+                                'Website Developers India Pvt Ltd.')
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ],
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [],
             ),
           ),
         ],
@@ -110,7 +123,9 @@ class _SideBarState extends State<SideBar> {
 }
 
 class CustomDrawer extends StatelessWidget {
-  CustomDrawer({super.key});
+  final VoidCallback onSwitchAccount;
+
+  CustomDrawer({super.key, required this.onSwitchAccount});
   final GlobalKey<ScaffoldState> _scaffoldKey1 = GlobalKey<ScaffoldState>();
 
   @override
@@ -154,9 +169,7 @@ class CustomDrawer extends StatelessWidget {
                   ],
                 ),
                 InkWell(
-                  onTap: () {
-                    _scaffoldKey1.currentState?.openDrawer();
-                  },
+                  onTap: onSwitchAccount,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -384,217 +397,79 @@ class CustomDrawer extends StatelessWidget {
   }
 }
 
-// class SwitchDrawer extends StatelessWidget {
-//   const SwitchDrawer({super.key});
+class SwitchAccountDrawer extends StatelessWidget {
+  const SwitchAccountDrawer({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Drawer(
-//       backgroundColor: Colors.white,
-//       shape: const ContinuousRectangleBorder(
-//         borderRadius: BorderRadius.zero,
-//       ),
-//       child: Column(
-//         children: [
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.end,
-//             children: [
-//               IconButton(
-//                 padding: EdgeInsets.zero, // Removes default padding
-//                 constraints:
-//                     const BoxConstraints(), // Ensures IconButton takes minimal space
-//                 onPressed: () {
-//                   Navigator.pop(context); // Closes the bottom sheet
-//                 },
-//                 icon: const Icon(
-//                   Icons.close,
-//                   color: Color(0xff000000),
-//                   size: 25,
-//                 ),
-//               ),
-//             ],
-//           ),
-//           Expanded(
-//             child: ListView(
-//               padding: EdgeInsets.zero,
-//               children: <Widget>[
-//                 DrawerHeader(
-//                   decoration: const BoxDecoration(
-//                     borderRadius: BorderRadius.zero,
-//                   ),
-//                   child: Column(
-//                     children: [
-//                       Row(
-//                         crossAxisAlignment: CrossAxisAlignment.center,
-//                         children: [
-//                           const CircleAvatar(
-//                             radius:
-//                                 45, // Use radius instead of minRadius for more precise control
-//                             backgroundImage:
-//                                 AssetImage('assets/images/png/Avatar.png'),
-//                           ),
-//                           sizedBoxWidth(10.w), // Adjust the width as needed
-//                           Column(
-//                             mainAxisAlignment: MainAxisAlignment.center,
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               text22w600cblack('Reethik Thota'),
-//                               sizedBoxHeight(0),
-//                               text18w400c848484('Sr. Manager'),
-//                               Row(
-//                                 children: [
-//                                   text20w400cpurple('View profile'),
-//                                   const Icon(Icons.arrow_right_alt_outlined),
-//                                 ],
-//                               ),
-//                             ],
-//                           ),
-//                         ],
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//                 sizedBoxHeight(10),
-//                 Row(
-//                   children: [
-//                     Padding(
-//                       padding: const EdgeInsets.only(left: 16),
-//                       child: text16w600c747294('MANAGE HUMAN RESOURCE'),
-//                     ),
-//                   ],
-//                 ),
-//                 sizedBoxHeight(10),
-//                 ListTile(
-//                   leading: SizedBox(
-//                     width: 40.w,
-//                     child: CircleAvatar(
-//                       backgroundColor: const Color.fromARGB(133, 190, 182, 237),
-//                       child: Image.asset(
-//                         'assets/images/png/stamp-icon.png',
-//                         width: 25.w,
-//                         height: 25.h,
-//                       ),
-//                     ),
-//                   ),
-//                   title: text16w400c344054('Manage Approvers'),
-//                   onTap: () {},
-//                 ),
-//                 sizedBoxHeight(10),
-//                 ListTile(
-//                   leading: SizedBox(
-//                     width: 40.w,
-//                     child: CircleAvatar(
-//                       backgroundColor: const Color.fromARGB(133, 190, 182, 237),
-//                       child: Image.asset(
-//                         'assets/images/png/stamp-icon.png',
-//                         width: 25.w,
-//                         height: 25.h,
-//                       ),
-//                     ),
-//                   ),
-//                   title: text16w400c344054('Manage Department & Role'),
-//                   onTap: () {},
-//                 ),
-//                 sizedBoxHeight(10),
-//                 ListTile(
-//                   leading: SizedBox(
-//                     width: 40.w,
-//                     child: CircleAvatar(
-//                       backgroundColor: const Color.fromARGB(133, 190, 182, 237),
-//                       child: Image.asset(
-//                         'assets/images/png/stamp-icon.png',
-//                         width: 25.w,
-//                         height: 25.h,
-//                       ),
-//                     ),
-//                   ),
-//                   title: text16w400c344054('WDIPL Wallets'),
-//                   onTap: () {},
-//                 ),
-//                 sizedBoxHeight(10),
-//                 ListTile(
-//                   leading: SizedBox(
-//                     width: 40.w,
-//                     child: CircleAvatar(
-//                       backgroundColor: const Color.fromARGB(133, 190, 182, 237),
-//                       child: Image.asset(
-//                         'assets/images/png/stamp-icon.png',
-//                         width: 25.w,
-//                         height: 25.h,
-//                       ),
-//                     ),
-//                   ),
-//                   title: text16w400c344054('Gift & Reward'),
-//                   onTap: () {},
-//                 ),
-//                 sizedBoxHeight(10),
-//                 Row(
-//                   children: [
-//                     Padding(
-//                       padding: const EdgeInsets.only(left: 16),
-//                       child: text16w600c747294('ANALYTICS'),
-//                     ),
-//                   ],
-//                 ),
-//                 sizedBoxHeight(10),
-//                 ListTile(
-//                   leading: SizedBox(
-//                     width: 40.w,
-//                     child: CircleAvatar(
-//                       backgroundColor: const Color.fromARGB(133, 190, 182, 237),
-//                       child: Image.asset(
-//                         'assets/images/png/stamp-icon.png',
-//                         width: 25.w,
-//                         height: 25.h,
-//                       ),
-//                     ),
-//                   ),
-//                   title: text16w400c344054('Reports'),
-//                   onTap: () {},
-//                 ),
-//                 sizedBoxHeight(10),
-//                 ListTile(
-//                   leading: SizedBox(
-//                     width: 40.w,
-//                     child: CircleAvatar(
-//                       backgroundColor: const Color.fromARGB(133, 190, 182, 237),
-//                       child: Image.asset(
-//                         'assets/images/png/stamp-icon.png',
-//                         width: 25.w,
-//                         height: 25.h,
-//                       ),
-//                     ),
-//                   ),
-//                   title: text16w400c344054('Help & support'),
-//                   onTap: () {},
-//                 ),
-//                 sizedBoxHeight(10),
-//                 SizedBox(width: 100.w, child: const Divider()),
-//                 sizedBoxHeight(10),
-//                 ListTile(
-//                   leading: SizedBox(
-//                     width: 40.w,
-//                     child: CircleAvatar(
-//                       backgroundColor: const Color.fromARGB(133, 255, 255, 255),
-//                       child: Image.asset(
-//                         'assets/images/png/signout.png',
-//                         width: 25.w,
-//                       ),
-//                     ),
-//                   ),
-//                   title: text16w400c344054('Sign Out'),
-//                   onTap: () {
-//                     print('ListTile tapped'); // Debugging statement
-//                     dialogwidget();
-//                   },
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: Colors.white,
+      shape: const ContinuousRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            child: Container(
+              width: 10.w,
+              decoration: const BoxDecoration(
+                color: Color(0xff6311CB),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              children: [
+                sizedBoxHeight(20.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      padding: EdgeInsets.zero, // Removes default padding
+                      constraints:
+                          const BoxConstraints(), // Ensures IconButton takes minimal space
+                      onPressed: () {
+                        Navigator.pop(context); // Closes the drawer
+                      },
+                      icon: const Icon(
+                        Icons.close,
+                        color: Color(0xff000000),
+                        size: 25,
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: ListView(
+                    children: <Widget>[
+                      // ... other widgets
+                      ListTile(
+                        leading: SizedBox(
+                          width: 40.w,
+                          child: CircleAvatar(
+                            backgroundColor:
+                                const Color.fromARGB(133, 255, 255, 255),
+                            child: Image.asset(
+                              'assets/images/png/signout.png',
+                              width: 25.w,
+                            ),
+                          ),
+                        ),
+                        title: text16w400c344054('Sign Out'),
+                        onTap: () {
+                          // Implement sign-out logic or dialog
+                          dialogwidget();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,10 +1,7 @@
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/CommonWidgets/CustomButtonIconLeftBgWhite.dart';
-import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/CommonWidgets/CustomButtonIconLeft.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
 
 import '../../../../Utils/CommonWidgets/Text.dart';
@@ -67,14 +64,13 @@ class _CustomaccordionofvouchertabState
           'textColor': const Color(0xff3725EA),
           'circleColor': const Color(0xff3725EA),
         };
-        case 'Proceeding':
+      case 'Proceeding':
         return {
           'backgroundColor': const Color.fromRGBO(55, 37, 234, 0.03),
           'borderColor': const Color(0xff396AFF),
           'textColor': const Color(0xff396AFF),
           'circleColor': const Color(0xff396AFF),
         };
-
 
       case 'Completed':
         return {
@@ -177,7 +173,7 @@ class _CustomaccordionofvouchertabState
               SizedBox(
                 height: 24.h,
                 width: 124.w,
-                child: Stack(
+                child: const Stack(
                   children: [
                     EmployeeAvatars(
                       count: 5, // Number of avatars to display
@@ -207,14 +203,14 @@ class _CustomaccordionofvouchertabState
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomButtonIconLeft(),
+              const CustomButtonIconLeftBgWhite(),
               SizedBox(width: 4.w), // Add some spacing between buttons
               Flexible(
                 child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       Get.toNamed(RouteName.VoucherTabView);
                     },
-                    child: CustomButtonIconLeftBgWhite()),
+                    child: const CustomButtonIconLeftBgWhite()),
               ),
             ],
           ),
@@ -227,7 +223,7 @@ class _CustomaccordionofvouchertabState
       contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       titleBorderRadius: BorderRadius.circular(5),
       contentBorderRadius: BorderRadius.circular(5),
-      titlePadding: const EdgeInsets.symmetric(horizontal: 16,vertical: 10),
+      titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       contentPadding: const EdgeInsets.all(16),
       margin: const EdgeInsets.all(0),
       onToggleCollapsed: (value) {

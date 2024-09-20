@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.grey,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteName.statement,
+        initialRoute: RouteName.splashScreen,
         getPages: AppRoutes.appRoutes(),
       ),
       minTextAdapt: true,

@@ -26,5 +26,10 @@ class RouteName {
   static const String editrole = '/editrole';
   static const String notification = '/notification';
   static const String statement = '/statement';
-
+  static const String employeedetails = '/employeedetails';
+  static const String employeelist = '/employeelist';
+  static const String employeeview = '/employeeview';
+  static const String addemployee = '/addemployee';
+  static const String pullbackfund = '/pullbackfund';
+  static const String pullbackfund2 = '/pullbackfund2';
 }
