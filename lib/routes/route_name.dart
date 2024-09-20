@@ -6,7 +6,8 @@ class RouteName {
   static const String employeepage = '/employeepage';
   static const String requestpage = '/requestpage';
   static const String reportpage = '/reportpage';
-
+  static const String approvedreportview = '/approvedreportview';
+  static const String rejectreportview = '/rejectreportview';
   static const String giftvoucherpage = '/giftvoucherpage';
   static const String digitalTabView = '/digitalTabView';
   static const String VoucherTabView = '/VoucherTabView';
@@ -24,12 +25,15 @@ class RouteName {
   static const String addDepartment = '/addDepartment';
   static const String addrole = '/addrole';
   static const String editrole = '/editrole';
+  static const String helpandsupport  = '/helpandsupport';
   static const String notification = '/notification';
   static const String statement = '/statement';
+
   static const String employeedetails = '/employeedetails';
   static const String employeelist = '/employeelist';
   static const String employeeview = '/employeeview';
   static const String addemployee = '/addemployee';
   static const String pullbackfund = '/pullbackfund';
   static const String pullbackfund2 = '/pullbackfund2';
+
 }

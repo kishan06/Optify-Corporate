@@ -1,3 +1,18 @@
+
+import 'package:Optifii_Corporate/MainScreen/RequestTab/ApprovedTab/ApprovedReportView/ApprovedReportView.dart';
+import 'package:Optifii_Corporate/MainScreen/RequestTab/RejectedTab/RejectedReportView/RejectReportView.dart';
+import 'package:Optifii_Corporate/SideBar/Help%20&%20Support/HelpAndSupport.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddDepartment.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/AddRole.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/EditRole.dart';
+import 'package:Optifii_Corporate/SideBar/ManageDepartment_Role/ManageDepartment_Role.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTabView/DigitalTabView.dart';
+import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTabView/VoucherTabView.dart';
+import 'package:Optifii_Corporate/MainScreen/RequestTab/ReimburseTab/ReportPage/ReportPage.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/ViewReport.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/ViewWallets.dart';
+import 'package:Optifii_Corporate/SideBar/Wallets/Wallets.dart';
+import 'package:get/get.dart';
 import 'package:Optifii_Corporate/MainScreen/DashboardTab/Dashboard.dart';
 import 'package:Optifii_Corporate/MainScreen/EmployeeTab/AddEmployee.dart';
 import 'package:Optifii_Corporate/MainScreen/EmployeeTab/Employee.dart';
@@ -34,7 +49,8 @@ import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
-  static List<GetPage<dynamic>>? appRoutes() => [
+  static List<GetPage<dynamic>>? appRoutes() =>
+      [
         // Onboarding
         GetPage(
           name: RouteName.splashScreen,
@@ -97,9 +113,14 @@ class AppRoutes {
           page: () => const RequestPage(),
         ),
         GetPage(
-          name: RouteName.reportpage,
-          page: () => const Reportpage(),
-        ),
+            name: RouteName.reportpage,
+            page: () => const Reportpage()),
+        GetPage(
+            name: RouteName.approvedreportview,
+            page: () => const Approvedreportview()),
+        GetPage(
+            name: RouteName.rejectreportview,
+            page: () => const RejectReportView()),
         // Request Pages
         // GiftVoucher Pages
         GetPage(
@@ -115,6 +136,7 @@ class AppRoutes {
           page: () => const Vouchertabview(),
         ),
         // GiftVoucher Pages
+
         // Sidebar
         GetPage(
           name: RouteName.profile,
@@ -168,6 +190,9 @@ class AppRoutes {
           name: RouteName.editrole,
           page: () => const EditRole(),
         ),
+        GetPage(
+            name: RouteName.helpandsupport,
+            page:  ()=> const HelpAndSupport()),
         // Sidebar
         GetPage(
           name: RouteName.notification,

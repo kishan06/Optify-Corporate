@@ -22,7 +22,7 @@ class MangeApprove extends StatefulWidget {
 class _MangeApproveState extends State<MangeApprove> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       backgroundColor: Colors.white,
       appBar: CommonAppbar(titleTxt: 'Approvers'),
       body: SingleChildScrollView(
@@ -43,7 +43,7 @@ class _MangeApproveState extends State<MangeApprove> {
                   Padding(
                     padding: EdgeInsets.all(16),
                     child: SizedBox(
-                      height: 600, // Height for the TabBarView
+                      height: MediaQuery.of(context).size.height * 0.9, // Height for the TabBarView
                       child: TabBarView(
                         children: [
                           Expense(),

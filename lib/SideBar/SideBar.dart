@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:Optifii_Corporate/SideBar/ReportsPage/Report.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonModal.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
@@ -169,6 +170,7 @@ class CustomDrawer extends StatelessWidget {
                   ],
                 ),
                 InkWell(
+
                   onTap: onSwitchAccount,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -320,7 +322,9 @@ class CustomDrawer extends StatelessWidget {
                           ),
                         ),
                         title: text16w400c344054('Gift & Reward'),
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(RouteName.giftvoucherpage);
+                        },
                       ),
                       sizedBoxHeight(10),
                       Row(
@@ -346,7 +350,7 @@ class CustomDrawer extends StatelessWidget {
                           ),
                         ),
                         title: text16w400c344054('Reports'),
-                        onTap: () {},
+                        onTap: () {Get.to(Report());},
                       ),
                       sizedBoxHeight(10),
                       ListTile(
@@ -363,7 +367,9 @@ class CustomDrawer extends StatelessWidget {
                           ),
                         ),
                         title: text16w400c344054('Help & support'),
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(RouteName.helpandsupport);
+                        },
                       ),
                       sizedBoxHeight(10),
                       const Divider(),
@@ -399,7 +405,7 @@ class CustomDrawer extends StatelessWidget {
 
 class SwitchAccountDrawer extends StatelessWidget {
   const SwitchAccountDrawer({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(

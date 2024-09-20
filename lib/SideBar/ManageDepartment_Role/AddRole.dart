@@ -398,7 +398,7 @@ class _AddRoleState extends State<AddRole> {
                     child: GestureDetector(
                       onTap: () {},
                       child: Container(
-                        height: 50.h,
+                        height: 40.h,
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -408,12 +408,14 @@ class _AddRoleState extends State<AddRole> {
                             Radius.circular(10),
                           ),
                         ),
-                        child: const Text(
-                          'Cancel',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xff6311CB),
-                            fontSize: 16,
+                        child: Center(
+                          child: const Text(
+                            'Cancel',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xff6311CB),
+                              fontSize: 16,
+                            ),
                           ),
                         ),
                       ),
