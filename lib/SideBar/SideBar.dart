@@ -18,8 +18,6 @@ class SideBar extends StatefulWidget {
 
 class _SideBarState extends State<SideBar> {
   final GlobalKey<ScaffoldState> _scaffoldKey1 = GlobalKey<ScaffoldState>();
-  final GlobalKey<ScaffoldState> _switchDrawerKey =
-      GlobalKey<ScaffoldState>(); // Key for switch account sidebar
 
   @override
   Widget build(BuildContext context) {
@@ -28,20 +26,13 @@ class _SideBarState extends State<SideBar> {
       key: _scaffoldKey1,
       backgroundColor: const Color(0xFFFFFFFF),
       extendBody: true,
-      drawer: CustomDrawer(onSwitchAccount: () {
-        // Close the main drawer and open the switch account drawer
-        Navigator.pop(context); // Close the main drawer
-        Future.delayed(const Duration(milliseconds: 300), () {
-          _switchDrawerKey.currentState?.openDrawer(); // Open the switch drawer
-        });
-      }),
+      drawer: CustomDrawer(),
       body: Stack(
         children: [
           Scaffold(
-            key: _switchDrawerKey, // The key for the secondary drawer
+            key: _scaffoldKey1, // The key for the secondary drawer
             backgroundColor: Colors.transparent,
-            drawer:
-                const SwitchAccountDrawer(), // Add the switch account drawer
+            // Add the switch account drawer
             body: Column(
               children: [
                 Container(
@@ -124,9 +115,9 @@ class _SideBarState extends State<SideBar> {
 }
 
 class CustomDrawer extends StatelessWidget {
-  final VoidCallback onSwitchAccount;
-
-  CustomDrawer({super.key, required this.onSwitchAccount});
+  CustomDrawer({
+    super.key,
+  });
   final GlobalKey<ScaffoldState> _scaffoldKey1 = GlobalKey<ScaffoldState>();
 
   @override
@@ -170,8 +161,10 @@ class CustomDrawer extends StatelessWidget {
                   ],
                 ),
                 InkWell(
-
-                  onTap: onSwitchAccount,
+                  onTap: () {
+                    _scaffoldKey1.currentState
+                        ?.openDrawer(); // Open the main drawer
+                  },
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -350,7 +343,9 @@ class CustomDrawer extends StatelessWidget {
                           ),
                         ),
                         title: text16w400c344054('Reports'),
-                        onTap: () {Get.to(Report());},
+                        onTap: () {
+                          Get.to(const Report());
+                        },
                       ),
                       sizedBoxHeight(10),
                       ListTile(
@@ -405,7 +400,7 @@ class CustomDrawer extends StatelessWidget {
 
 class SwitchAccountDrawer extends StatelessWidget {
   const SwitchAccountDrawer({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
