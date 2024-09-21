@@ -14,37 +14,35 @@ class Report extends StatefulWidget {
 class _ReportState extends State<Report> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.secondary,
       appBar: CommonAppbar(titleTxt: 'Reports'),
-      body: Expanded(
-        child: DefaultTabController(
-          length: 3,
-          child: Column(
-            children: [
-              CommonTabBar(tabs: [
-                Tab(text: 'Expense'),
-                Tab(text: 'Benefit'),
-                Tab(text: 'Gift & Voucher'),
-              ]),
-              Expanded( // Wrap TabBarView with Expanded to avoid overflow
-                child: TabBarView(
-                  children: [
-                    ExpenseTab(),
-                    Center(child: Text('benefit'),),
-                    Center(child: Text('Gift and voucher'),),
-
-
-                  ],
-                ),
-              )
-            ],
-          ),
+      body: DefaultTabController(
+        length: 3,
+        child: Column(
+          children: [
+            CommonTabBar(tabs: [
+              Tab(text: 'Expense'),
+              Tab(text: 'Benefit'),
+              Tab(text: 'Gift & Voucher'),
+            ]),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.9,
+              child: TabBarView(
+                children: [
+                  ExpenseTab(),
+                  Center(
+                    child: Text('benefit'),
+                  ),
+                  Center(
+                    child: Text('Gift and voucher'),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
   }
 }
-
-
-

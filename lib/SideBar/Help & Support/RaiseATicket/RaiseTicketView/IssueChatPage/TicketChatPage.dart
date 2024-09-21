@@ -104,7 +104,9 @@ class _TicketChatPageState extends State<TicketChatPage> {
                                 end: Alignment.centerRight),
                             border: Border.all(width: 0.5, color: Color(0xffD3D3D3)),
                             borderRadius: BorderRadius.circular(10)),
-                        child: Expanded(child: text16w400c5B5B5B('Lorem ipsum dolor sit amet, consecture consectetur adipiscing elit, sed do euio eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci')),
+                        child: Expanded(
+                          flex: 5,
+                          child: text16w400c5B5B5B('Lorem ipsum dolor sit amet, consecture consectetur adipiscing elit, sed do euio eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci')),
                       ),
                     )
                   ],

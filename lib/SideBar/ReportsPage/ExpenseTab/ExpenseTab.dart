@@ -38,131 +38,134 @@ class _ExpenseTabState extends State<ExpenseTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                    onPressed: () async {
-                      final selected = await showMonthPicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(1970),
-                        lastDate: DateTime(2050),
-                      );
-                    },
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
-                        ),
-                      ),
-                      padding: MaterialStateProperty.all(EdgeInsets.zero),
-                      elevation: MaterialStateProperty.all(0),
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                    ),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFffffff),
-                        border: Border.all(
-                          color: const Color(0xffD4D6D9),
-                        ),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(6),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.calendar_today,
-                                color: Color(0xff000000),
-                              ),
-                              sizedBoxWidth(5.w),
-                              text16w400cblack('Weekly'),
-                            ],
+      body: Expanded(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        final selected = await showMonthPicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1970),
+                          lastDate: DateTime(2050),
+                        );
+                      },
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero,
                           ),
-                          const Icon(
-                            Icons.arrow_drop_down,
-                            color: Color(0xff000000),
+                        ),
+                        padding: MaterialStateProperty.all(EdgeInsets.zero),
+                        elevation: MaterialStateProperty.all(0),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFffffff),
+                          border: Border.all(
+                            color: const Color(0xffD4D6D9),
                           ),
-                        ],
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(6),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.calendar_today,
+                                  color: Color(0xff000000),
+                                ),
+                                sizedBoxWidth(5.w),
+                                text16w400cblack('Weekly'),
+                              ],
+                            ),
+                            const Icon(
+                              Icons.arrow_drop_down,
+                              color: Color(0xff000000),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
+                    sizedBoxWidth(10.w),
+                    const Expanded(child: ExportDropdown()),
+                  ],
+                ),
+                sizedBoxHeight(44.h),
+                text20w400c343C6A('Spend summary'),
+                _buildSplineChart(),
+                sizedBoxHeight(24.h),
+                text20w400c343C6A('Total spent by category'),
+                DoughnutChartWithCenterText(
+                  dataSource: _chartData,
+                  tooltipBehavior: _tooltipBehavior,
+                  totalAmount: _calculateTotalSpent(),
+                ),
+
+                // Horizontal scrolling for the first Row
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      const CustomColorAndCategory(
+                        color: Color(0xff4C78FF),
+                        categoryName: 'Food',
+                      ),
+                      sizedBoxWidth(30.w),
+                      const CustomColorAndCategory(
+                        color: Color(0xffFF82AC),
+                        categoryName: 'Travel',
+                      ),
+                      sizedBoxWidth(30.w),
+                      const CustomColorAndCategory(
+                        color: Color(0xff4C78FF),
+                        categoryName: 'Telecom',
+                      ),
+                    ],
                   ),
-                  sizedBoxWidth(10.w),
-                  const Expanded(child: ExportDropdown()),
-                ],
-              ),
-              sizedBoxHeight(44.h),
-              text20w400c343C6A('Spend summary'),
-              _buildSplineChart(),
-              sizedBoxHeight(24.h),
-              text20w400c343C6A('Total spent by category'),
-              DoughnutChartWithCenterText(
-                dataSource: _chartData,
-                tooltipBehavior: _tooltipBehavior,
-                totalAmount: _calculateTotalSpent(),
-              ),
-
-              // Horizontal scrolling for the first Row
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    const CustomColorAndCategory(
-                      color: Color(0xff4C78FF),
-                      categoryName: 'Food',
-                    ),
-                    sizedBoxWidth(30.w),
-                    const CustomColorAndCategory(
-                      color: Color(0xffFF82AC),
-                      categoryName: 'Travel',
-                    ),
-                    sizedBoxWidth(30.w),
-                    const CustomColorAndCategory(
-                      color: Color(0xff4C78FF),
-                      categoryName: 'Telecom',
-                    ),
-                  ],
                 ),
-              ),
 
-              sizedBoxHeight(15.h),
+                sizedBoxHeight(15.h),
 
-              // Horizontal scrolling for the second Row
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    const CustomColorAndCategory(
-                      color: Color(0xff16DBCC),
-                      categoryName: 'Fuel',
-                    ),
-                    sizedBoxWidth(30.w),
-                    const CustomColorAndCategory(
-                      color: Color(0xffFFBB38),
-                      categoryName: 'Gift & voucher',
-                    ),
-                    sizedBoxWidth(30.w),
-                    const CustomColorAndCategory(
-                      color: Color(0xff16DBCC),
-                      categoryName: 'Books & periodicals',
-                    ),
-                  ],
+                // Horizontal scrolling for the second Row
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      const CustomColorAndCategory(
+                        color: Color(0xff16DBCC),
+                        categoryName: 'Fuel',
+                      ),
+                      sizedBoxWidth(30.w),
+                      const CustomColorAndCategory(
+                        color: Color(0xffFFBB38),
+                        categoryName: 'Gift & voucher',
+                      ),
+                      sizedBoxWidth(30.w),
+                      const CustomColorAndCategory(
+                        color: Color(0xff16DBCC),
+                        categoryName: 'Books & periodicals',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
