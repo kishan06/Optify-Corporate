@@ -26,6 +26,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: 300.w,
       backgroundColor: Colors.white,
       shape: const ContinuousRectangleBorder(
         borderRadius: BorderRadius.zero,
@@ -248,7 +249,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           ),
                           title: text16w400c344054('Reports'),
                           onTap: () {
-                            Get.to(const Report());
+                            Get.toNamed(RouteName.sideBarReportPage);
                           },
                         ),
                         sizedBoxHeight(10),
