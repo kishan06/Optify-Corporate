@@ -2,6 +2,7 @@
 
 import 'package:Optifii_Corporate/SideBar/ReportsPage/Report.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonModal.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
@@ -221,7 +222,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           ),
                           title: text16w400c344054('Gift & Reward'),
                           onTap: () {
-                            Get.toNamed(RouteName.giftvoucherpage);
+                            mainController.updateTab(3);
+                            Get.back();
                           },
                         ),
                         sizedBoxHeight(10),

@@ -19,7 +19,7 @@ class _TicketChatPageState extends State<TicketChatPage> {
       backgroundColor: AppColors.secondary,
       appBar: CommonAppbar(titleTxt: 'Raise a Ticket'),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,16 +30,17 @@ class _TicketChatPageState extends State<TicketChatPage> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Color(0xffE4E4E4)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xffDCDCDC),
-                          offset: Offset(0, 4),
-                          blurRadius: 10,
-                        )
-                      ]),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(width: 1, color: Color(0xffE4E4E4)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xffDCDCDC),
+                        offset: Offset(0, 4),
+                        blurRadius: 10,
+                      ),
+                    ],
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
@@ -49,7 +50,7 @@ class _TicketChatPageState extends State<TicketChatPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             text20w400c141414('Issue :'),
-                            text20w400c5B5B5B('App loading issue')
+                            text20w400c5B5B5B('App loading issue'),
                           ],
                         ),
                         sizedBoxHeight(16.h),
@@ -58,7 +59,7 @@ class _TicketChatPageState extends State<TicketChatPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             text20w400c141414('Ticket :'),
-                            text20w400c5B5B5B(' TA-97868')
+                            text20w400c5B5B5B(' TA-97868'),
                           ],
                         ),
                         sizedBoxHeight(16.h),
@@ -67,7 +68,7 @@ class _TicketChatPageState extends State<TicketChatPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             text20w400c141414('Assigned To :'),
-                            text20w400c5B5B5B(' Aman')
+                            text20w400c5B5B5B(' Aman'),
                           ],
                         ),
                         sizedBoxHeight(16.h),
@@ -76,7 +77,7 @@ class _TicketChatPageState extends State<TicketChatPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             text18w400c5E0FCD('Status :'),
-                            text18w400c5E0FCD(' IN progress')
+                            text18w400c5E0FCD(' IN progress'),
                           ],
                         ),
                       ],
@@ -94,52 +95,51 @@ class _TicketChatPageState extends State<TicketChatPage> {
                       width: 43.w,
                     ),
                     sizedBoxWidth(8.w),
-                    Expanded(
+                    Flexible(
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16 ,vertical: 12 ),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [Color(0xffF8F8F8), Color(0xffF9F4FF)],
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight),
-                            border: Border.all(width: 0.5, color: Color(0xffD3D3D3)),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Expanded(
-                          flex: 5,
-                          child: text16w400c5B5B5B('Lorem ipsum dolor sit amet, consecture consectetur adipiscing elit, sed do euio eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci')),
+                          gradient: LinearGradient(
+                            colors: [
+                              Color(0xffF8F8F8),
+                              Color(0xffF9F4FF),
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          border:
+                              Border.all(width: 0.5, color: Color(0xffD3D3D3)),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: text16w400c5B5B5B(
+                            'Lorem ipsum dolor sit amet, consecture consectetur adipiscing elit, sed do euio eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci'),
                       ),
-                    )
+                    ),
                   ],
-                )
-
-              ],),
-
-
-
+                ),
+              ],
+            ),
             InkWell(
-              onTap: () {
-              },
+              onTap: () {},
               child: Container(
                 height: 60.h,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    gradient: LinearGradient(colors: [
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: LinearGradient(
+                    colors: [
                       Color(0xff3725EA),
                       Color(0xff5E0FCD),
                     ],
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight
-                    )
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
                 ),
-
                 child: Center(
                   child: text18w400cffffff('Reply'),
                 ),
               ),
-            )
-
-
-
+            ),
           ],
         ),
       ),
