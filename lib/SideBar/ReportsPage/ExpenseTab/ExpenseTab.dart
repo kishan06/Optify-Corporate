@@ -38,7 +38,8 @@ class _ExpenseTabState extends State<ExpenseTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Expanded(
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.9,
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
@@ -333,7 +334,7 @@ class _ExportDropdownState extends State<ExportDropdown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45.h,
+      height: 44.h,
       padding: const EdgeInsets.symmetric(horizontal: 4),
       width: double.infinity,
       decoration: BoxDecoration(
@@ -346,7 +347,20 @@ class _ExportDropdownState extends State<ExportDropdown> {
       child: DropdownButton<String>(
         value: _selectedExportOption,
         isExpanded: true,
-        hint: const Text('Export'),
+        hint: Row(
+          children: [
+            _getExportIcon('Export'),
+            SizedBox(width: 4.w),
+            Text(
+              'Export',
+              style: TextStyle(
+                  fontSize: 14.sp,
+                  color: Color(0xFF1C1C1C),
+                  fontFamily: 'Gilroy-Medium',
+                  fontWeight: FontWeight.w400),
+            ),
+          ],
+        ),
         onChanged: (String? newValue) {
           setState(() {
             _selectedExportOption = newValue!;
@@ -370,6 +384,8 @@ class _ExportDropdownState extends State<ExportDropdown> {
           height: 2,
           color: Colors.transparent,
         ),
+        icon:
+            const Icon(Icons.arrow_drop_down), // Optional: Custom dropdown icon
       ),
     );
   }
