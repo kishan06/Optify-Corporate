@@ -3,6 +3,7 @@
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/DigitalTab/DigitalTab.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/PhysicalTab/PhysicalTab.dart';
 import 'package:Optifii_Corporate/MainScreen/GiftVoucherTab/VoucherTab/VoucherTab.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
@@ -28,14 +29,7 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
       extendBody: true,
       bottomNavigationBar:
           CustomBottomNavigationBar(mainController: mainController),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70),
-        child: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: const Color(0xff6311CB),
-          title: text24w400cffffff('Gift card & voucher'),
-        ),
-      ),
+      appBar: const CommonAppbar(titleTxt: 'Gift card & voucher'),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -44,7 +38,6 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
             child: text18w400c0B0B0B('Application status'),
           ),
           sizedBoxHeight(22),
-
           const DefaultTabController(
             length: 3,
             child: Column(

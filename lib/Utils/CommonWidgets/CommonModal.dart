@@ -145,7 +145,7 @@ withdrawwidget() {
                           ),
                         ),
                         child: Text(
-                          'Yes, I do',
+                          'Yes, Withdraw',
                           style: TextStyle(
                             color: const Color(0xffFFFFFF),
                             fontSize: 16.sp,

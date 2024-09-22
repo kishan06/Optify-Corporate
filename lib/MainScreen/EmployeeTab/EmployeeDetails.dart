@@ -309,11 +309,11 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
             ),
           ),
           sizedBoxHeight(30.h),
-          Expanded(
+          const Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const EmployeeListDetails(
+                  EmployeeListDetails(
                     tite1: 'Department',
                     tite2: 'Mobile number',
                     tite3: 'Member since',
@@ -325,10 +325,8 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                     header: 'Reethik thota',
                     mail: 'WD-0956',
                   ),
-                  sizedBoxHeight(5.h),
-                  const Divider(),
-                  sizedBoxHeight(5.h),
-                  const EmployeeListDetails(
+                  Divider(),
+                  EmployeeListDetails(
                     tite1: 'Department',
                     tite2: 'Mobile number',
                     tite3: 'Member since',
@@ -340,10 +338,8 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                     header: 'Reethik thota',
                     mail: 'WD-0956',
                   ),
-                  sizedBoxHeight(5.h),
-                  const Divider(),
-                  sizedBoxHeight(5.h),
-                  const EmployeeListDetails(
+                  Divider(),
+                  EmployeeListDetails(
                     tite1: 'Department',
                     tite2: 'Mobile number',
                     tite3: 'Member since',
@@ -355,10 +351,8 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                     header: 'Reethik thota',
                     mail: 'WD-0956',
                   ),
-                  sizedBoxHeight(5.h),
-                  const Divider(),
-                  sizedBoxHeight(5.h),
-                  const EmployeeListDetails(
+                  Divider(),
+                  EmployeeListDetails(
                     tite1: 'Department',
                     tite2: 'Mobile number',
                     tite3: 'Member since',
@@ -370,10 +364,8 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                     header: 'Reethik thota',
                     mail: 'WD-0956',
                   ),
-                  sizedBoxHeight(5.h),
-                  const Divider(),
-                  sizedBoxHeight(5.h),
-                  const EmployeeListDetails(
+                  Divider(),
+                  EmployeeListDetails(
                     tite1: 'Department',
                     tite2: 'Mobile number',
                     tite3: 'Member since',
@@ -385,10 +377,8 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                     header: 'Reethik thota',
                     mail: 'WD-0956',
                   ),
-                  sizedBoxHeight(5.h),
-                  const Divider(),
-                  sizedBoxHeight(5.h),
-                  const EmployeeListDetails(
+                  Divider(),
+                  EmployeeListDetails(
                     tite1: 'Department',
                     tite2: 'Mobile number',
                     tite3: 'Member since',
@@ -400,10 +390,8 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                     header: 'Reethik thota',
                     mail: 'WD-0956',
                   ),
-                  sizedBoxHeight(5.h),
-                  const Divider(),
-                  sizedBoxHeight(5.h),
-                  const EmployeeListDetails(
+                  Divider(),
+                  EmployeeListDetails(
                     tite1: 'Department',
                     tite2: 'Mobile number',
                     tite3: 'Member since',
@@ -415,9 +403,7 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
                     header: 'Reethik thota',
                     mail: 'WD-0956',
                   ),
-                  sizedBoxHeight(5.h),
-                  const Divider(),
-                  sizedBoxHeight(5.h),
+                  Divider(),
                 ],
               ),
             ),
@@ -601,8 +587,8 @@ class EmployeeListDetails extends StatelessWidget {
       expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       titleBorderRadius: BorderRadius.circular(0),
-      titlePadding: const EdgeInsets.all(16.0),
-      contentPadding: const EdgeInsets.all(16.0),
+      titlePadding: const EdgeInsets.all(10.0),
+      contentPadding: const EdgeInsets.all(10.0),
       showAccordion: false,
       margin: const EdgeInsets.all(0),
     );

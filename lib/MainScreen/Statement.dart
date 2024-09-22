@@ -104,78 +104,82 @@ class _ViewStatementState extends State<ViewStatement> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6),
+                      Expanded(
+                        flex: 1,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6),
+                              ),
                             ),
+                            padding: MaterialStateProperty.all(EdgeInsets.zero),
+                            elevation: MaterialStateProperty.all(0),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.transparent),
                           ),
-                          padding: MaterialStateProperty.all(EdgeInsets.zero),
-                          elevation: MaterialStateProperty.all(0),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.transparent),
-                        ),
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFffffff),
-                            border: Border.all(
-                              color: const Color(0xffD4D6D9),
+                          child: Container(
+                            height: 50.h,
+                            // padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFffffff),
+                              border: Border.all(
+                                color: const Color(0xffD4D6D9),
+                              ),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(6),
+                              ),
                             ),
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(6),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.calendar_today,
-                                    color: Color(0xff000000),
-                                  ),
-                                  const SizedBox(width: 5),
-                                  DropdownButtonHideUnderline(
-                                    child: DropdownButton<String>(
-                                      value: selectedOption,
-                                      items: options
-                                          .map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(
-                                            value,
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                        );
-                                      }).toList(),
-                                      onChanged: (String? newValue) {
-                                        setState(() {
-                                          selectedOption = newValue!;
-                                        });
-                                      },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.calendar_today,
+                                      color: Color(0xff000000),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              const Icon(
-                                Icons.arrow_drop_down,
-                                color: Color(0xff000000),
-                              ),
-                            ],
+                                    const SizedBox(width: 5),
+                                    DropdownButtonHideUnderline(
+                                      child: DropdownButton<String>(
+                                        value: selectedOption,
+                                        items: options
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(
+                                              value,
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          );
+                                        }).toList(),
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            selectedOption = newValue!;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Color(0xff000000),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       sizedBoxWidth(10.w),
-                      const Expanded(child: ExportDropdown()),
+                      const Expanded(flex: 1, child: ExportDropdown()),
                     ],
                   ),
                   const statements(),
