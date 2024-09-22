@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mat_month_picker_dialog/mat_month_picker_dialog.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import '../../../Utils/CommonWidgets/Custombutton.dart';
+
 import '../../../Utils/CommonWidgets/Text.dart';
 import '../../../Utils/CommonWidgets/sized_box.dart';
 import '../Common/CustomColorAndCategory.dart';
@@ -165,6 +165,7 @@ class _ExpenseTabState extends State<ExpenseTab> {
                     ],
                   ),
                 ),
+                sizedBoxHeight(100.h),
               ],
             ),
           ),
@@ -175,7 +176,7 @@ class _ExpenseTabState extends State<ExpenseTab> {
 
   /// Build the Spline chart showing the spending summary
   Widget _buildSplineChart() {
-    return Container(
+    return SizedBox(
       height: 287.h,
       child: SfCartesianChart(
         primaryXAxis: const CategoryAxis(),
@@ -230,7 +231,8 @@ class DoughnutChartWithCenterText extends StatelessWidget {
   final double totalAmount;
 
   /// Creates a [DoughnutChartWithCenterText] widget.
-  DoughnutChartWithCenterText({
+  const DoughnutChartWithCenterText({
+    super.key,
     required this.dataSource,
     required this.tooltipBehavior,
     required this.totalAmount,
@@ -238,7 +240,7 @@ class DoughnutChartWithCenterText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 270.h,
       child: Stack(
         children: [
@@ -355,7 +357,7 @@ class _ExportDropdownState extends State<ExportDropdown> {
               'Export',
               style: TextStyle(
                   fontSize: 14.sp,
-                  color: Color(0xFF1C1C1C),
+                  color: const Color(0xFF1C1C1C),
                   fontFamily: 'Gilroy-Medium',
                   fontWeight: FontWeight.w400),
             ),

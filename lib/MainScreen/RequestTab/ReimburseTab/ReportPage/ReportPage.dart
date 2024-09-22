@@ -44,7 +44,7 @@ class _ReportpageState extends State<Reportpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.secondary,
-      appBar: CommonAppbar(titleTxt: 'Report for June 2024'),
+      appBar: const CommonAppbar(titleTxt: 'Report for June 2024'),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
@@ -80,7 +80,7 @@ class _ReportpageState extends State<Reportpage> {
                 // Reject Button
                 Expanded(
                   child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       Get.to(RejectDialogBox());
                     },
                     child: Container(
@@ -161,7 +161,7 @@ class _ReportpageState extends State<Reportpage> {
                                   builder: (BuildContext context) {
                                     return Dialog(
                                       insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Color.fromRGBO(
+                                      backgroundColor: const Color.fromRGBO(
                                           0, 0, 0, 0.73), // Dark background
                                       child: Stack(
                                         children: [
@@ -347,8 +347,8 @@ ApproveDialogBox() {
           return Center(
             child: Container(
               width: double.infinity,
-             height: MediaQuery.of(context).size.height * 0.4,
-              padding: EdgeInsets.all(24),
+              height: MediaQuery.of(context).size.height * 0.4,
+              padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10.3),
@@ -365,37 +365,39 @@ ApproveDialogBox() {
                       SizedBox(
                         height: 49.43.h,
                         width: 49.43.w,
-                        child: Image.asset('assets/images/png/approved icon.png'),
+                        child:
+                            Image.asset('assets/images/png/approved icon.png'),
                       ),
 
                       SizedBox(height: 8.h),
 
-                      text22w400c101828('Are you sure you want to approve request?'),
+                      text22w400c101828(
+                          'Are you sure you want to approve request?'),
 
-                      SizedBox(height: 8.h), // Adjust space based on screen height
+                      SizedBox(
+                          height: 8.h), // Adjust space based on screen height
 
-                      text16w400c667085('Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipi'),
+                      text16w400c667085(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipi'),
                     ],
                   ),
-
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-
                       Flexible(
                         child: InkWell(
-                          onTap: (){
+                          onTap: () {
                             Get.back();
                           },
                           child: Container(
                             height: 49.59.h,
-
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
-                              color: Color(0xffF0F0F0),
+                              color: const Color(0xffF0F0F0),
                             ),
-                            child: Center(child: text18w500c344054('No, I don’t')),
+                            child:
+                                Center(child: text18w500c344054('No, I don’t')),
                           ),
                         ),
                       ),
@@ -405,12 +407,14 @@ ApproveDialogBox() {
                       // Yes button
                       Flexible(
                         child: Container(
-                          height: 45.59.h, // Button height as 6% of screen height
+                          height:
+                              45.59.h, // Button height as 6% of screen height
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color: AppColors.primary,
                           ),
-                          child: Center(child: text18w500cffffff('Yes, approve')),
+                          child:
+                              Center(child: text18w500cffffff('Yes, approve')),
                         ),
                       ),
                     ],
@@ -426,7 +430,6 @@ ApproveDialogBox() {
   );
 }
 
-
 RejectDialogBox() {
   Get.dialog(
     Dialog(
@@ -437,7 +440,7 @@ RejectDialogBox() {
             child: Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.4,
-              padding: EdgeInsets.all(24),
+              padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10.3),
@@ -462,15 +465,16 @@ RejectDialogBox() {
 
                   // TextField with a fixed height of 121px (approximately 121.0)
                   SizedBox(
-                    height: 121.0, // Fixed height
+                    height: 130.h, // Fixed height
                     child: TextField(
                       maxLines: null, // Allow for multiline input
-                      expands: true,  // Expands to fill the parent size
+                      expands: true, // Expands to fill the parent size
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.3),
                         ),
-                        contentPadding: EdgeInsets.all(12), // Adjust padding if needed
+                        contentPadding: const EdgeInsets.all(
+                            12), // Adjust padding if needed
                       ),
                     ),
                   ),
@@ -483,13 +487,14 @@ RejectDialogBox() {
                       onPressed: () {
                         Get.back();
                       },
-                      child: text18w500cffffff('Submit'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary, // Replace with your primary color
+                        backgroundColor: AppColors
+                            .primary, // Replace with your primary color
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.3),
                         ),
                       ),
+                      child: text18w500cffffff('Submit'),
                     ),
                   ),
                 ],
@@ -502,5 +507,3 @@ RejectDialogBox() {
     barrierDismissible: false, // Prevent dismissing by tapping outside
   );
 }
-
-

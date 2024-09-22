@@ -62,7 +62,7 @@ class _EmployeePageState extends State<EmployeePage> {
                     sizedBoxHeight(20.h),
                     InkWell(
                       onTap: () {
-                        Get.toNamed(RouteName.employeelist);
+                        Get.toNamed(RouteName.employeedetails);
                       },
                       child: Container(
                         padding: const EdgeInsets.all(15),
@@ -123,7 +123,6 @@ class _EmployeePageState extends State<EmployeePage> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             text20w600c252C32('Sales'),
-                                            text14w400c718EBF('Sr Manager'),
                                           ],
                                         ),
                                       ],
@@ -155,7 +154,6 @@ class _EmployeePageState extends State<EmployeePage> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             text20w600c252C32('Design'),
-                                            text14w400c718EBF('Sr Manager'),
                                           ],
                                         ),
                                       ],
@@ -187,7 +185,6 @@ class _EmployeePageState extends State<EmployeePage> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             text20w600c252C32('IT'),
-                                            text14w400c718EBF('Sr Manager'),
                                           ],
                                         ),
                                       ],
@@ -264,7 +261,11 @@ class _EmployeePageState extends State<EmployeePage> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             text18w400c3A3472('Employee KYC'),
-                            text16w400cpurple('View Employees')
+                            InkWell(
+                                onTap: () {
+                                  Get.toNamed(RouteName.employeelist);
+                                },
+                                child: text16w400cpurple('View Employees'))
                           ],
                         ),
                         sizedBoxHeight(20.h),

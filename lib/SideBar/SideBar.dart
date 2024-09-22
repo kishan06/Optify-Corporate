@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 
-import 'package:Optifii_Corporate/SideBar/ReportsPage/Report.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonModal.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
@@ -140,6 +139,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                             ],
                           ),
                         ),
+                        const Divider(),
                         sizedBoxHeight(10),
                         Row(
                           children: [

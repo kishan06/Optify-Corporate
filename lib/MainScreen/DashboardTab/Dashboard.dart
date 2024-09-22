@@ -6,8 +6,10 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonCard.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:mat_month_picker_dialog/mat_month_picker_dialog.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -79,7 +81,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         sizedBoxWidth(10.w),
                         GestureDetector(
                           onTap: () {
-                            // Add your navigation logic here for notifications
+                            Get.toNamed(RouteName.notification);
                           },
                           child: Image.asset(
                             'assets/images/png/bell.png',
@@ -117,25 +119,37 @@ class _DashboardPageState extends State<DashboardPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         text20w400c343C6A('Balance Overview'),
-                        sizedBoxWidth(8.w),
                         InkWell(
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
                           onTap: () {
-                            setState(() {
-                              showicon = !showicon; // Toggle the state
-                            });
+                            Get.toNamed(RouteName.statement);
                           },
-                          child: Image.asset(
-                            showicon
-                                ? 'assets/images/png/eye.png'
-                                : 'assets/images/png/hide.png',
-                            width: showicon ? 20.w : 18.w,
+                          child: Row(
+                            children: [
+                              const Text(
+                                'View statement',
+                                style: TextStyle(
+                                  color: Color(
+                                    0xff3725EA,
+                                  ),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              sizedBoxWidth(5.w),
+                              const Icon(
+                                Icons.arrow_forward_rounded,
+                                color: Color(
+                                  0xff3725EA,
+                                ),
+                                size: 16,
+                              ),
+                            ],
                           ),
-                        ),
+                        )
                       ],
                     ),
                     sizedBoxHeight(5.h),
@@ -145,25 +159,15 @@ class _DashboardPageState extends State<DashboardPage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            text16w400c585858('Balance Overview'),
-                            showicon
-                                ? text24w600cblack('₹ 1,50,000')
-                                : Image.asset(
-                                    'assets/images/png/emoji.png',
-                                    width: 40.w,
-                                  ),
+                            text16w400c585858('Used amount'),
+                            text24w600cblack('₹ 1,50,000')
                           ],
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             text16w400c585858('Available amount'),
-                            showicon
-                                ? text24w600cblack('₹ 25,600')
-                                : Image.asset(
-                                    'assets/images/png/emoji.png',
-                                    width: 40.w,
-                                  ),
+                            text24w600cblack('₹ 25,600')
                           ],
                         ),
                       ],
@@ -471,7 +475,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 8),
+                          SizedBox(height: 25.h),
                           Column(
                             children: [
                               Row(
