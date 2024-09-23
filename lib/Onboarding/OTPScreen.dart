@@ -97,7 +97,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 Center(
                   child: GestureDetector(
                     onTap: () {},
-                    child: text16w400cpurple('Resend OTP'),
+                    child: text16w400cpurple('Resend code'),
                   ),
                 )
               ],

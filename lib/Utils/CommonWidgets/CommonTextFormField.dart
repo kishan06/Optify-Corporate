@@ -117,13 +117,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         style: const TextStyle(color: Color(0xffCDCDCD)),
         keyboardType: widget.texttype,
-        // validator: widget.validator ??
-        //     (value) {
-        //       if (value == null || value.isEmpty) {
-        //         return "Empty value";
-        //       }
-        //       return null;
-        //     },
+        validator: widget.validator ??
+            (value) {
+              if (value == null || value.isEmpty) {
+                return "Empty value";
+              }
+              return null;
+            },
         inputFormatters: widget.inputFormatters,
         onChanged: (value) {
           widget.onInput?.call(value);

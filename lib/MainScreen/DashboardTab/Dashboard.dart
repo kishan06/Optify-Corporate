@@ -159,14 +159,14 @@ class _DashboardPageState extends State<DashboardPage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            text16w400c585858('Used amount'),
+                            text16w400cA5A5A5('Used amount'),
                             text24w600cblack('₹ 1,50,000')
                           ],
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            text16w400c585858('Available amount'),
+                            text16w400cA5A5A5('Available amount'),
                             text24w600cblack('₹ 25,600')
                           ],
                         ),
@@ -175,7 +175,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     sizedBoxHeight(5.h),
                     Row(
                       children: [
-                        text16w400c585858('Total amount -'),
+                        text14w400cAAAAAA('Total amount -'),
                         text16w400cblack(' ₹ 2,00,000'),
                       ],
                     ),

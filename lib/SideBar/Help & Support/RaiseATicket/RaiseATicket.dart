@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:Optifii_Corporate/SideBar/Help%20&%20Support/RaiseATicket/RaiseTicketView/RaiseTicketView.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTextFormField.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
@@ -30,10 +31,10 @@ class _RaiseATicketState extends State<RaiseATicket> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.secondary,
-      appBar:const CommonAppbar(titleTxt: 'Raise a Ticket'),
+      appBar: const CommonAppbar(titleTxt: 'Raise a Ticket'),
       body: SingleChildScrollView(
         child: Padding(
-          padding:const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Form(
             key: _formKey,
             child: Column(
@@ -46,50 +47,35 @@ class _RaiseATicketState extends State<RaiseATicket> {
                   children: [
                     text18w400c141414('Subject'),
                     sizedBoxHeight(10.h),
-                    TextFormField(
+                    CustomTextFormField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter subject';
                         }
                         return null;
                       },
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Color(0xffCDCDCD)),
-                        borderRadius: BorderRadius.circular(8),
-                      )),
                     ),
                     sizedBoxHeight(24.h),
                     text18w400c141414('Type of issue'),
                     sizedBoxHeight(10.h),
-                    TextFormField(
+                    CustomTextFormField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter issue';
                         }
                         return null;
                       },
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Color(0xffCDCDCD)),
-                        borderRadius: BorderRadius.circular(8),
-                      )),
                     ),
                     sizedBoxHeight(24.h),
                     text18w400c141414('Subtype'),
                     sizedBoxHeight(10.h),
-                    TextFormField(
+                    CustomTextFormField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter subtype';
                         }
                         return null;
                       },
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Color(0xffCDCDCD)),
-                        borderRadius: BorderRadius.circular(8),
-                      )),
                     ),
                     sizedBoxHeight(24.h),
                     text18w400c141414('Add Screenshot'),
@@ -110,8 +96,8 @@ class _RaiseATicketState extends State<RaiseATicket> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
-                            border:
-                                Border.all(width: 1, color: const Color(0xffCDCDCD))),
+                            border: Border.all(
+                                width: 1, color: const Color(0xffCDCDCD))),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 8),
@@ -119,7 +105,7 @@ class _RaiseATicketState extends State<RaiseATicket> {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                    color:const  Color(0xffF2E9FE),
+                                    color: const Color(0xffF2E9FE),
                                     borderRadius: BorderRadius.circular(8)),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -138,10 +124,10 @@ class _RaiseATicketState extends State<RaiseATicket> {
                       Container(
                         height: 200.h,
                         width: double.infinity,
-                        decoration:  BoxDecoration(
+                        decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
-                            border:
-                                 Border.all(width: 1, color: const Color(0xffCDCDCD))),
+                            border: Border.all(
+                                width: 1, color: const Color(0xffCDCDCD))),
                         child: Image.file(
                           File(_pickedImagePath!),
                           fit: BoxFit.cover,
@@ -153,22 +139,14 @@ class _RaiseATicketState extends State<RaiseATicket> {
                     sizedBoxHeight(10.h),
                     SizedBox(
                       height: 129.h, // Fixed height
-                      child: TextFormField(
+                      child: CustomTextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter Summari';
                           }
                           return null;
                         },
-                        maxLines: null, // Allow for multiline input
-                        expands: true, // Expands to fill the parent size
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          contentPadding:
-                              const EdgeInsets.all(12), // Adjust padding if needed
-                        ),
+                        maxlines: 5,
                       ),
                     ),
                   ],
@@ -176,15 +154,19 @@ class _RaiseATicketState extends State<RaiseATicket> {
                 sizedBoxHeight(73.h),
                 InkWell(
                   onTap: () {
-                    if (_formKey.currentState?.validate() == true) {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      // If the form is valid, navigate to the next screen.
                       Get.to(const RaiseTicketView());
+                    } else {
+                      // If the form is not valid, you can show an alert or just print a message.
+                      print('Form is not valid');
                     }
                   },
                   child: Container(
                     height: 60.h,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        gradient:const  LinearGradient(
+                        gradient: const LinearGradient(
                             colors: [
                               Color(0xff3725EA),
                               Color(0xff5E0FCD),
