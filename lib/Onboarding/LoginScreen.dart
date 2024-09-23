@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 
+import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
-import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
-import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:remove_emoji_input_formatter/remove_emoji_input_formatter.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,14 +17,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final numberController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool isValidPhoneNumber(String phoneNumber) {
     final RegExp phoneNumberExpression = RegExp(r"^0{10}$");
     return !phoneNumberExpression.hasMatch(phoneNumber);
   }
 
+  final TextEditingController numberController = TextEditingController();
+  String? validationError;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,84 +57,79 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 8.h),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFFF6F6F6),
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color(0xFFF6F6F6),
-                      ),
-                      child: IntrinsicHeight(
-                        child: Row(
-                          children: [
-                            const Text(
-                              '+91',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(width: 10),
-                            const VerticalDivider(
-                              thickness: 2,
-                              indent: 5.5,
-                              endIndent: 5.5,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 22),
-                                child: TextFormField(
-                                  textAlignVertical: TextAlignVertical.center,
-                                  cursorColor: const Color(0xff000000),
-                                  enableInteractiveSelection: false,
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  controller: numberController,
-                                  textCapitalization: TextCapitalization.none,
-                                  decoration: const InputDecoration(
-                                    hintStyle: TextStyle(
-                                        color: Color(0xff000000),
-                                        fontSize: 14,
-                                        fontFamily: "Helvetica",
-                                        fontWeight: FontWeight.w400),
-                                    hintText: "Enter your phone number'",
-                                    border: InputBorder.none,
-                                    contentPadding: EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 20),
-                                  ),
-                                  style: const TextStyle(
-                                    color: Color(0xffCDCDCD),
-                                  ),
-                                  keyboardType: TextInputType.phone,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Enter your phone number';
-                                    } else if (!RegExp(r'^(?:[+0]9)?[0-9]{10}$')
-                                        .hasMatch(value)) {
-                                      return 'Enter a valid phone number';
-                                    } else if (isValidPhoneNumber(value)) {
-                                      return 'Phone number cannot contain 10 zeros';
-                                    }
-                                    return null;
-                                  },
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(10),
-                                    RemoveEmojiInputFormatter(),
-                                    FilteringTextInputFormatter.allow(
-                                        RegExp('[0-9]')),
-                                  ],
+                      child: Stack(
+                        children: [
+                          const Positioned(
+                            top: 13,
+                            left: 15,
+                            child: Row(
+                              children: [
+                                Text(
+                                  '+91',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                          TextFormField(
+                            textAlignVertical: TextAlignVertical.center,
+                            cursorColor: const Color(0xff000000),
+                            enableInteractiveSelection: false,
+                            controller: numberController,
+                            textCapitalization: TextCapitalization.none,
+                            decoration: InputDecoration(
+                              hintStyle: const TextStyle(
+                                color: Color(0xffCDCDCD),
+                                fontSize: 14,
+                                fontFamily: "Helvetica",
+                                fontWeight: FontWeight.w400,
+                              ),
+                              hintText: "Enter your phone number",
+                              border: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(0xffE0E0E0)), // Default border
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(10)), // Rounded corners
+                              ),
+                              contentPadding: const EdgeInsets.only(
+                                  left: 50, top: 10, right: 10, bottom: 10),
+                              errorText:
+                                  validationError, // Show error message if any
+                            ),
+                            style: const TextStyle(
+                              color: Color(0xff000000),
+                            ),
+                            keyboardType: TextInputType.phone,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(10),
+                              RemoveEmojiInputFormatter(),
+                              FilteringTextInputFormatter.allow(
+                                  RegExp('[0-9]')),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(height: 50.h),
                     CustomButton(
                       text: "Send OTP",
                       ontap: () {
-                        Get.toNamed(RouteName.otpScreen);
-                      }, // Call the sendOTP function
+                        String phoneNumber = numberController.text;
+
+                        setState(() {
+                          if (phoneNumber.isEmpty) {
+                            validationError = 'Enter your phone number';
+                          } else if (!RegExp(r'^(?:[+0]9)?[0-9]{10}$')
+                              .hasMatch(phoneNumber)) {
+                            validationError = 'Enter a valid phone number';
+                          } else {
+                            validationError = null;
+                            Get.toNamed(RouteName.otpScreen);
+                          }
+                        });
+                      },
                     ),
                     SizedBox(height: 40.h),
                     Row(
