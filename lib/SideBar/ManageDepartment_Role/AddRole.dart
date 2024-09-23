@@ -3,9 +3,11 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTextFormField.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
+import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:remove_emoji_input_formatter/remove_emoji_input_formatter.dart';
 
 class AddRole extends StatefulWidget {
   const AddRole({super.key});
@@ -27,13 +29,35 @@ class _AddRoleState extends State<AddRole> {
     'Sales'
   ];
   String _selectedDepartment = 'Select department';
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final List<String> _grade = ['Select grade', 'A', 'B', 'C', 'D', 'E'];
-  final String _selectedGrade = 'Select grade';
+  String _selectedGrade = 'Select grade';
+  final TextEditingController _nameController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
 
   bool expense = false;
   bool benefit = false;
   bool withdraw = false;
+
+  bool _validateCheckboxes() {
+    // Ensure at least one checkbox is selected
+    return expense || benefit || withdraw;
+  }
+
+  void _handleCheckboxChanged(String category) {
+    setState(() {
+      // Reset all checkboxes, then select the chosen one
+      expense = category == 'expense';
+      benefit = category == 'benefit';
+      withdraw = category == 'withdraw';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,396 +67,454 @@ class _AddRoleState extends State<AddRole> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              text20w400cblack('Add role'),
-              const CustomTextFormField(
-                hintText: 'Enter role',
-              ),
-              SizedBox(height: 20.h),
-              text20w400cblack('Add department'),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xFFDFDEDE),
-                    ),
-                    borderRadius: const BorderRadius.all(Radius.circular(10))),
-                child: DropdownButton<String>(
-                  value: _selectedDepartment, // Currently selected item
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      _selectedDepartment = newValue!;
-                    });
-                  },
-                  items: _departments
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  style: const TextStyle(color: Colors.black, fontSize: 16),
-                  underline: Container(
-                    height: 2,
-                    color: Colors.transparent,
-                  ),
-                ),
-              ),
-              SizedBox(height: 20.h),
-              text20w400cblack('Grade/level'),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xFFDFDEDE),
-                    ),
-                    borderRadius: const BorderRadius.all(Radius.circular(10))),
-                child: DropdownButton<String>(
-                  value: _selectedDepartment, // Currently selected item
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      _selectedDepartment = newValue!;
-                    });
-                  },
-                  items: _departments
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  style: const TextStyle(color: Colors.black, fontSize: 16),
-                  underline: Container(
-                    height: 2,
-                    color: Colors.transparent,
-                  ),
-                ),
-              ),
-              SizedBox(height: 20.h),
-              text18w400cblack(
-                  'Will this role be an Wallet Approver as well? If yes select category.'),
-              sizedBoxHeight(10),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Checkbox(
-                        value: expense,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            expense = value ??
-                                false; // Update state when checkbox is toggled
-                          });
-                        },
-                      ),
-                      text18w400c848484('Expense wallet approver')
-                    ],
-                  ),
-                  sizedBoxHeight(20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Checkbox(
-                        value: benefit,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            benefit = value ??
-                                false; // Update state when checkbox is toggled
-                          });
-                        },
-                      ),
-                      text18w400c848484('Benefit wallet approver')
-                    ],
-                  ),
-                  sizedBoxHeight(20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Checkbox(
-                        value: withdraw,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            withdraw = value ??
-                                false; // Update state when checkbox is toggled
-                          });
-                        },
-                      ),
-                      text18w400c848484('Withdraw funds approver')
-                    ],
-                  ),
-                ],
-              ),
-              sizedBoxHeight(20),
-              Visibility(
-                visible: isGiveAccess,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      width: double.infinity,
-                      height: 150.h,
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(122, 196, 188, 206),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Icon(
-                            Icons.settings,
-                            color: Color(0xff6211CB),
-                          ),
-                          sizedBoxWidth(10),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                text16w400c344054('Advance accesss'),
-                                sizedBoxHeight(10),
-                                Expanded(
-                                  child: text16w400c585858(
-                                      'Enable this to provide Corporate dashboard access to this role.'),
-                                ),
-                                SizedBox(
-                                  width: 150.w,
-                                  height: 40.h,
-                                  child: CustomButton(
-                                    text: 'Give Access',
-                                    ontap: () {
-                                      accesswidget();
-                                    },
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
+          child: Form(
+            key: _formKey, // Form key for validation
+
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                text20w400cblack('Add role'),
+                CustomTextFormField(
+                  texttype: TextInputType.text,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
                   ],
+                  hintText: 'Enter role',
+                  controller: _nameController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter role";
+                    }
+                    return null;
+                  },
                 ),
-              ),
-              sizedBoxHeight(20),
-              Visibility(
-                visible: isAdvanceAccessVisible,
-                child: Column(
+                SizedBox(height: 20.h),
+                text20w400cblack('Select department'),
+                DropdownButtonFormField<String>(
+                  value: _selectedDepartment, // Currently selected item
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedDepartment = newValue!;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == 'Select department') {
+                      return "Please select a department";
+                    }
+                    return null;
+                  },
+                  items: _departments
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  style: const TextStyle(color: Colors.black, fontSize: 16),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(
+                        color: Color(0xffCDCDCD),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(
+                        color: Color(0xff6211CB),
+                        width: 2,
+                      ),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(
+                        color: Colors.red,
+                        width: 2,
+                      ),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(
+                        color: Colors.red,
+                        width: 2,
+                      ),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                text20w400cblack('Grade/level'),
+                DropdownButtonFormField<String>(
+                  value: _selectedGrade,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedGrade = newValue!;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == 'Select grade') {
+                      return "Please select a grade";
+                    }
+                    return null;
+                  },
+                  items: _grade.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  style: const TextStyle(color: Colors.black, fontSize: 16),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(
+                        color: Color(0xffCDCDCD),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(
+                        color: Color(0xff6211CB),
+                        width: 2,
+                      ),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(
+                        color: Colors.red,
+                        width: 2,
+                      ),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(
+                        color: Colors.red,
+                        width: 2,
+                      ),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                text18w400cblack(
+                    'Will this role be an Wallet Approver as well? If yes select category.'),
+                sizedBoxHeight(10),
+                Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        text18w400c3A3472('Advance access'),
+                        Checkbox(
+                          value: expense,
+                          onChanged: (bool? value) {
+                            _handleCheckboxChanged('expense');
+                          },
+                        ),
+                        text18w400c848484('Expense wallet approver'),
                       ],
                     ),
-                    sizedBoxHeight(20.h),
-                    SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.all(10),
-                            alignment: Alignment.centerLeft,
-                            decoration: const BoxDecoration(
-                              color: Color(0xffF9FAFB),
-                            ),
-                            child: text20w400c3725EA("Manage human resource"),
-                          ),
-                          sizedBoxHeight(20.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Dashboard'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Manage Human Resources'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('OptiFii Expense'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('OptiFii Benefit'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          sizedBoxHeight(30.h),
-                          Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.all(10),
-                            alignment: Alignment.centerLeft,
-                            decoration: const BoxDecoration(
-                              color: Color(0xffF9FAFB),
-                            ),
-                            child: text20w400c3725EA("Expense Management"),
-                          ),
-                          sizedBoxHeight(20.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Dashboard'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Card program'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Wallet program'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10.h),
-                          sizedBoxHeight(30.h),
-                          Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.all(10),
-                            alignment: Alignment.centerLeft,
-                            decoration: const BoxDecoration(
-                              color: Color(0xffF9FAFB),
-                            ),
-                            child: text20w400c3725EA("Benefit Management"),
-                          ),
-                          sizedBoxHeight(20.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Dashboard'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Card program'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Wallet program'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10.h),
-                          sizedBoxHeight(30.h),
-                          Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.all(10),
-                            alignment: Alignment.centerLeft,
-                            decoration: const BoxDecoration(
-                              color: Color(0xffF9FAFB),
-                            ),
-                            child: text20w400c3725EA("Gifting Management"),
-                          ),
-                          sizedBoxHeight(20.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Dashboard'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('My voucher'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          sizedBoxHeight(10.h),
-                          sizedBoxHeight(30.h),
-                          Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.all(10),
-                            alignment: Alignment.centerLeft,
-                            decoration: const BoxDecoration(
-                              color: Color(0xffF9FAFB),
-                            ),
-                            child: text20w400c3725EA("Setting"),
-                          ),
-                          sizedBoxHeight(20.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Setting'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                          const Divider(),
-                          sizedBoxHeight(10.h),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: text18w400c3A3472('Support & tickets'),
-                          ),
-                          const MultipleCheckboxGroups(),
-                        ],
-                      ),
+                    sizedBoxHeight(20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Checkbox(
+                          value: benefit,
+                          onChanged: (bool? value) {
+                            _handleCheckboxChanged('benefit');
+                          },
+                        ),
+                        text18w400c848484('Benefit wallet approver'),
+                      ],
+                    ),
+                    sizedBoxHeight(20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Checkbox(
+                          value: withdraw,
+                          onChanged: (bool? value) {
+                            _handleCheckboxChanged('withdraw');
+                          },
+                        ),
+                        text18w400c848484('Withdraw funds approver'),
+                      ],
                     ),
                   ],
                 ),
-              ),
-              sizedBoxHeight(20),
-              sizedBoxHeight(50.h),
-              Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        height: 40.h,
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color(0xff6311CB),
-                          ),
-                          borderRadius: const BorderRadius.all(
+                sizedBoxHeight(20),
+                Visibility(
+                  visible: isGiveAccess,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        width: double.infinity,
+                        height: 150.h,
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(122, 196, 188, 206),
+                          borderRadius: BorderRadius.all(
                             Radius.circular(10),
                           ),
                         ),
-                        child: Center(
-                          child: const Text(
-                            'Cancel',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xff6311CB),
-                              fontSize: 16,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Icon(
+                              Icons.settings,
+                              color: Color(0xff6211CB),
+                            ),
+                            sizedBoxWidth(10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  text16w400c344054('Advance accesss'),
+                                  sizedBoxHeight(10),
+                                  Expanded(
+                                    child: text16w400c585858(
+                                        'Enable this to provide Corporate dashboard access to this role.'),
+                                  ),
+                                  SizedBox(
+                                    width: 150.w,
+                                    height: 40.h,
+                                    child: CustomButton(
+                                      text: 'Give Access',
+                                      ontap: () {
+                                        accesswidget();
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                sizedBoxHeight(20),
+                Visibility(
+                  visible: isAdvanceAccessVisible,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          text18w400c3A3472('Advance access'),
+                        ],
+                      ),
+                      sizedBoxHeight(20.h),
+                      SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(10),
+                              alignment: Alignment.centerLeft,
+                              decoration: const BoxDecoration(
+                                color: Color(0xffF9FAFB),
+                              ),
+                              child: text20w400c3725EA("Manage human resource"),
+                            ),
+                            sizedBoxHeight(20.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Dashboard'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child:
+                                  text18w400c3A3472('Manage Human Resources'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('OptiFii Expense'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('OptiFii Benefit'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            sizedBoxHeight(30.h),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(10),
+                              alignment: Alignment.centerLeft,
+                              decoration: const BoxDecoration(
+                                color: Color(0xffF9FAFB),
+                              ),
+                              child: text20w400c3725EA("Expense Management"),
+                            ),
+                            sizedBoxHeight(20.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Dashboard'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Card program'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Wallet program'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10.h),
+                            sizedBoxHeight(30.h),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(10),
+                              alignment: Alignment.centerLeft,
+                              decoration: const BoxDecoration(
+                                color: Color(0xffF9FAFB),
+                              ),
+                              child: text20w400c3725EA("Benefit Management"),
+                            ),
+                            sizedBoxHeight(20.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Dashboard'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Card program'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Wallet program'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10.h),
+                            sizedBoxHeight(30.h),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(10),
+                              alignment: Alignment.centerLeft,
+                              decoration: const BoxDecoration(
+                                color: Color(0xffF9FAFB),
+                              ),
+                              child: text20w400c3725EA("Gifting Management"),
+                            ),
+                            sizedBoxHeight(20.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Dashboard'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('My voucher'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            sizedBoxHeight(10.h),
+                            sizedBoxHeight(30.h),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(10),
+                              alignment: Alignment.centerLeft,
+                              decoration: const BoxDecoration(
+                                color: Color(0xffF9FAFB),
+                              ),
+                              child: text20w400c3725EA("Setting"),
+                            ),
+                            sizedBoxHeight(20.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Setting'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                            const Divider(),
+                            sizedBoxHeight(10.h),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: text18w400c3A3472('Support & tickets'),
+                            ),
+                            const MultipleCheckboxGroups(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                sizedBoxHeight(50.h),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          height: 50.h,
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color(0xff6311CB),
+                            ),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(5),
+                            ),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Cancel',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xff6311CB),
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  sizedBoxWidth(15.h),
-                  Expanded(
-                    flex: 1,
-                    child: CustomButton(
-                      text: 'Save & proceed',
-                      ontap: () {},
+                    sizedBoxWidth(15.h),
+                    Expanded(
+                      flex: 1,
+                      child: CustomButton(
+                        text: 'Save & proceed',
+                        ontap: () {
+                          if (_formKey.currentState!.validate() &&
+                              _validateCheckboxes()) {
+                            Get.toNamed(RouteName.managedepartment_role);
+                          } else {
+                            print('Please select a wallet approver category.');
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              sizedBoxHeight(30.h),
-            ],
+                  ],
+                ),
+                sizedBoxHeight(30.h),
+              ],
+            ),
           ),
         ),
       ),
