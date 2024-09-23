@@ -16,7 +16,7 @@ class RaiseTicketView extends StatefulWidget {
 class _RaiseTicketViewState extends State<RaiseTicketView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xffffffff),
       extendBody: true,

@@ -14,17 +14,19 @@ class ContactUs extends StatefulWidget {
 }
 
 class _ContactUsState extends State<ContactUs> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.secondary,
       appBar: CommonAppbar(titleTxt: 'Contact Us'),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Form(
+            key: _formKey,
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -46,13 +48,20 @@ class _ContactUsState extends State<ContactUs> {
                         sizedBoxHeight(4.h),
                         text18w400c686868(
                             'We are here to help you, so, please get in'),
-                        text18w400c686868('touch with us.')
+                        text18w400c686868('touch with us.'),
                       ],
                     )
                   ],
                 ),
                 sizedBoxHeight(40.h),
-                TextField(
+                // Subject field
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your subject';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffDBDBDB)),
@@ -65,7 +74,18 @@ class _ContactUsState extends State<ContactUs> {
                           color: Color(0xff848484))),
                 ),
                 sizedBoxHeight(18.h),
-                TextField(
+                // Email field with validation
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your email';
+                    } else if (!RegExp(
+                            r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$') // Corrected regex
+                        .hasMatch(value)) {
+                      return 'Please enter a valid email address';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffDBDBDB)),
@@ -78,24 +98,40 @@ class _ContactUsState extends State<ContactUs> {
                           color: Color(0xff848484))),
                 ),
                 sizedBoxHeight(18.h),
-                TextField(
+                // Message field
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your message';
+                    }
+                    return null;
+                  },
                   maxLines: 5,
-
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xffDBDBDB)),
                           borderRadius: BorderRadius.circular(6)),
-                      hintText: 'Subject',
+                      hintText: 'Type your message',
                       hintStyle: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
                           fontFamily: 'TT Commons',
                           color: Color(0xff848484))),
                 ),
+                sizedBoxHeight(40.h),
+                // Send button
+                CustomButton(
+                    ontap: () {
+                      if (_formKey.currentState!.validate()) {
+                        print('Form validated successfully');
+                        // Add form submission logic here
+                      }
+                    },
+                    text: 'Send'),
+                sizedBoxHeight(20.h), // Extra space after button
               ],
             ),
-            CustomButton(text: 'Send')
-          ],
+          ),
         ),
       ),
     );

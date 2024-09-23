@@ -17,9 +17,9 @@ class _TicketChatPageState extends State<TicketChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.secondary,
-      appBar: CommonAppbar(titleTxt: 'Raise a Ticket'),
+      appBar: const CommonAppbar(titleTxt: 'Raise a Ticket'),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,9 +32,9 @@ class _TicketChatPageState extends State<TicketChatPage> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(width: 1, color: Color(0xffE4E4E4)),
+                    border: Border.all(width: 1, color: const Color(0xffE4E4E4)),
                     boxShadow: [
-                      BoxShadow(
+                      const BoxShadow(
                         color: Color(0xffDCDCDC),
                         offset: Offset(0, 4),
                         blurRadius: 10,
@@ -98,9 +98,9 @@ class _TicketChatPageState extends State<TicketChatPage> {
                     Flexible(
                       child: Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                            const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                             colors: [
                               Color(0xffF8F8F8),
                               Color(0xffF9F4FF),
@@ -109,7 +109,7 @@ class _TicketChatPageState extends State<TicketChatPage> {
                             end: Alignment.centerRight,
                           ),
                           border:
-                              Border.all(width: 0.5, color: Color(0xffD3D3D3)),
+                              Border.all(width: 0.5, color: const Color(0xffD3D3D3)),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: text16w400c5B5B5B(
@@ -126,7 +126,7 @@ class _TicketChatPageState extends State<TicketChatPage> {
                 height: 60.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [
                       Color(0xff3725EA),
                       Color(0xff5E0FCD),
