@@ -575,10 +575,11 @@ class EmployeeListDetails extends StatelessWidget {
             ],
           ),
           InkWell(
-              onTap: () {
-                Get.toNamed(RouteName.employeeview);
-              },
-              child: text16w400c6311CB('View details')),
+            onTap: () {
+              Get.toNamed(RouteName.employeeview);
+            },
+            child: text16w400c6311CB('View details'),
+          ),
         ],
       ),
       collapsedIcon: const SizedBox.shrink(), // Remove collapsed icon

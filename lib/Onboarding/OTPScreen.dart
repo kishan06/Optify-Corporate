@@ -1,5 +1,3 @@
-// ignore_for_file: file_names, library_private_types_in_public_api
-
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
@@ -19,17 +17,30 @@ class OTPScreen extends StatefulWidget {
 
 class _OTPScreenState extends State<OTPScreen> {
   final TextEditingController _otpController = TextEditingController();
+  String? otpValidationError;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
-          elevation: 0,
-          child: CustomButton(
-            text: 'Verify',
-            ontap: () {
-              Get.toNamed(RouteName.mainscreen);
-            },
-          )),
+        elevation: 0,
+        child: CustomButton(
+          text: 'Verify',
+          ontap: () {
+            String otp = _otpController.text;
+            setState(() {
+              if (otp.isEmpty) {
+                otpValidationError = "Please enter the verification code.";
+              } else if (otp.length < 4) {
+                otpValidationError = "OTP length should be at least 4 digits.";
+              } else {
+                otpValidationError = null; // No error, proceed
+                Get.toNamed(RouteName.mainscreen); // Navigate to main screen
+              }
+            });
+          },
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -44,14 +55,14 @@ class _OTPScreenState extends State<OTPScreen> {
                     'Enter the verification code that we sent to 8457754115'),
                 SizedBox(height: 100.h),
                 PinCodeTextField(
-                  validator: (value) {
-                    if (value != null && value.isEmpty) {
-                      return "Please Enter verification code";
-                    } else if (value != null && value.length < 4) {
-                      return "OTP length should be at least 4";
-                    }
-                    return null;
-                  },
+                  // validator: (value) {
+                  //   if (value != null && value.isEmpty) {
+                  //     return "Please enter the verification code.";
+                  //   } else if (value != null && value.length < 4) {
+                  //     return "OTP length should be at least 4 digits.";
+                  //   }
+                  //   return null;
+                  // },
                   keyboardType: TextInputType.number,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(RegExp('[0-9]')),
@@ -79,7 +90,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   onCompleted: (v) {},
                   onChanged: (value) {
                     setState(() {
-                      // currentText = value;
+                      otpValidationError = null; // Reset error on change
                     });
                   },
                   cursorColor: Colors.black,
@@ -93,6 +104,14 @@ class _OTPScreenState extends State<OTPScreen> {
                   },
                   appContext: context,
                 ),
+                if (otpValidationError != null)
+                  Text(
+                    otpValidationError!,
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 14.sp,
+                    ),
+                  ),
                 sizedBoxHeight(20.h),
                 Center(
                   child: GestureDetector(

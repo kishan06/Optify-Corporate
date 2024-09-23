@@ -6,7 +6,6 @@ class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
     this.validator,
-    this.textEditingController,
     this.hintText,
     this.leadingIcon,
     this.prefixIconColor = const Color(0xFF737373),
@@ -22,10 +21,13 @@ class CustomTextFormField extends StatefulWidget {
     this.onTap,
     this.textCapV,
     this.suffixIcon,
+    this.controller,
+    this.initialValue,
   });
 
   final dynamic validator;
-  final TextEditingController? textEditingController;
+  final dynamic initialValue;
+  final TextEditingController? controller;
   final String? hintText;
   final Widget? leadingIcon;
   final Color prefixIconColor;
@@ -70,11 +72,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         maxLines: widget.maxlines,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         obscureText: obscureText,
-        controller: widget.textEditingController,
+        controller: widget.controller,
         textCapitalization: widget.textCapV ?? TextCapitalization.none,
         decoration: InputDecoration(
           hintStyle: const TextStyle(
-              color: Color(0xff000000),
+              color: Color(0xffCDCDCD),
               fontSize: 14,
               fontFamily: "Helvetica",
               fontWeight: FontWeight.w400),
@@ -115,15 +117,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         ),
-        style: const TextStyle(color: Color(0xffCDCDCD)),
+        style: const TextStyle(color: Color(0xff000000), height: 50),
         keyboardType: widget.texttype,
-        validator: widget.validator ??
-            (value) {
-              if (value == null || value.isEmpty) {
-                return "Empty value";
-              }
-              return null;
-            },
+        validator: widget.validator,
         inputFormatters: widget.inputFormatters,
         onChanged: (value) {
           widget.onInput?.call(value);
