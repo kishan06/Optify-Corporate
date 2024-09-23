@@ -35,8 +35,8 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   File? _image;
+  final _formKey = GlobalKey<FormState>();
 
-  // TextEditingControllers to manage input
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _mobileController = TextEditingController();
@@ -45,9 +45,6 @@ class _EditProfileState extends State<EditProfile> {
   final _companyNameController = TextEditingController();
   final _industryController = TextEditingController();
   final _typeController = TextEditingController();
-
-  // GlobalKey to manage the form state
-  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +57,7 @@ class _EditProfileState extends State<EditProfile> {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Form(
-            key: _formKey, // Add the form key
+            key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,6 +65,7 @@ class _EditProfileState extends State<EditProfile> {
                 Center(
                   child: Stack(
                     children: [
+                      // CircleAvatar for profile image
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -82,45 +80,48 @@ class _EditProfileState extends State<EditProfile> {
                           const SizedBox(height: 20),
                         ],
                       ),
+                      // Positioned overlay with icon and text on top of the image
                       Positioned.fill(
                         bottom: 20,
                         child: Align(
-                          alignment: Alignment.center,
-                          child: GestureDetector(
-                            onTap: () {
-                              _showImageSourceDialog(); // Function to show dialog for picking an image
-                            },
-                            child: Container(
-                              width: 120.w,
-                              height: 130.h,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.3),
-                                borderRadius: BorderRadius.circular(100),
-                              ),
-                              padding: const EdgeInsets.all(10),
-                              child: const Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.camera_alt_outlined,
+                          alignment: Alignment
+                              .center, // Align overlay in the center of the image
+                          child: Container(
+                            width: 120.w,
+                            height: 130.h,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Colors.black
+                                  .withOpacity(0.3), // Semi-transparent overlay
+                              borderRadius: BorderRadius.circular(
+                                  100), // Match with CircleAvatar's radius
+                            ),
+                            padding: const EdgeInsets.all(
+                                10), // Padding around the content
+                            child: const Column(
+                              mainAxisSize: MainAxisSize
+                                  .min, // Minimize the size of the overlay content
+                              children: [
+                                Icon(
+                                  Icons.camera_alt_outlined,
+                                  color: Colors.white,
+                                  size: 15,
+                                ),
+                                SizedBox(
+                                    height: 5), // Spacing between icon and text
+                                Text(
+                                  'Change Photo',
+                                  style: TextStyle(
                                     color: Colors.white,
-                                    size: 15,
+                                    fontSize: 10,
                                   ),
-                                  SizedBox(height: 5),
-                                  Text(
-                                    'Change Photo',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ),
+                      // ElevatedButton to pick image
                     ],
                   ),
                 ),
@@ -128,53 +129,65 @@ class _EditProfileState extends State<EditProfile> {
                 sizedBoxHeight(20.h),
                 text20w400cblack('Name'),
                 CustomTextFormField(
-                  controller: _nameController,
-                  texttype: TextInputType.text,
-                  inputFormatters: [RemoveEmojiInputFormatter()],
-                  hintText: "Shailesh Gupta",
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Name is required';
+                    if (value == null || value!.isEmpty) {
+                      return "Please enter your name";
+                    }
+                    if (value.length < 3) {
+                      return "Name length should be more then 3 charater";
                     }
                     return null;
                   },
+                  texttype: TextInputType.text,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {
+                    return null;
+                  },
+                  hintText: "Shailesh Gupta",
                 ),
                 sizedBoxHeight(15.h),
                 text20w400cblack('Email ID'),
                 CustomTextFormField(
-                  controller: _emailController,
-                  texttype: TextInputType.emailAddress,
-                  inputFormatters: [RemoveEmojiInputFormatter()],
-                  hintText: "reethikthota@wdipl.com",
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Email is required';
-                    }
-                    // Basic email validation
-                    if (!RegExp(
-                            r"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$")
+                    if (value!.isEmpty) {
+                      return 'Please enter your email';
+                    } else if (!RegExp(
+                            r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$') // Corrected regex
                         .hasMatch(value)) {
-                      return 'Enter a valid email';
+                      return 'Please enter a valid email address';
                     }
                     return null;
                   },
+                  texttype: TextInputType.emailAddress,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {
+                    return null;
+                  },
+                  hintText: "reethikthota@wdipl.com",
                 ),
                 sizedBoxHeight(15.h),
                 text20w400cblack('Mobile number'),
                 CustomTextFormField(
-                  controller: _mobileController,
-                  texttype: TextInputType.phone,
-                  inputFormatters: [RemoveEmojiInputFormatter()],
-                  hintText: "+91 7845154578",
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Mobile number is required';
-                    }
-                    if (!RegExp(r"^\+?[0-9]{10,13}$").hasMatch(value)) {
-                      return 'Enter a valid mobile number';
+                    if (value!.isEmpty) {
+                      return 'Please enter your mobile number';
+                    } else if (value.length < 10) {
+                      return 'Mobile number should be 10 digit long';
                     }
                     return null;
                   },
+                  texttype: TextInputType.phone,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {
+                    return null;
+                  },
+                  hintText: "+91 7845154578",
                 ),
                 sizedBoxHeight(15.h),
                 text20w400cblack('Employee ID'),
@@ -184,77 +197,75 @@ class _EditProfileState extends State<EditProfile> {
                   inputFormatters: [RemoveEmojiInputFormatter()],
                   hintText: "WD-7675",
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Employee ID is required';
+                    if (value!.isEmpty) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your employee id';
+                      }
+                      return null;
                     }
+                  },
+                  onInput: (value) {
                     return null;
                   },
                 ),
                 sizedBoxHeight(15.h),
                 text20w400cblack('Member since'),
                 CustomTextFormField(
-                  controller: _memberSinceController,
                   texttype: TextInputType.datetime,
-                  inputFormatters: [RemoveEmojiInputFormatter()],
-                  hintText: "07/12/2022",
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Member since date is required';
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter member data';
                     }
                     return null;
                   },
+                  hintText: "07/12/2022",
                 ),
                 sizedBoxHeight(40.h),
                 text20w600c343C6A('Company Information'),
                 sizedBoxHeight(20.h),
                 text20w400cblack('Company Name'),
                 CustomTextFormField(
-                  controller: _companyNameController,
                   texttype: TextInputType.text,
-                  inputFormatters: [RemoveEmojiInputFormatter()],
-                  hintText: "WDIPL",
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Company name is required';
-                    }
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {
                     return null;
                   },
+                  hintText: "WDIPL",
                 ),
                 sizedBoxHeight(15.h),
                 text20w400cblack('Industry'),
                 CustomTextFormField(
-                  controller: _industryController,
                   texttype: TextInputType.text,
-                  inputFormatters: [RemoveEmojiInputFormatter()],
-                  hintText: "Fintech",
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Industry is required';
-                    }
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {
                     return null;
                   },
+                  hintText: "Fintech",
                 ),
                 sizedBoxHeight(15.h),
                 text20w400cblack('Type'),
                 CustomTextFormField(
-                  controller: _typeController,
                   texttype: TextInputType.text,
-                  inputFormatters: [RemoveEmojiInputFormatter()],
-                  hintText: "Private limited company",
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Company type is required';
-                    }
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {
                     return null;
                   },
+                  hintText: "Private limited company",
                 ),
                 sizedBoxHeight(40.h),
                 CustomButton(
                   text: 'Save',
                   ontap: () {
-                    if (_formKey.currentState!.validate()) {
-                      Get.toNamed(RouteName.profile);
-                    }
+                    Get.toNamed(RouteName.profile);
                   },
                 ),
                 sizedBoxHeight(40.h),

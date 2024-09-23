@@ -1,4 +1,5 @@
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTextFormField.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
@@ -55,27 +56,18 @@ class _ContactUsState extends State<ContactUs> {
                 ),
                 sizedBoxHeight(40.h),
                 // Subject field
-                TextFormField(
+                CustomTextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your subject';
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffDBDBDB)),
-                          borderRadius: BorderRadius.circular(6)),
-                      hintText: 'Subject',
-                      hintStyle: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'TT Commons',
-                          color: Color(0xff848484))),
+                  hintText: 'Subject',
                 ),
                 sizedBoxHeight(18.h),
                 // Email field with validation
-                TextFormField(
+                CustomTextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your email';
@@ -86,37 +78,20 @@ class _ContactUsState extends State<ContactUs> {
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffDBDBDB)),
-                          borderRadius: BorderRadius.circular(6)),
-                      hintText: 'E-mail address',
-                      hintStyle: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'TT Commons',
-                          color: Color(0xff848484))),
+                  hintText: 'E-mail address',
+                  
                 ),
                 sizedBoxHeight(18.h),
                 // Message field
-                TextFormField(
+                CustomTextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your message';
                     }
                     return null;
                   },
-                  maxLines: 5,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xffDBDBDB)),
-                          borderRadius: BorderRadius.circular(6)),
-                      hintText: 'Type your message',
-                      hintStyle: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'TT Commons',
-                          color: Color(0xff848484))),
+                  maxlines: 5,
+                  hintText: 'Type your message',
                 ),
                 sizedBoxHeight(40.h),
                 // Send button
