@@ -46,10 +46,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     text12w400c3725EA('CORPORATE'),
                     const SizedBox(height: 20),
-                    text28w600cblack('Sign In to Optifii corporate'),
+                    text28w600cblack('Sign In to OptiFii corporate'),
                     SizedBox(height: 10.h),
                     text16w400c585858center(
-                        "Welcome to Optifii, it's time to Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+                        "Welcome to OptiFii, it's time to Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
                     SizedBox(height: 50.h),
                     SizedBox(
                       width: double.infinity,

@@ -22,6 +22,7 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   File? _image;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,164 +34,207 @@ class _EditProfileState extends State<EditProfile> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Stack(
-                  children: [
-                    // CircleAvatar for profile image
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          radius: 60,
-                          backgroundImage: _image != null
-                              ? FileImage(_image!) // Display selected image
-                              : const AssetImage('assets/images/png/Avatar.png')
-                                  as ImageProvider, // Default image
-                        ),
-                        const SizedBox(height: 20),
-                      ],
-                    ),
-                    // Positioned overlay with icon and text on top of the image
-                    Positioned.fill(
-                      bottom: 20,
-                      child: Align(
-                        alignment: Alignment
-                            .center, // Align overlay in the center of the image
-                        child: Container(
-                          width: 120.w,
-                          height: 130.h,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: Colors.black
-                                .withOpacity(0.3), // Semi-transparent overlay
-                            borderRadius: BorderRadius.circular(
-                                100), // Match with CircleAvatar's radius
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Stack(
+                    children: [
+                      // CircleAvatar for profile image
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 60,
+                            backgroundImage: _image != null
+                                ? FileImage(_image!) // Display selected image
+                                : const AssetImage(
+                                        'assets/images/png/Avatar.png')
+                                    as ImageProvider, // Default image
                           ),
-                          padding: const EdgeInsets.all(
-                              10), // Padding around the content
-                          child: const Column(
-                            mainAxisSize: MainAxisSize
-                                .min, // Minimize the size of the overlay content
-                            children: [
-                              Icon(
-                                Icons.camera_alt_outlined,
-                                color: Colors.white,
-                                size: 15,
-                              ),
-                              SizedBox(
-                                  height: 5), // Spacing between icon and text
-                              Text(
-                                'Change Photo',
-                                style: TextStyle(
+                          const SizedBox(height: 20),
+                        ],
+                      ),
+                      // Positioned overlay with icon and text on top of the image
+                      Positioned.fill(
+                        bottom: 20,
+                        child: Align(
+                          alignment: Alignment
+                              .center, // Align overlay in the center of the image
+                          child: Container(
+                            width: 120.w,
+                            height: 130.h,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Colors.black
+                                  .withOpacity(0.3), // Semi-transparent overlay
+                              borderRadius: BorderRadius.circular(
+                                  100), // Match with CircleAvatar's radius
+                            ),
+                            padding: const EdgeInsets.all(
+                                10), // Padding around the content
+                            child: const Column(
+                              mainAxisSize: MainAxisSize
+                                  .min, // Minimize the size of the overlay content
+                              children: [
+                                Icon(
+                                  Icons.camera_alt_outlined,
                                   color: Colors.white,
-                                  fontSize: 10,
+                                  size: 15,
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                    height: 5), // Spacing between icon and text
+                                Text(
+                                  'Change Photo',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 10,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    // ElevatedButton to pick image
-                  ],
+                      // ElevatedButton to pick image
+                    ],
+                  ),
                 ),
-              ),
-              text20w600c343C6A('Personal Information'),
-              sizedBoxHeight(20.h),
-              text20w400cblack('Name'),
-              CustomTextFormField(
-                texttype: TextInputType.text,
-                inputFormatters: [
-                  RemoveEmojiInputFormatter(),
-                ],
-                onInput: (value) {},
-                hintText: "Shailesh Gupta",
-              ),
-              sizedBoxHeight(15.h),
-              text20w400cblack('Email ID'),
-              CustomTextFormField(
-                texttype: TextInputType.emailAddress,
-                inputFormatters: [
-                  RemoveEmojiInputFormatter(),
-                ],
-                onInput: (value) {},
-                hintText: "reethikthota@wdipl.com",
-              ),
-              sizedBoxHeight(15.h),
-              text20w400cblack('Mobile number'),
-              CustomTextFormField(
-                texttype: TextInputType.phone,
-                inputFormatters: [
-                  RemoveEmojiInputFormatter(),
-                ],
-                onInput: (value) {},
-                hintText: "+91 7845154578",
-              ),
-              sizedBoxHeight(15.h),
-              text20w400cblack('Employee ID'),
-              CustomTextFormField(
-                texttype: TextInputType.number,
-                inputFormatters: [
-                  RemoveEmojiInputFormatter(),
-                ],
-                onInput: (value) {},
-                hintText: "WD-7675",
-              ),
-              sizedBoxHeight(15.h),
-              text20w400cblack('Member since'),
-              CustomTextFormField(
-                texttype: TextInputType.datetime,
-                inputFormatters: [
-                  RemoveEmojiInputFormatter(),
-                ],
-                onInput: (value) {},
-                hintText: "07/12/2022",
-              ),
-              sizedBoxHeight(40.h),
-              text20w600c343C6A('Company Information'),
-              sizedBoxHeight(20.h),
-              text20w400cblack('Company Name'),
-              CustomTextFormField(
-                texttype: TextInputType.text,
-                inputFormatters: [
-                  RemoveEmojiInputFormatter(),
-                ],
-                onInput: (value) {},
-                hintText: "WDIPL",
-              ),
-              sizedBoxHeight(15.h),
-              text20w400cblack('Industry'),
-              CustomTextFormField(
-                texttype: TextInputType.text,
-                inputFormatters: [
-                  RemoveEmojiInputFormatter(),
-                ],
-                onInput: (value) {},
-                hintText: "Fintech",
-              ),
-              sizedBoxHeight(15.h),
-              text20w400cblack('Type'),
-              CustomTextFormField(
-                texttype: TextInputType.text,
-                inputFormatters: [
-                  RemoveEmojiInputFormatter(),
-                ],
-                onInput: (value) {},
-                hintText: "Private limited company",
-              ),
-              sizedBoxHeight(40.h),
-              CustomButton(
-                text: 'Save',
-                ontap: () {
-                  Get.toNamed(RouteName.profile);
-                },
-              ),
-              sizedBoxHeight(40.h),
-            ],
+                text20w600c343C6A('Personal Information'),
+                sizedBoxHeight(20.h),
+                text20w400cblack('Name'),
+                CustomTextFormField(
+                  validator: (value) {
+                    if (value == null || value!.isEmpty) {
+                      return "Please enter your name";
+                    }
+                    if (value.length < 3) {
+                      return "Name length should be more then 3 charater";
+                    }
+                    return null;
+                  },
+                  texttype: TextInputType.text,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {},
+                  hintText: "Shailesh Gupta",
+                ),
+                sizedBoxHeight(15.h),
+                text20w400cblack('Email ID'),
+                CustomTextFormField(
+                          validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your email';
+                    } else if (!RegExp(
+                            r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$') // Corrected regex
+                        .hasMatch(value)) {
+                      return 'Please enter a valid email address';
+                    }
+                    return null;
+                  },
+                  texttype: TextInputType.emailAddress,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {},
+                  hintText: "reethikthota@wdipl.com",
+                ),
+                sizedBoxHeight(15.h),
+                text20w400cblack('Mobile number'),
+                CustomTextFormField(
+                  validator: (value){
+                    if (value!.isEmpty) {
+                      return 'Please enter your mobile number';
+                      } else if (value.length < 10) {
+                        return 'Mobile number should be 10 digit long';
+                        }
+                        return null;
+                  },
+                  texttype: TextInputType.phone,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {},
+                  hintText: "+91 7845154578",
+                ),
+                sizedBoxHeight(15.h),
+                text20w400cblack('Employee ID'),
+                CustomTextFormField(
+                  validator: (value){
+                    if (value!.isEmpty) {
+                      if(value!.isEmpty){
+                        return 'Please enter your employee id';
+                      }
+                      return null;
+                    }
+                    },
+                  texttype: TextInputType.number,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {},
+                  hintText: "WD-7675",
+                ),
+                sizedBoxHeight(15.h),
+                text20w400cblack('Member since'),
+                CustomTextFormField(
+                  texttype: TextInputType.datetime,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {
+                     if(value.isEmpty){
+                        return 'Please enter member data';
+                      }
+                  },
+                  hintText: "07/12/2022",
+                ),
+                sizedBoxHeight(40.h),
+                text20w600c343C6A('Company Information'),
+                sizedBoxHeight(20.h),
+                text20w400cblack('Company Name'),
+                CustomTextFormField(
+                  texttype: TextInputType.text,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {},
+                  hintText: "WDIPL",
+                ),
+                sizedBoxHeight(15.h),
+                text20w400cblack('Industry'),
+                CustomTextFormField(
+                  texttype: TextInputType.text,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {},
+                  hintText: "Fintech",
+                ),
+                sizedBoxHeight(15.h),
+                text20w400cblack('Type'),
+                CustomTextFormField(
+                  texttype: TextInputType.text,
+                  inputFormatters: [
+                    RemoveEmojiInputFormatter(),
+                  ],
+                  onInput: (value) {},
+                  hintText: "Private limited company",
+                ),
+                sizedBoxHeight(40.h),
+                CustomButton(
+                  text: 'Save',
+                  ontap: () {
+                    Get.toNamed(RouteName.profile);
+                  },
+                ),
+                sizedBoxHeight(40.h),
+              ],
+            ),
           ),
         ),
       ),
