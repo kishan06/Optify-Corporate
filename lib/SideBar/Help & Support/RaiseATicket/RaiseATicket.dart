@@ -26,6 +26,8 @@ class RaiseATicket extends StatefulWidget {
 class _RaiseATicketState extends State<RaiseATicket> {
   final _formKey = GlobalKey<FormState>();
   String? _pickedImagePath;
+  bool _isScreenshotPicked = false; // New flag for screenshot validation
+  String _errorMessage = ''; // For showing an error message
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +90,8 @@ class _RaiseATicketState extends State<RaiseATicket> {
                         if (pickedImage.isNotEmpty) {
                           setState(() {
                             _pickedImagePath = pickedImage;
+                            _isScreenshotPicked = true; // Screenshot picked
+                            _errorMessage = ''; // Clear error message
                           });
                         }
                       },
@@ -100,7 +104,7 @@ class _RaiseATicketState extends State<RaiseATicket> {
                                 width: 1, color: const Color(0xffCDCDCD))),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 8),
+                              horizontal: 10, vertical: 6),
                           child: Wrap(
                             children: [
                               Container(
@@ -109,7 +113,7 @@ class _RaiseATicketState extends State<RaiseATicket> {
                                     borderRadius: BorderRadius.circular(8)),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 18, vertical: 6),
+                                      horizontal: 10, vertical: 6),
                                   child: text18w400c363636('Upload from files'),
                                 ),
                               ),
@@ -119,6 +123,12 @@ class _RaiseATicketState extends State<RaiseATicket> {
                       ),
                     ),
                     sizedBoxHeight(10.h),
+                    // Display error message if no screenshot is picked
+                    if (!_isScreenshotPicked && _errorMessage.isNotEmpty)
+                      Text(
+                        _errorMessage,
+                        style: TextStyle(color: Colors.red),
+                      ),
                     // Display the picked image if available
                     if (_pickedImagePath != null)
                       Container(
@@ -133,21 +143,17 @@ class _RaiseATicketState extends State<RaiseATicket> {
                           fit: BoxFit.cover,
                         ),
                       ),
-
                     sizedBoxHeight(24.h),
                     text18w400c141414('Summarize your issue'),
                     sizedBoxHeight(10.h),
-                    SizedBox(
-                      height: 129.h, // Fixed height
-                      child: CustomTextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter Summari';
-                          }
-                          return null;
-                        },
-                        maxlines: 5,
-                      ),
+                    CustomTextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter issue';
+                        }
+                        return null;
+                      },
+                      maxlines: 5,
                     ),
                   ],
                 ),
@@ -155,10 +161,18 @@ class _RaiseATicketState extends State<RaiseATicket> {
                 InkWell(
                   onTap: () {
                     if (_formKey.currentState?.validate() ?? false) {
-                      // If the form is valid, navigate to the next screen.
-                      Get.to(const RaiseTicketView());
+                      // Validate screenshot before submitting
+                      if (_pickedImagePath == null) {
+                        setState(() {
+                          _errorMessage = 'Please add a screenshot.';
+                          _isScreenshotPicked = false;
+                        });
+                      } else {
+                        // If the form is valid, navigate to the next screen
+                        Get.to(const RaiseTicketView());
+                      }
                     } else {
-                      // If the form is not valid, you can show an alert or just print a message.
+                      // Form is not valid, you can handle it here
                       print('Form is not valid');
                     }
                   },
@@ -177,7 +191,7 @@ class _RaiseATicketState extends State<RaiseATicket> {
                       child: text18w400cffffff('Raise a Ticket'),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -186,3 +200,4 @@ class _RaiseATicketState extends State<RaiseATicket> {
     );
   }
 }
+

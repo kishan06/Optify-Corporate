@@ -71,16 +71,17 @@ class _ContactUsState extends State<ContactUs> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your email';
-                    } else if (!RegExp(
-                            r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$') // Corrected regex
+                    }
+                    // Check for valid email format
+                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$')
                         .hasMatch(value)) {
                       return 'Please enter a valid email address';
                     }
                     return null;
                   },
                   hintText: 'E-mail address',
-                  
                 ),
+
                 sizedBoxHeight(18.h),
                 // Message field
                 CustomTextFormField(

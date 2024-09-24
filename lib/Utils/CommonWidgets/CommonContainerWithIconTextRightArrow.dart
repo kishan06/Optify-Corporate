@@ -9,13 +9,13 @@ class CommonContainerWithIconTextRightArrow extends StatelessWidget {
   final double height;
   final VoidCallback onTap;
 
-
   const CommonContainerWithIconTextRightArrow({
     Key? key,
     required this.text,
     required this.rightIconPath,
     this.height = 64, // Default height
-    required this.leftIconPath, required this.onTap,
+    required this.leftIconPath,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -24,7 +24,7 @@ class CommonContainerWithIconTextRightArrow extends StatelessWidget {
       height: height.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [
             Color(0xFF3725EA),
             Color(0xFFC33FAD),
@@ -34,55 +34,51 @@ class CommonContainerWithIconTextRightArrow extends StatelessWidget {
           end: Alignment.centerRight,
         ),
         boxShadow: [
-          BoxShadow(
+          const BoxShadow(
             color: Color(0xffE9E9E9),
-
             offset: Offset(0, 4),
-
             blurRadius: 10,
           ),
         ],
       ),
       child: Container(
-        margin: EdgeInsets.all(1), // Adjust to control border thickness
+        margin: const EdgeInsets.all(1), // Adjust to control border thickness
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Color(0xffffffff),
+          color: const Color(0xffffffff),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12 , vertical: 23),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
-
               Row(
                 children: [
-
-                  Image.asset(leftIconPath ,    width: 21.w,
-                    height: 21.h,),
-
+                  Image.asset(
+                    leftIconPath,
+                    width: 21.w,
+                    height: 21.h,
+                  ),
                   sizedBoxWidth(8.w),
-
                   Text(
                     text,
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'TT Commons',
-                      color: Color(0xFF141414), // Text color
+                      color: const Color(0xFF141414), // Text color
                     ),
                   ),
-
                 ],
               ),
-
-
               InkWell(
                 onTap: onTap,
-                child: Image.asset(rightIconPath ,   height: 20.h,
-                  width: 20.w,),
+                child: Image.asset(
+                  rightIconPath,
+                  height: 20.h,
+                  width: 20.w,
+                ),
               ),
             ],
           ),
