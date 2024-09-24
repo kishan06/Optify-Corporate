@@ -18,7 +18,7 @@ class _FaqState extends State<Faq> with SingleTickerProviderStateMixin {
       length: 4, // Total number of tabs
       child: Scaffold(
         backgroundColor: AppColors.secondary,
-        appBar: CommonAppbar(titleTxt: 'FAQ'),
+        appBar: const CommonAppbar(titleTxt: 'FAQ'),
         body: Column(
           children: [
             Container(
@@ -29,16 +29,20 @@ class _FaqState extends State<Faq> with SingleTickerProviderStateMixin {
 
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(21),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [Color(0xff3725EA), Color(0xff5E0FCD)],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
                 ),
                 labelColor: Colors.white,
-                unselectedLabelColor: Color(0xff5B5B5B),
+                unselectedLabelColor: const Color(0xff5B5B5B),
                 dividerColor: Colors.transparent,
-                indicatorPadding: EdgeInsets.only(top: 1,right: 8 , bottom: 3 , left: 8), // Adjusted padding to match label
+                indicatorPadding: const EdgeInsets.only(
+                    top: 1,
+                    right: 7,
+                    bottom: 2,
+                    left: 7), // Adjusted padding to match label
                 tabs: [
                   _buildTab('All'),
                   _buildTab('Expense'),
@@ -47,7 +51,7 @@ class _FaqState extends State<Faq> with SingleTickerProviderStateMixin {
                 ],
               ),
             ),
-            Expanded(
+            const Expanded(
               child: TabBarView(
                 children: [
                   AllTab(),
@@ -69,10 +73,12 @@ class _FaqState extends State<Faq> with SingleTickerProviderStateMixin {
       child: Tab(
         child: Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: 16.w,),
+          padding: EdgeInsets.symmetric(
+            horizontal: 16.w,
+          ),
           decoration: BoxDecoration(
             border: Border.all(
-              color: Color(0xffBDBDBD),
+              color: const Color(0xffBDBDBD),
             ),
             borderRadius: BorderRadius.circular(21),
           ),

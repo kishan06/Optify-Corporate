@@ -23,20 +23,19 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffffffff),
-      appBar: CommonAppbar(titleTxt: 'Help & Support'),
+      backgroundColor: const Color(0xffffffff),
+      appBar: const CommonAppbar(titleTxt: 'Help & Support'),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Container(
               height: 64.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
                     Color(0xFF3725EA), // #3725EA
                     Color(0xFFC33FAD), // #C33FAD at 54.54%
@@ -45,7 +44,7 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight, // 90 degrees equivalent
                 ),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Color(0x2BADADAD),
                     // #ADADAD with 17% opacity (2B hex value for opacity)
@@ -56,10 +55,11 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                 ],
               ),
               child: Container(
-                margin: EdgeInsets.all(1), // Adjust to control border thickness
+                margin: const EdgeInsets.all(
+                    1), // Adjust to control border thickness
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [
                       Color(0xffFFDDF9), // #FFDDF9
                       Color(0xffEBDCFE), // #EBDCFE
@@ -69,8 +69,8 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16, vertical: 22),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,13 +78,13 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                       text18w400c363636('Raise a Ticket'),
                       InkWell(
                         onTap: () {
-                          Get.to(RaiseATicket());
+                          Get.to(const RaiseATicket());
                         },
                         child: SizedBox(
                           height: 21.44.h,
                           width: 21.44.w,
-                          child: Image.asset(
-                              'assets/images/png/right arrow.png'),
+                          child:
+                              Image.asset('assets/images/png/right arrow.png'),
                         ),
                       ),
                     ],
@@ -92,14 +92,11 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                 ),
               ),
             ),
-
             sizedBoxHeight(24.h),
-
             Container(
-
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
                     Color(0xFFDFDCFF), // #DFDCFF
                     Color(0xFFEADBFF), // #EADBFF
@@ -108,7 +105,7 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                   end: Alignment.centerRight, // 90 degrees
                 ),
                 boxShadow: [
-                  BoxShadow(
+                  const BoxShadow(
                     color: Color(0x40C3C3C3), // #C3C3C340 (25% opacity)
                     offset: Offset(0, 4), // x: 0px, y: 4px
                     blurRadius: 10, // 10px blur
@@ -116,120 +113,92 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                 ],
               ),
               child: Container(
-                margin: EdgeInsets.all(1), // For the 1px border effect
+                margin: const EdgeInsets.all(1), // For the 1px border effect
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Color(0xFFFFFFFF), // Inner white background color
+                  color:
+                      const Color(0xFFFFFFFF), // Inner white background color
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15,
-                      vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       text18w400c363636('Past Tickets'),
-
                       sizedBoxHeight(12.h),
-
                       Container(
                         height: 1,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [
-                            Color(0xff6211CB),
-                            Color(0xffC33FAD)
-                          ],
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Color(0xff6211CB), Color(0xffC33FAD)],
                               begin: Alignment.centerLeft,
-                              end: Alignment.centerRight
-                          ),
+                              end: Alignment.centerRight),
                         ),
                       ),
-
                       sizedBoxHeight(20.h),
-
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
                           text18w400c585858('#455'),
-
                           Row(
                             children: [
-
                               Container(
                                 height: 6.h,
                                 width: 6.h,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Color(0xff59C36A)
-                                ),
+                                    color: Color(0xff59C36A)),
                               ),
                               text16w400c59C36A('Active')
-
                             ],
                           )
-
-
                         ],
                       ),
-
                       sizedBoxHeight(5.h),
-
                       text18w400c141414('Lorem ipsum dolor sit amet')
-
                     ],
                   ),
                 ),
               ),
             ),
-
             sizedBoxHeight(43.h),
-
             CommonContainerWithIconTextRightArrow(
               height: 67,
               text: 'FAQ',
               leftIconPath: 'assets/images/png/faq.png',
               rightIconPath: 'assets/images/png/arrow-left.png',
               onTap: () {
-                Get.to(Faq());
+                Get.to(const Faq());
               },
             ),
-
             sizedBoxHeight(16.h),
-
-
             CommonContainerWithIconTextRightArrow(
               height: 67,
               text: 'Contact Us',
               leftIconPath: 'assets/images/png/contact us.png',
               rightIconPath: 'assets/images/png/arrow-left.png',
               onTap: () {
-                Get.to(ContactUs());
+                Get.to(const ContactUs());
               },
             ),
-
             sizedBoxHeight(16.h),
-
             CommonContainerWithIconTextRightArrow(
                 text: 'Privacy Policy',
                 leftIconPath: 'assets/images/png/policy.png',
                 rightIconPath: 'assets/images/png/arrow-left.png',
                 onTap: () {
-                  Get.to(PrivacyPolicy());
+                  Get.to(const PrivacyPolicy());
                 }),
-
             sizedBoxHeight(16.h),
-
             CommonContainerWithIconTextRightArrow(
                 text: 'Terms & Conditions',
                 leftIconPath: 'assets/images/png/terms and condition.png',
                 rightIconPath: 'assets/images/png/arrow-left.png',
                 onTap: () {
-                  Get.to(TermsAndCondition());
+                  Get.to(const TermsAndCondition());
                 }),
-
-
           ],
         ),
       ),
