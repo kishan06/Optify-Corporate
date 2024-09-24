@@ -60,18 +60,16 @@ class _EmployeeDetailsState extends State<EmployeeDetails> {
           padding: EdgeInsets.only(right: 16.w, top: 10.h),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Expanded(
-              child: Text(
-                'Employee list',
-                softWrap: true,
-                overflow: TextOverflow.visible,
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontFamily: 'Gilroy-SemiBold',
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w400,
-                  color: const Color(0xFF000000),
-                ),
+            child: Text(
+              'Employee list',
+              softWrap: true,
+              overflow: TextOverflow.visible,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontFamily: 'Gilroy-SemiBold',
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w400,
+                color: const Color(0xFF000000),
               ),
             ),
           ),

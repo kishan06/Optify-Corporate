@@ -68,7 +68,7 @@ class _EmployeeListState extends State<EmployeeList> {
                             color: Color(0xffA0ABBB),
                             size: 25,
                           ),
-                          hintText: 'Search',
+                          hintText: 'Search...',
                           hintStyle: TextStyle(
                               color: Color(0xffA0ABBB),
                               fontSize: 16,
@@ -277,7 +277,18 @@ class _EmployeeListState extends State<EmployeeList> {
                         ],
                       ),
                     ),
-                    text15w400cyellow('Pending')
+                    Row(
+                      children: [
+                        Container(
+                          height: 6.h,
+                          width: 6.w,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Color(0xffFFBB38)),
+                        ),
+                        sizedBoxWidth(6.w),
+                        text15w400cyellow('Pending')
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -308,7 +319,18 @@ class _EmployeeListState extends State<EmployeeList> {
                         ],
                       ),
                     ),
-                    text15w400c3725EA('Min KYC')
+                    Row(
+                      children: [
+                        Container(
+                          height: 6.h,
+                          width: 6.w,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Color(0xff3725EA)),
+                        ),
+                        sizedBoxWidth(6.w),
+                        text15w400c3725EA('Min KYC')
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -339,7 +361,18 @@ class _EmployeeListState extends State<EmployeeList> {
                         ],
                       ),
                     ),
-                    text15w400c3725EA('Full KYC')
+                    Row(
+                      children: [
+                        Container(
+                          height: 6.h,
+                          width: 6.w,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Color(0xff3725EA)),
+                        ),
+                        sizedBoxWidth(6.w),
+                        text15w400c3725EA('Full KYC')
+                      ],
+                    )
                   ],
                 ),
               ),

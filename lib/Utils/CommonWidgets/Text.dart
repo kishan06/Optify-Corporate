@@ -1029,7 +1029,7 @@ Widget text16w400cA5A5A5(String text) {
     text,
     style: TextStyle(
       fontSize: 16.sp,
-      color: Color.fromRGBO(165, 165, 165, 0.8),
+      color: const Color.fromRGBO(165, 165, 165, 0.8),
       fontWeight: FontWeight.w600,
       fontFamily: 'TT Commons',
     ),
@@ -1041,9 +1041,47 @@ Widget text14w400cAAAAAA(String text) {
     text,
     style: TextStyle(
       fontSize: 14.sp,
-      color: Color.fromRGBO(170, 170, 170, 0.8),
+      color: const Color.fromRGBO(170, 170, 170, 0.8),
       fontWeight: FontWeight.w600,
       fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text20w400c586CAD(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff586CAD),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text18w400c586CAD(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff586CAD),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text16w400c6311CBunderlinee(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 16.sp,
+      color: const Color(0xff6311CB),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+      decoration: TextDecoration.underline,
+      decorationColor: const Color(0xff6311CB),
     ),
   );
 }
