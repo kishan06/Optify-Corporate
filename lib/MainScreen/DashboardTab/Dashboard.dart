@@ -396,6 +396,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                 const Icon(
                                   Icons.calendar_today,
                                   color: Color(0xff6311CB),
+                                  size: 16,
                                 ),
                                 sizedBoxWidth(5.w),
                                 text14w400c6311CB('Jan 30, 2024'),
@@ -483,7 +484,13 @@ class _DashboardPageState extends State<DashboardPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   text20w400c718EBF('Fuel'),
-                                  text16w400c585858('40%'),
+                                  Row(
+                                    children: [
+                                      text20w500c404E5A('₹ 20,000'),
+                                      sizedBoxWidth(14),
+                                      text16w400cA0ABBB('40%'),
+                                    ],
+                                  ),
                                 ],
                               ),
                               sizedBoxHeight(5),
@@ -494,7 +501,13 @@ class _DashboardPageState extends State<DashboardPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   text20w400c718EBF('Food'),
-                                  text16w400c585858('35%'),
+                                  Row(
+                                    children: [
+                                      text20w500c404E5A('₹ 15,000'),
+                                      sizedBoxWidth(14),
+                                      text16w400cA0ABBB('35%'),
+                                    ],
+                                  )
                                 ],
                               ),
                               sizedBoxHeight(5),
@@ -505,7 +518,13 @@ class _DashboardPageState extends State<DashboardPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   text20w400c718EBF('Travel'),
-                                  text16w400c585858('20%'),
+                                  Row(
+                                    children: [
+                                      text20w500c404E5A('₹ 10,000'),
+                                      sizedBoxWidth(14),
+                                      text16w400cA0ABBB('20%'),
+                                    ],
+                                  )
                                 ],
                               ),
                               sizedBoxHeight(5),
@@ -516,7 +535,13 @@ class _DashboardPageState extends State<DashboardPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   text20w400c718EBF('Voucher'),
-                                  text16w400c585858('10%'),
+                                  Row(
+                                    children: [
+                                      text20w500c404E5A('₹ 5,000'),
+                                      sizedBoxWidth(14),
+                                      text16w400cA0ABBB('10%'),
+                                    ],
+                                  )
                                 ],
                               ),
                             ],
@@ -525,7 +550,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
                     sizedBoxHeight(20.h),
-                    text20w400c343C6A('Total Spending'),
+                    text20w400c343C6A('Total Spending\'s'),
                     sizedBoxHeight(10.h),
                     CommonCard(
                       content: Row(
@@ -544,7 +569,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                text18w500c6311CB('Expense'),
+                                text20w400c586CAD('Expense'),
                                 sizedBoxHeight(10.h),
                                 ClipRRect(
                                   borderRadius: const BorderRadius.all(
@@ -568,9 +593,9 @@ class _DashboardPageState extends State<DashboardPage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                text16w400c6311CB(
+                                text18w400c586CAD(
                                     '₹ 50,000'), // Current progress
-                                text16w400c6311CB('40%'), // Total target
+                                text16w400cA0ABBB('40%'), // Total target
                               ],
                             ),
                           ),
@@ -584,9 +609,19 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: [
                           Expanded(
                             flex: 1,
-                            child: Image.asset(
-                              'assets/images/png/sales.png',
-                              width: 50,
+                            child: Container(
+                              height: 55.h,
+                              width: 55.w,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xffE7EDFF)),
+                              child: Center(
+                                child: Image.asset(
+                                  'assets/images/png/taxBenefit.png',
+                                  height: 24.h,
+                                  width: 24.h,
+                                ),
+                              ),
                             ),
                           ),
                           sizedBoxWidth(10.w),
@@ -595,7 +630,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                text18w500c6311CB('Tax benefit'),
+                                text20w400c586CAD('Tax benefit'),
                                 sizedBoxHeight(10.h),
                                 ClipRRect(
                                   borderRadius: const BorderRadius.all(
@@ -619,9 +654,9 @@ class _DashboardPageState extends State<DashboardPage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                text16w400c6311CB(
+                                text18w400c586CAD(
                                     '₹ 50,000'), // Current progress
-                                text16w400c6311CB('40%'), // Total target
+                                text16w400cA0ABBB('40%'), // Total target
                               ],
                             ),
                           ),
@@ -635,9 +670,19 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: [
                           Expanded(
                             flex: 1,
-                            child: Image.asset(
-                              'assets/images/png/IT.png',
-                              width: 50,
+                            child: Container(
+                              height: 55.h,
+                              width: 55.w,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color.fromRGBO(99, 17, 203, 0.12)),
+                              child: Center(
+                                child: Image.asset(
+                                  'assets/images/png/giftCardIcon.png',
+                                  width: 24.w,
+                                  height: 24.h,
+                                ),
+                              ),
                             ),
                           ),
                           sizedBoxWidth(10.w),
@@ -646,7 +691,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                text18w500c6311CB('Gift card'),
+                                text20w400c586CAD('Gift card'),
                                 sizedBoxHeight(10.h),
                                 ClipRRect(
                                   borderRadius: const BorderRadius.all(
@@ -670,9 +715,9 @@ class _DashboardPageState extends State<DashboardPage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                text16w400c6311CB(
+                                text18w400c586CAD(
                                     '₹ 50,000'), // Current progress
-                                text16w400c6311CB('40%'), // Total target
+                                text16w400cA0ABBB('40%'), // Total target
                               ],
                             ),
                           ),

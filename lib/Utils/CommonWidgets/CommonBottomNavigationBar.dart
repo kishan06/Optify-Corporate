@@ -42,8 +42,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Image.asset(
             'assets/images/png/dashboard.png',
-            height: 30.h,
-            width: 30.w,
+            height: 24.h,
+            width: 24.w,
           ),
           activeIcon: _buildActiveIcon(
             isSelected: mainController.selectedIndex.value == 0,
@@ -54,8 +54,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Image.asset(
             'assets/images/png/employee.png',
-            height: 30.h,
-            width: 30.w,
+            height: 24.h,
+            width: 24.w,
           ),
           activeIcon: _buildActiveIcon(
             isSelected: mainController.selectedIndex.value == 1,
@@ -66,8 +66,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Image.asset(
             'assets/images/png/request.png',
-            height: 30.h,
-            width: 30.w,
+            height: 24.h,
+            width: 24.w,
           ),
           activeIcon: _buildActiveIcon(
             isSelected: mainController.selectedIndex.value == 2,
@@ -78,8 +78,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Image.asset(
             'assets/images/png/gift.png',
-            height: 30.h,
-            width: 30.w,
+            height: 24.h,
+            width: 24.w,
           ),
           activeIcon: _buildActiveIcon(
             isSelected: mainController.selectedIndex.value == 3,

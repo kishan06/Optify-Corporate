@@ -265,7 +265,8 @@ class _EmployeePageState extends State<EmployeePage> {
                                 onTap: () {
                                   Get.toNamed(RouteName.employeelist);
                                 },
-                                child: text16w400cpurple('View Employees'))
+                                child: text16w400c6311CBunderlinee(
+                                    'View Employees'))
                           ],
                         ),
                         sizedBoxHeight(20.h),
@@ -284,7 +285,7 @@ class _EmployeePageState extends State<EmployeePage> {
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(10)),
                                 child: LinearProgressIndicator(
-                                  value: 0.6, // Example progress value (60%)
+                                  value: 0.2,
                                   minHeight: 6,
                                   backgroundColor: Colors.grey[300],
                                   valueColor:
@@ -322,7 +323,7 @@ class _EmployeePageState extends State<EmployeePage> {
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(10)),
                                 child: LinearProgressIndicator(
-                                  value: 0.6, // Example progress value (60%)
+                                  value: 0.2,
                                   minHeight: 6,
                                   backgroundColor: Colors.grey[300],
                                   valueColor:
@@ -358,7 +359,7 @@ class _EmployeePageState extends State<EmployeePage> {
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(10)),
                                 child: LinearProgressIndicator(
-                                  value: 0.6, // Example progress value (60%)
+                                  value: 0.2, // Example progress value (60%)
                                   minHeight: 6,
                                   backgroundColor: Colors.grey[300],
                                   valueColor:
