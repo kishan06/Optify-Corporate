@@ -1,9 +1,9 @@
 // ignore_for_file: file_names
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/Utils/Helpers/colors.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -30,7 +30,7 @@ class CustomButton extends StatelessWidget {
           shadowColor: const Color.fromARGB(255, 220, 220, 226),
           backgroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6.h),
+            borderRadius: BorderRadius.circular(5.h),
           ),
         ),
         onPressed: () {

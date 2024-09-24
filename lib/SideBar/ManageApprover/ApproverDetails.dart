@@ -1,12 +1,10 @@
-// ignore_for_file: file_names, library_private_types_in_public_api
-
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ApproverDetails extends StatefulWidget {
   const ApproverDetails({super.key});
@@ -18,6 +16,25 @@ class ApproverDetails extends StatefulWidget {
 class _ApproverDetailsState extends State<ApproverDetails> {
   bool billapproved = false;
   bool reimbursement = false;
+
+  // Track the validation state
+  bool isAnyCheckboxSelected = true;
+  final _expenseCheckboxKey = GlobalKey<_ExpenseCheckboxState>();
+  final _benefitsCheckboxKey = GlobalKey<_BenefitsCheckboxState>();
+
+  // Validation for all checkboxes in the form
+  bool _validateCheckboxes() {
+    // Validate if at least one checkbox from any section is selected
+    bool expenseValidated =
+        _expenseCheckboxKey.currentState?.validate() ?? false;
+    bool benefitsValidated =
+        _benefitsCheckboxKey.currentState?.validate() ?? false;
+
+    return billapproved ||
+        reimbursement ||
+        expenseValidated ||
+        benefitsValidated;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +51,10 @@ class _ApproverDetailsState extends State<ApproverDetails> {
                 children: [
                   const CircleAvatar(
                     radius: 30,
-                    backgroundImage: AssetImage(
-                      'assets/images/png/Avatar.png',
-                    ),
+                    backgroundImage: AssetImage('assets/images/png/Avatar.png'),
                   ),
                   sizedBoxWidth(10),
-                   Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -56,13 +71,9 @@ class _ApproverDetailsState extends State<ApproverDetails> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
-              ),
+              const SizedBox(height: 5),
               const Divider(),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               text18w400cblack('Assign module & wallet'),
               Column(
                 children: [
@@ -72,8 +83,7 @@ class _ApproverDetailsState extends State<ApproverDetails> {
                         value: billapproved,
                         onChanged: (bool? value) {
                           setState(() {
-                            billapproved = value ??
-                                false; // Update state when checkbox is toggled
+                            billapproved = value ?? false;
                           });
                         },
                       ),
@@ -93,19 +103,38 @@ class _ApproverDetailsState extends State<ApproverDetails> {
                       text16w400c667085("Reimbursement approver"),
                     ],
                   ),
+                  // Show validation error message if no checkboxes are selected
+                  if (!isAnyCheckboxSelected)
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text(
+                        'Please select at least one approver category.',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
                   sizedBoxHeight(10),
                   const Divider(),
                   sizedBoxHeight(10),
-                  const ExpenseCheckbox(),
+                  // Pass the global key to access the state of ExpenseCheckbox
+                  ExpenseCheckbox(key: _expenseCheckboxKey),
                   sizedBoxHeight(10),
                   const Divider(),
                   sizedBoxHeight(10),
-                  const BenefitsCheckbox(),
+                  // Pass the global key to access the state of BenefitsCheckbox
+                  BenefitsCheckbox(key: _benefitsCheckboxKey),
                   sizedBoxHeight(30),
                   CustomButton(
                     text: 'Save',
                     ontap: () {
-                      Get.toNamed(RouteName.manageapprover);
+                      // Validate checkboxes before navigating
+                      if (_validateCheckboxes()) {
+                        Get.toNamed(RouteName.manageapprover);
+                      } else {
+                        setState(() {
+                          isAnyCheckboxSelected =
+                              false; // Trigger the validation error display
+                        });
+                      }
                     },
                   ),
                   sizedBoxHeight(30),
@@ -119,6 +148,7 @@ class _ApproverDetailsState extends State<ApproverDetails> {
   }
 }
 
+// ExpenseCheckbox with validation
 class ExpenseCheckbox extends StatefulWidget {
   const ExpenseCheckbox({super.key});
 
@@ -144,11 +174,18 @@ class _ExpenseCheckboxState extends State<ExpenseCheckbox> {
     });
   }
 
+  bool validate() {
+    return isExpenseChecked ||
+        isFoodChecked ||
+        isFuelChecked ||
+        isTravelChecked ||
+        isBookChecked;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Expense Checkbox (Select All)
         Row(
           children: [
             Checkbox(
@@ -164,7 +201,6 @@ class _ExpenseCheckboxState extends State<ExpenseCheckbox> {
           padding: const EdgeInsets.only(left: 35),
           child: Column(
             children: [
-              // Individual checkboxes for items under Expense
               Row(
                 children: [
                   Checkbox(
@@ -239,7 +275,6 @@ class _BenefitsCheckboxState extends State<BenefitsCheckbox> {
   bool isTravelChecked = false;
   bool isBookChecked = false;
 
-  // This function toggles all the checkboxes when "Expense" is checked or unchecked
   void toggleSelectAll(bool? value) {
     setState(() {
       isExpenseChecked = value ?? false;
@@ -250,11 +285,18 @@ class _BenefitsCheckboxState extends State<BenefitsCheckbox> {
     });
   }
 
+  bool validate() {
+    return isExpenseChecked ||
+        isFoodChecked ||
+        isFuelChecked ||
+        isTravelChecked ||
+        isBookChecked;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Expense Checkbox (Select All)
         Row(
           children: [
             Checkbox(
@@ -270,7 +312,6 @@ class _BenefitsCheckboxState extends State<BenefitsCheckbox> {
           padding: const EdgeInsets.only(left: 35),
           child: Column(
             children: [
-              // Individual checkboxes for items under Expense
               Row(
                 children: [
                   Checkbox(

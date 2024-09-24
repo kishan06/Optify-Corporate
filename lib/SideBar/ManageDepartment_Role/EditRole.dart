@@ -46,7 +46,7 @@ class _EditRoleState extends State<EditRole> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               text20w400cblack('Add role'),
-              const CustomTextFormField(
+              CustomTextFormField(
                 hintText: 'Enter role',
               ),
               SizedBox(height: 20.h),
