@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'dart:io';
 
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
@@ -23,17 +21,6 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final ImagePicker _picker = ImagePicker();
-
-  // Function to pick an image from gallery or camera
-  Future<void> _pickImage(ImageSource source) async {
-    final pickedFile = await _picker.pickImage(source: source);
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path);
-      });
-    }
-  }
-
   File? _image;
   final _formKey = GlobalKey<FormState>();
 
@@ -45,6 +32,16 @@ class _EditProfileState extends State<EditProfile> {
   final _companyNameController = TextEditingController();
   final _industryController = TextEditingController();
   final _typeController = TextEditingController();
+
+  // Function to pick an image from gallery or camera
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedFile = await _picker.pickImage(source: source);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,210 +59,209 @@ class _EditProfileState extends State<EditProfile> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Profile Image Section
                 Center(
                   child: Stack(
                     children: [
-                      // CircleAvatar for profile image
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 60,
-                            backgroundImage: _image != null
-                                ? FileImage(_image!) // Display selected image
-                                : const AssetImage(
-                                        'assets/images/png/Avatar.png')
-                                    as ImageProvider, // Default image
-                          ),
-                          const SizedBox(height: 20),
-                        ],
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundImage: _image != null
+                            ? FileImage(_image!)
+                            : const AssetImage('assets/images/png/Avatar.png')
+                                as ImageProvider,
                       ),
-                      // Positioned overlay with icon and text on top of the image
                       Positioned.fill(
-                        bottom: 20,
+                        bottom: 0,
                         child: Align(
-                          alignment: Alignment
-                              .center, // Align overlay in the center of the image
-                          child: Container(
-                            width: 120.w,
-                            height: 130.h,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: Colors.black
-                                  .withOpacity(0.3), // Semi-transparent overlay
-                              borderRadius: BorderRadius.circular(
-                                  100), // Match with CircleAvatar's radius
-                            ),
-                            padding: const EdgeInsets.all(
-                                10), // Padding around the content
-                            child: const Column(
-                              mainAxisSize: MainAxisSize
-                                  .min, // Minimize the size of the overlay content
-                              children: [
-                                Icon(
-                                  Icons.camera_alt_outlined,
-                                  color: Colors.white,
-                                  size: 15,
-                                ),
-                                SizedBox(
-                                    height: 5), // Spacing between icon and text
-                                Text(
-                                  'Change Photo',
-                                  style: TextStyle(
+                          alignment: Alignment.center,
+                          child: InkWell(
+                            onTap: _showImageSourceDialog,
+                            child: Container(
+                              width: 150.w,
+                              height: 150.h,
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: const Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.camera_alt_outlined,
                                     color: Colors.white,
-                                    fontSize: 10,
+                                    size: 15,
                                   ),
-                                ),
-                              ],
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'Change Photo',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      // ElevatedButton to pick image
                     ],
                   ),
                 ),
+                sizedBoxHeight(20.h),
+
+                // Personal Information Section
                 text20w600c343C6A('Personal Information'),
                 sizedBoxHeight(20.h),
+
+                // Name Field
                 text20w400cblack('Name'),
                 CustomTextFormField(
+                  controller: _nameController,
                   validator: (value) {
-                    if (value == null || value!.isEmpty) {
+                    if (value == null || value.isEmpty) {
                       return "Please enter your name";
-                    }
-                    if (value.length < 3) {
-                      return "Name length should be more then 3 charater";
+                    } else if (value.length < 3) {
+                      return "Name should be at least 3 characters long";
                     }
                     return null;
                   },
                   texttype: TextInputType.text,
-                  inputFormatters: [
-                    RemoveEmojiInputFormatter(),
-                  ],
-                  onInput: (value) {
-                    return null;
-                  },
-                  hintText: "Shailesh Gupta",
+                  inputFormatters: [RemoveEmojiInputFormatter()],
+                  hintText: "Enter your name",
                 ),
                 sizedBoxHeight(15.h),
+
+                // Email Field
                 text20w400cblack('Email ID'),
                 CustomTextFormField(
+                  controller: _emailController,
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter your email';
-                    } else if (!RegExp(
-                            r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$') // Corrected regex
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your email";
+                    } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$')
                         .hasMatch(value)) {
-                      return 'Please enter a valid email address';
+                      return "Please enter a valid email address";
                     }
                     return null;
                   },
                   texttype: TextInputType.emailAddress,
-                  inputFormatters: [
-                    RemoveEmojiInputFormatter(),
-                  ],
-                  onInput: (value) {
-                    return null;
-                  },
-                  hintText: "reethikthota@wdipl.com",
+                  inputFormatters: [RemoveEmojiInputFormatter()],
+                  hintText: "Enter your email",
                 ),
                 sizedBoxHeight(15.h),
+
+                // Mobile Number Field
                 text20w400cblack('Mobile number'),
                 CustomTextFormField(
+                  controller: _mobileController,
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter your mobile number';
-                    } else if (value.length < 10) {
-                      return 'Mobile number should be 10 digit long';
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your mobile number";
+                    } else if (value.length != 10) {
+                      return "Mobile number should be exactly 10 digits";
                     }
                     return null;
                   },
                   texttype: TextInputType.phone,
-                  inputFormatters: [
-                    RemoveEmojiInputFormatter(),
-                  ],
-                  onInput: (value) {
-                    return null;
-                  },
-                  hintText: "+91 7845154578",
+                  inputFormatters: [RemoveEmojiInputFormatter()],
+                  hintText: "Enter your mobile number",
                 ),
                 sizedBoxHeight(15.h),
+
+                // Employee ID Field
                 text20w400cblack('Employee ID'),
                 CustomTextFormField(
                   controller: _employeeIdController,
-                  texttype: TextInputType.number,
-                  inputFormatters: [RemoveEmojiInputFormatter()],
-                  hintText: "WD-7675",
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      if (value!.isEmpty) {
-                        return 'Please enter your employee id';
-                      }
-                      return null;
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your employee ID";
                     }
-                  },
-                  onInput: (value) {
                     return null;
                   },
+                  texttype: TextInputType.text,
+                  inputFormatters: [RemoveEmojiInputFormatter()],
+                  hintText: "Enter your employee ID",
                 ),
                 sizedBoxHeight(15.h),
+
+                // Member Since Field
                 text20w400cblack('Member since'),
                 CustomTextFormField(
-                  texttype: TextInputType.datetime,
-                  inputFormatters: [
-                    RemoveEmojiInputFormatter(),
-                  ],
-                  onInput: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter member data';
+                  controller: _memberSinceController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter the membership date";
                     }
                     return null;
                   },
-                  hintText: "07/12/2022",
+                  texttype: TextInputType.datetime,
+                  inputFormatters: [RemoveEmojiInputFormatter()],
+                  hintText: "Enter membership date",
                 ),
                 sizedBoxHeight(40.h),
+
+                // Company Information Section
                 text20w600c343C6A('Company Information'),
                 sizedBoxHeight(20.h),
+
+                // Company Name Field
                 text20w400cblack('Company Name'),
                 CustomTextFormField(
-                  texttype: TextInputType.text,
-                  inputFormatters: [
-                    RemoveEmojiInputFormatter(),
-                  ],
-                  onInput: (value) {
+                  controller: _companyNameController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your company name";
+                    }
                     return null;
                   },
-                  hintText: "WDIPL",
+                  texttype: TextInputType.text,
+                  inputFormatters: [RemoveEmojiInputFormatter()],
+                  hintText: "Enter your company name",
                 ),
                 sizedBoxHeight(15.h),
+
+                // Industry Field
                 text20w400cblack('Industry'),
                 CustomTextFormField(
-                  texttype: TextInputType.text,
-                  inputFormatters: [
-                    RemoveEmojiInputFormatter(),
-                  ],
-                  onInput: (value) {
+                  controller: _industryController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your industry";
+                    }
                     return null;
                   },
-                  hintText: "Fintech",
+                  texttype: TextInputType.text,
+                  inputFormatters: [RemoveEmojiInputFormatter()],
+                  hintText: "Enter your industry",
                 ),
                 sizedBoxHeight(15.h),
+
+                // Type Field
                 text20w400cblack('Type'),
                 CustomTextFormField(
-                  texttype: TextInputType.text,
-                  inputFormatters: [
-                    RemoveEmojiInputFormatter(),
-                  ],
-                  onInput: (value) {
+                  controller: _typeController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter your company type";
+                    }
                     return null;
                   },
-                  hintText: "Private limited company",
+                  texttype: TextInputType.text,
+                  inputFormatters: [RemoveEmojiInputFormatter()],
+                  hintText: "Enter your company type",
                 ),
                 sizedBoxHeight(40.h),
+
+                // Save Button
                 CustomButton(
                   text: 'Save',
                   ontap: () {
-                    Get.toNamed(RouteName.profile);
+                    if (_formKey.currentState!.validate()) {
+                      Get.toNamed(RouteName.profile);
+                    }
                   },
                 ),
                 sizedBoxHeight(40.h),
@@ -277,6 +273,7 @@ class _EditProfileState extends State<EditProfile> {
     );
   }
 
+  // Show image source dialog
   void _showImageSourceDialog() {
     showDialog(
       context: context,
