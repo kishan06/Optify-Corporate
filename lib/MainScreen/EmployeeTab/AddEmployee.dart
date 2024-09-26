@@ -20,14 +20,14 @@ class _AddEmployeeState extends State<AddEmployee> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final List<String> _departments = [
-    'Select department',
+    'Enter department',
     'Finance',
     'HR',
     'IT',
     'Marketing',
     'Sales'
   ];
-  String _selectedDepartment = 'Select department';
+  String _selectedDepartment = 'Enter department';
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -112,17 +112,40 @@ class _AddEmployeeState extends State<AddEmployee> {
                 ),
                 sizedBoxHeight(20.h),
                 text20w400cblack('Employee code'),
-                CustomTextFormField(
-                  readonly: true,
-                  texttype: TextInputType.phone,
-                  hintText: "WD-9799", // Pre-filled value
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Employee code is required";
-                    }
-                    return null;
-                  },
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 13
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                      color: Color.fromRGBO(99, 17, 203, 0.1)
+                  ),
+                  child: Text('WD-9799',
+                  style: TextStyle(
+                    fontFamily: 'TT Commons',
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18.sp,
+                    color: Color(0xff404040)
+                  ),
+                  ),
                 ),
+
+
+
+                // CustomTextFormField(
+                //   readonly: true,
+                //   texttype: TextInputType.phone,
+                //   hintText: "WD-9799", 
+                  
+                //   validator: (value) {
+                //     if (value == null || value.isEmpty) {
+                //       return "Employee code is required";
+                //     }
+                //     return null;
+                //   },
+                // ),
                 sizedBoxHeight(20.h),
                 text20w400cblack('Select department'),
                 DropdownButtonFormField<String>(
@@ -133,7 +156,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                     });
                   },
                   validator: (value) {
-                    if (value == 'Select department') {
+                    if (value == 'Enter department') {
                       return "Please select a department";
                     }
                     return null;
@@ -142,11 +165,16 @@ class _AddEmployeeState extends State<AddEmployee> {
                       .map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
-                      child: Text(value),
+                      child: Text(value,style: TextStyle(
+                        fontFamily: 'TT Commons',
+                        fontSize: 18.sp,
+                        color: Color(0xffCDCDCD)
+                      ),),
                     );
                   }).toList(),
                   style: const TextStyle(color: Colors.black, fontSize: 16),
                   decoration: InputDecoration(
+                    
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: const BorderSide(

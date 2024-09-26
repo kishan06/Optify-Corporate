@@ -477,7 +477,7 @@ class _PopupMenuExampleState extends State<PopupMenuExample> {
   }
 }
 
-class EmployeeListDetails extends StatelessWidget {
+class EmployeeListDetails extends StatefulWidget {
   final String tite1;
   final String tite2;
   final String tite3;
@@ -503,8 +503,24 @@ class EmployeeListDetails extends StatelessWidget {
   });
 
   @override
+  State<EmployeeListDetails> createState() => _EmployeeListDetailsState();
+}
+
+class _EmployeeListDetailsState extends State<EmployeeListDetails> {
+
+bool isExpanded = false;
+
+
+
+
+  @override
   Widget build(BuildContext context) {
     return GFAccordion(
+      onToggleCollapsed: (collapsed) {
+        setState(() {
+          isExpanded = !collapsed;
+        });
+      },
       contentChild: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -513,26 +529,26 @@ class EmployeeListDetails extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  text16w400c585858(tite1),
+                  text16w400c585858(widget.tite1),
                   sizedBoxHeight(10),
-                  text16w400c585858(tite2),
+                  text16w400c585858(widget.tite2),
                   sizedBoxHeight(10),
-                  text16w400c585858(tite3),
+                  text16w400c585858(widget.tite3),
                   sizedBoxHeight(10),
-                  text16w400c585858(tite4),
+                  text16w400c585858(widget.tite4),
                 ],
               ),
               const SizedBox(width: 30),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  text16w400cblack(subtitle1),
+                  text16w400cblack(widget.subtitle1),
                   sizedBoxHeight(10),
-                  text16w400cblack(subtitle2),
+                  text16w400cblack(widget.subtitle2),
                   sizedBoxHeight(10),
-                  text16w400cblack(subtitle3),
+                  text16w400cblack(widget.subtitle3),
                   sizedBoxHeight(10),
-                  text16w400cblack(subtitle4),
+                  text16w400cblack(widget.subtitle4),
                 ],
               ),
             ],
@@ -544,10 +560,15 @@ class EmployeeListDetails extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleAvatar(
-                minRadius: 10,
-                backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                child: Icon(Icons.arrow_drop_down),
+              SizedBox(
+                height: 21.h,
+                width: 21.w,
+                child: Image.asset(
+                  isExpanded ?
+                  'assets/images/png/arrow_down.png'
+                  : 'assets/images/png/arrow_up.png' ,
+                
+                ),
               ),
               sizedBoxWidth(10),
               Image.asset(
@@ -559,12 +580,12 @@ class EmployeeListDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    header,
+                    widget.header,
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    mail,
+                    widget.mail,
                     style: const TextStyle(
                         fontSize: 15, fontWeight: FontWeight.w400),
                   ),
@@ -587,7 +608,7 @@ class EmployeeListDetails extends StatelessWidget {
       contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       titleBorderRadius: BorderRadius.circular(0),
       titlePadding: const EdgeInsets.all(10.0),
-      contentPadding: const EdgeInsets.all(10.0),
+      contentPadding: const EdgeInsets.only(top: 8,left: 40,bottom: 8,right: 8),
       showAccordion: false,
       margin: const EdgeInsets.all(0),
     );
