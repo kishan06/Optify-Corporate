@@ -98,7 +98,7 @@ class _ExpenseState extends State<Expense> {
     departmentChecked2 = List<bool>.filled(departments2.length, false);
   }
 
-  bool isExpenseChecked = false; // "Select All" checkbox state
+  bool isExpenseChecked = false;
 
   void toggleSelectAll(bool? value) {
     setState(() {
@@ -311,12 +311,47 @@ class _ExpenseState extends State<Expense> {
 
           Row(
             children: [
-              Checkbox(
-                value: isExpenseChecked,
-                onChanged: (bool? value) {
-                  toggleSelectAll(value);
-                },
+              sizedBoxWidth(10.w),
+
+              //   InkWell(
+              //     onTap: () {
+              //       setState(() {
+              //         isExpenseChecked = true;
+              //       });
+
+              //     },
+              //    child: Container(
+              //                height: 20.0,
+              //                width: 20.0,
+              //                decoration: BoxDecoration(
+              //                  color:  isExpenseChecked ? Color(0xff6311CB) : Colors.transparent,
+              //                  border: Border.all(width: 1,color: Color(0xffD7D7D7)),
+              //                  borderRadius: BorderRadius.circular(5),
+              //                ),
+              //                child: isExpenseChecked
+              //                    ? const Icon(Icons.check, size: 16.0, color: Colors.white)
+              //                    : null,
+              //              ),
+              //  ),
+
+              Transform.scale(
+                scale: 1.05.h,
+                child: Checkbox(
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  side: BorderSide(color: Color(0xffFFFFFF), width: 1.5.w),
+                  activeColor: const Color(0xffFFFFFF),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                  ),
+                  value: isExpenseChecked,
+                  checkColor: Color(0xFFEF2B7B),
+                  onChanged: (bool? value) {
+                    toggleSelectAll(value);
+                  },
+                ),
               ),
+
+              sizedBoxWidth(4.w),
               text18w400cblack('Select All'),
             ],
           ),
@@ -470,6 +505,8 @@ class _ExpenseBenefitesState extends State<ExpenseBenefites> {
     }
   }
 
+  bool isExpanded = false;
+
   @override
   Widget build(BuildContext context) {
     return GFAccordion(
@@ -507,6 +544,11 @@ class _ExpenseBenefitesState extends State<ExpenseBenefites> {
           ),
         ],
       ),
+      onToggleCollapsed: (collapsed) {
+        setState(() {
+          isExpanded = !collapsed;
+        });
+      },
       titleChild: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -533,13 +575,18 @@ class _ExpenseBenefitesState extends State<ExpenseBenefites> {
               ),
             ],
           ),
+          sizedBoxWidth(8.w),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const CircleAvatar(
-                minRadius: 10,
-                backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                child: Icon(Icons.arrow_drop_down),
+              SizedBox(
+                height: 21.h,
+                width: 21.w,
+                child: Image.asset(
+                  isExpanded
+                      ? 'assets/images/png/arrow_down.png'
+                      : 'assets/images/png/arrow_up.png',
+                ),
               ),
               sizedBoxWidth(10),
               Image.asset(
@@ -647,7 +694,7 @@ class _ExpenseBenefitesState extends State<ExpenseBenefites> {
               SizedBox(
                 width: double.infinity,
                 child: CustomButtonIconLeft(
-                  image: 'assets/images/png/pullbackfund.png',
+                  image: 'assets/images/png/pullback.png',
                   text: 'Pull back funds',
                   ontap: () {
                     withdrawwidget();

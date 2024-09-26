@@ -1,5 +1,6 @@
 import 'package:Optifii_Corporate/MainScreen/EmployeeTab/PullBackFund.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/CustomButtomWithLeftIcon.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
@@ -77,16 +78,18 @@ class _EmployeeViewState extends State<EmployeeView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset(
                         'assets/images/png/Avatar.png',
-                        width: 80.w,
-                        height: 80.h,
+                        width: 76.w,
+                        height: 76.h,
                       ),
                       sizedBoxWidth(10.w),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                         sizedBoxHeight(4.h), 
                           text20w400c252C32('Reethik thota'),
                           text16w400cA0ABBB('reethikthota@wdipl.com'),
                           text16w400cA0ABBB('Sr. Manager'),
@@ -97,7 +100,7 @@ class _EmployeeViewState extends State<EmployeeView> {
                   ),
                   Container(
                     height: 40.h,
-                    padding: const EdgeInsets.all(8),
+                    padding:  EdgeInsets.symmetric(horizontal: 16,vertical: 4),
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(27, 0, 164, 55),
                       border: Border.all(
@@ -131,7 +134,7 @@ class _EmployeeViewState extends State<EmployeeView> {
               sizedBoxHeight(30.h),
               Row(
                 children: [
-                  text18w400c3A3472('Personal Information'),
+                  text18w400c343C6A('Personal Information'),
                 ],
               ),
               sizedBoxHeight(20.h),
@@ -146,7 +149,7 @@ class _EmployeeViewState extends State<EmployeeView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        text18w400c848484('Mobile number : '),
+                        text18w400c696969('Mobile number : '),
                         sizedBoxWidth(10.w),
                         text18w400cblack('+91 4578451245'),
                       ],
@@ -155,45 +158,45 @@ class _EmployeeViewState extends State<EmployeeView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        text18w400c848484('Email address : '),
+                        text18w400c696969('Email address : '),
                         sizedBoxWidth(10.w),
-                        text18w400c3A3472('poojashah@wdipl.com'),
+                        text20w400c0F0F0F('poojashah@wdipl.com'),
                       ],
                     ),
                     sizedBoxHeight(15.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        text18w400c848484('Grade : '),
+                        text18w400c696969('Grade : '),
                         sizedBoxWidth(10.w),
-                        text18w400c3A3472('A01'),
+                        text20w400c0F0F0F('A01'),
                       ],
                     ),
                     sizedBoxHeight(15.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        text18w400c848484('Department : '),
+                        text18w400c696969('Department : '),
                         sizedBoxWidth(10.w),
-                        text18w400c3A3472('A01'),
+                        text20w400c0F0F0F('A01'),
                       ],
                     ),
                     sizedBoxHeight(15.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        text18w400c848484('Destination : '),
+                        text18w400c696969('Destination : '),
                         sizedBoxWidth(10.w),
-                        text18w400c3A3472('UI/UX Designer'),
+                        text20w400c0F0F0F('UI/UX Designer'),
                       ],
                     ),
                     sizedBoxHeight(15.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        text18w400c848484('Member since :  '),
+                        text18w400c696969('Member since :  '),
                         sizedBoxWidth(10.w),
-                        text18w400c3A3472('1st June, 2022'),
+                        text20w400c0F0F0F('1st June, 2022'),
                       ],
                     ),
                   ],
@@ -202,7 +205,7 @@ class _EmployeeViewState extends State<EmployeeView> {
               sizedBoxHeight(30.h),
               Row(
                 children: [
-                  text18w400c3A3472('Card Information'),
+                  text18w400c343C6A('Card Information'),
                 ],
               ),
               sizedBoxHeight(20.h),
@@ -431,12 +434,18 @@ class _ExpenseState extends State<Expense> {
                   ],
                 ),
                 sizedBoxHeight(10.h),
-                CustomButton(
-                  text: 'Pull back funds',
-                  ontap: () {
-                    Get.toNamed(RouteName.pullbackfund2);
-                  },
-                ),
+CustomButtonWithLeftIcon(
+  iconPath: 'assets/images/png/pullback.png',
+   buttonText: 'Pull back funds',
+    onPressed: (){
+      Get.toNamed(RouteName.pullbackfund2);
+    }),
+                // CustomButton( 
+                //   text: 'Pull back funds',
+                //   ontap: () {
+                //     Get.toNamed(RouteName.pullbackfund2);
+                //   },
+                // ),
                 sizedBoxHeight(40.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -738,7 +747,7 @@ class Reportcontent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          text20w400cblack('Reimbursement Report for June 2024'),
+          text20w500c141414('Reimbursement Report for June 2024'),
           text14w400c667085('Last updated : 31- 02-2024 04.20 pm'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
