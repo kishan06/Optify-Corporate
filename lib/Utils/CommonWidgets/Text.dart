@@ -688,6 +688,18 @@ Widget text20w400c252C32(String text) {
   );
 }
 
+Widget text16w400c252C32(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 16.sp,
+      color: const Color(0xff252C32),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
 Widget text24w400cffffff(String text) {
   return Text(
     text,
@@ -705,6 +717,18 @@ Widget text20w400c606E83(String text) {
     text,
     style: TextStyle(
       fontSize: 20.sp,
+      color: const Color(0xff606E83),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text16w400c606E83(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 16.sp,
       color: const Color(0xff606E83),
       fontWeight: FontWeight.w400,
       fontFamily: 'TT Commons',
@@ -801,6 +825,17 @@ Widget text22w400c101828(String text) {
     text,
     style: TextStyle(
       fontSize: 22.sp,
+      color: const Color(0xff101828),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+Widget text18w400c101828(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
       color: const Color(0xff101828),
       fontWeight: FontWeight.w400,
       fontFamily: 'TT Commons',
@@ -1131,6 +1166,54 @@ Widget text20w500c141414(String text) {
       fontSize: 20.sp,
       color: const Color(0xff141414),
       fontWeight: FontWeight.w500,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text20w400c667085(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff667085),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text20w400c464748(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff464748),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text20w400c4E4E4E(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff4E4E4E),
+      fontWeight: FontWeight.w400,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
+
+Widget text18w400c111111(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 18.sp,
+      color: const Color(0xff111111),
+      fontWeight: FontWeight.w400,
       fontFamily: 'TT Commons',
     ),
   );

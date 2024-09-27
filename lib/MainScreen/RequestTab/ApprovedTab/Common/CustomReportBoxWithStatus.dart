@@ -149,7 +149,7 @@ class CustomReportBoxWithStatus extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     text18w400cA0ABBB(reportName),
-                    text20w400c252C32(reportTitle),
+                    text16w400c252C32(reportTitle),
                   ],
                 ),
                 Column(

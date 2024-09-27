@@ -94,7 +94,6 @@ class _RejectreportviewState extends State<RejectReportView> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            sizedBoxHeight(40.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -107,6 +106,8 @@ class _RejectreportviewState extends State<RejectReportView> {
                     ),
                     sizedBoxWidth(8.w),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         text20w400c252C32('Rethik thota'),
                         text16w400cA0ABBB('WD-0956')
@@ -254,7 +255,7 @@ class _RejectreportviewState extends State<RejectReportView> {
                                           Text(
                                             '₹ ${item.price.toString()}',
                                             style: TextStyle(
-                                              fontSize: 22.sp,
+                                              fontSize: 18.sp,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFF252C32),
                                             ),
