@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_import
 
+import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -70,6 +71,7 @@ class _RejectedtabState extends State<Rejectedtab> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SearchBarFilter(),
+            sizedBoxHeight(12.h),
             Expanded(
               child: ListView.builder(
                 itemCount: reportList.length,

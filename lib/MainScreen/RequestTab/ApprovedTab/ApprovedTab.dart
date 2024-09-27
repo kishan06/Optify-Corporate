@@ -2,6 +2,7 @@
 
 import 'package:Optifii_Corporate/MainScreen/RequestTab/ApprovedTab/Common/CustomReportBoxWithStatus.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/SearchBar_Filter.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/Utils/Helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,6 +70,7 @@ class _ApprovedtabState extends State<Approvedtab> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SearchBarFilter(),
+            sizedBoxHeight(12.h),
             Expanded(
               child: ListView.builder(
                 itemCount: reportList.length,

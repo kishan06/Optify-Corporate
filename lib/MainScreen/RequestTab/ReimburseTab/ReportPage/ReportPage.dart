@@ -257,7 +257,7 @@ class _ReportpageState extends State<Reportpage> {
                                           Text(
                                             '₹ ${item.price.toString()}',
                                             style: TextStyle(
-                                              fontSize: 22.sp,
+                                              fontSize: 18.sp,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFF252C32),
                                             ),
@@ -458,25 +458,22 @@ RejectDialogBox() {
                         width: 49.43.w,
                         child: Image.asset('assets/images/png/refuse icon.png'),
                       ),
-                      SizedBox(height: 20.h),
-                      text22w400c101828('Reason for rejecting request'),
-                    ],
-                  ),
+                      SizedBox(height: 8.h),
+                      text18w400c101828('Reason for rejecting request'),
 
-                  // TextField with a fixed height of 121px (approximately 121.0)
-                  SizedBox(
-                    height: 130.h, // Fixed height
-                    child: TextField(
-                      maxLines: null, // Allow for multiline input
-                      expands: true, // Expands to fill the parent size
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.3),
+                      sizedBoxHeight(8.h),
+                      // TextField with a fixed height of 121px (approximately 121.0)
+                      TextField(
+                        maxLines: 5, // Allow for multiline input
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.3),
+                          ),
+                          contentPadding: const EdgeInsets.all(
+                              12), // Adjust padding if needed
                         ),
-                        contentPadding: const EdgeInsets.all(
-                            12), // Adjust padding if needed
                       ),
-                    ),
+                    ],
                   ),
 
                   // Submit button with full width and height 45
