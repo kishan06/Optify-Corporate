@@ -4,8 +4,10 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -21,8 +23,19 @@ class _ViewReportState extends State<ViewReport> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar:
-          const CommonAppbar(titleTxt: 'Reimbursement Report for June 2024'),
+      appBar: AppBar(
+        centerTitle: false,
+        backgroundColor: Colors.white,
+        title: text18w400c000000('Reimbursement Report for June 2024'),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(CupertinoIcons.arrow_left),
+        ),
+        elevation: 4,
+        leadingWidth: 32, // Adjust this to fit the icon width properly
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -31,10 +44,13 @@ class _ViewReportState extends State<ViewReport> {
               Container(
                 padding: const EdgeInsets.all(15),
                 decoration: const BoxDecoration(
-                    color: Color.fromARGB(27, 98, 17, 203),
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                  color: Color.fromARGB(27, 98, 17, 203),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // First column for labels
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -51,13 +67,14 @@ class _ViewReportState extends State<ViewReport> {
                         text18w500c6311CB('Disburser'),
                       ],
                     ),
-                    sizedBoxWidth(20.w),
+                    sizedBoxWidth(10.w), // Space between columns
+                    // Second column for values
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         text18w400c3A3472(': Report for food'),
                         sizedBoxHeight(10.h),
-                        text18w400c3A3472(': Reethik thota'),
+                        text18w400c3A3472(': Reethik Thota'),
                         sizedBoxHeight(10.h),
                         text18w400c3A3472(': ₹ 5000'),
                         sizedBoxHeight(10.h),
@@ -65,9 +82,9 @@ class _ViewReportState extends State<ViewReport> {
                         sizedBoxHeight(10.h),
                         text18w400c3A3472(': Manav Sain'),
                         sizedBoxHeight(10.h),
-                        text18w400c3A3472(': Pooja Patade '),
+                        text18w400c3A3472(': Pooja Patade'),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -133,88 +150,93 @@ class _ViewReportState extends State<ViewReport> {
                           Radius.circular(5),
                         ),
                       ),
-                      child: Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              text18w500c6311CB('Bill amount'),
-                              sizedBoxHeight(10.h),
-                              text18w500c6311CB('Uploaded on'),
-                              sizedBoxHeight(10.h),
-                              text18w500c6311CB('Paid from'),
-                            ],
-                          ),
-                          sizedBoxWidth(20.w),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              text18w400c3A3472('₹ 500'),
-                              sizedBoxHeight(10.h),
-                              text18w400c3A3472('1 June, 2024'),
-                              sizedBoxHeight(10.h),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: const BoxDecoration(
-                                    color: Color(0xffE8E5FF)),
-                                child: const Text(
-                                  'Paid from food wallet',
-                                  style: TextStyle(
-                                      color: Color(0xff3725EA),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    sizedBoxHeight(10.h),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(31, 133, 128, 198),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Column(
                         children: [
                           Row(
                             children: [
-                              Image.asset(
-                                'assets/images/png/bill.png',
-                                width: 50.w,
-                                height: 50.h,
-                              ),
-                              sizedBoxWidth(10.w),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  text18w400c3A3472('dine in.jpg'),
-                                  text14w400cF4F4F4('20kb')
+                                  text18w500c6311CB('Bill amount'),
+                                  sizedBoxHeight(10.h),
+                                  text18w500c6311CB('Uploaded on'),
+                                  sizedBoxHeight(10.h),
+                                  text18w500c6311CB('Paid from'),
+                                ],
+                              ),
+                              sizedBoxWidth(20.w),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  text18w400c3A3472('₹ 500'),
+                                  sizedBoxHeight(10.h),
+                                  text18w400c3A3472('1 June, 2024'),
+                                  sizedBoxHeight(10.h),
+                                  Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xffE8E5FF)),
+                                    child: const Text(
+                                      'Paid from food wallet',
+                                      style: TextStyle(
+                                          color: Color(0xff3725EA),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  )
                                 ],
                               ),
                             ],
                           ),
-                          IconButton(
-                            onPressed: () async {
-                              await _downloadFile(
-                                'https://example.com/path_to_file/dine_in.jpg',
-                                context,
-                              );
-                            },
-                            icon: const Icon(
-                              Icons.file_download_outlined,
-                              color: Color(0xff3725EA),
-                              size: 30,
+                          sizedBoxHeight(10.h),
+                          Container(
+                            padding: const EdgeInsets.all(5),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(31, 133, 128, 198),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5),
+                              ),
                             ),
-                          ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/png/bill.png',
+                                      width: 50.w,
+                                      height: 50.h,
+                                    ),
+                                    sizedBoxWidth(10.w),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        text18w400c3A3472('dine in.jpg'),
+                                        text14w400cF4F4F4('20kb')
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                IconButton(
+                                  onPressed: () async {
+                                    await _downloadFile(
+                                      'https://example.com/path_to_file/dine_in.jpg',
+                                      context,
+                                    );
+                                  },
+                                  icon: const Icon(
+                                    Icons.file_download_outlined,
+                                    color: Color(0xff3725EA),
+                                    size: 30,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -274,88 +296,93 @@ class _ViewReportState extends State<ViewReport> {
                           Radius.circular(5),
                         ),
                       ),
-                      child: Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              text18w500c6311CB('Bill amount'),
-                              sizedBoxHeight(10.h),
-                              text18w500c6311CB('Uploaded on'),
-                              sizedBoxHeight(10.h),
-                              text18w500c6311CB('Paid from'),
-                            ],
-                          ),
-                          sizedBoxWidth(20.w),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              text18w400c3A3472('₹ 500'),
-                              sizedBoxHeight(10.h),
-                              text18w400c3A3472('1 June, 2024'),
-                              sizedBoxHeight(10.h),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: const BoxDecoration(
-                                    color: Color(0xffE8E5FF)),
-                                child: const Text(
-                                  'Paid from food wallet',
-                                  style: TextStyle(
-                                      color: Color(0xff3725EA),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    sizedBoxHeight(10.h),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(31, 133, 128, 198),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Column(
                         children: [
                           Row(
                             children: [
-                              Image.asset(
-                                'assets/images/png/bill.png',
-                                width: 50.w,
-                                height: 50.h,
-                              ),
-                              sizedBoxWidth(10.w),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  text18w400c3A3472('dine in.jpg'),
-                                  text14w400cF4F4F4('20kb')
+                                  text18w500c6311CB('Bill amount'),
+                                  sizedBoxHeight(10.h),
+                                  text18w500c6311CB('Uploaded on'),
+                                  sizedBoxHeight(10.h),
+                                  text18w500c6311CB('Paid from'),
+                                ],
+                              ),
+                              sizedBoxWidth(20.w),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  text18w400c3A3472('₹ 500'),
+                                  sizedBoxHeight(10.h),
+                                  text18w400c3A3472('1 June, 2024'),
+                                  sizedBoxHeight(10.h),
+                                  Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xffE8E5FF)),
+                                    child: const Text(
+                                      'Paid from food wallet',
+                                      style: TextStyle(
+                                          color: Color(0xff3725EA),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  )
                                 ],
                               ),
                             ],
                           ),
-                          IconButton(
-                            onPressed: () async {
-                              await _downloadFile(
-                                'https://example.com/path_to_file/dine_in.jpg',
-                                context,
-                              );
-                            },
-                            icon: const Icon(
-                              Icons.file_download_outlined,
-                              color: Color(0xff3725EA),
-                              size: 30,
+                          sizedBoxHeight(10.h),
+                          Container(
+                            padding: const EdgeInsets.all(5),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(31, 133, 128, 198),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5),
+                              ),
                             ),
-                          ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/png/bill.png',
+                                      width: 50.w,
+                                      height: 50.h,
+                                    ),
+                                    sizedBoxWidth(10.w),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        text18w400c3A3472('dine in.jpg'),
+                                        text14w400cF4F4F4('20kb')
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                IconButton(
+                                  onPressed: () async {
+                                    await _downloadFile(
+                                      'https://example.com/path_to_file/dine_in.jpg',
+                                      context,
+                                    );
+                                  },
+                                  icon: const Icon(
+                                    Icons.file_download_outlined,
+                                    color: Color(0xff3725EA),
+                                    size: 30,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -415,88 +442,93 @@ class _ViewReportState extends State<ViewReport> {
                           Radius.circular(5),
                         ),
                       ),
-                      child: Row(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              text18w500c6311CB('Bill amount'),
-                              sizedBoxHeight(10.h),
-                              text18w500c6311CB('Uploaded on'),
-                              sizedBoxHeight(10.h),
-                              text18w500c6311CB('Paid from'),
-                            ],
-                          ),
-                          sizedBoxWidth(20.w),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              text18w400c3A3472('₹ 500'),
-                              sizedBoxHeight(10.h),
-                              text18w400c3A3472('1 June, 2024'),
-                              sizedBoxHeight(10.h),
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: const BoxDecoration(
-                                    color: Color(0xffE8E5FF)),
-                                child: const Text(
-                                  'Paid from food wallet',
-                                  style: TextStyle(
-                                      color: Color(0xff3725EA),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    sizedBoxHeight(10.h),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(31, 133, 128, 198),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Column(
                         children: [
                           Row(
                             children: [
-                              Image.asset(
-                                'assets/images/png/bill.png',
-                                width: 50.w,
-                                height: 50.h,
-                              ),
-                              sizedBoxWidth(10.w),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  text18w400c3A3472('dine in.jpg'),
-                                  text14w400cF4F4F4('20kb')
+                                  text18w500c6311CB('Bill amount'),
+                                  sizedBoxHeight(10.h),
+                                  text18w500c6311CB('Uploaded on'),
+                                  sizedBoxHeight(10.h),
+                                  text18w500c6311CB('Paid from'),
+                                ],
+                              ),
+                              sizedBoxWidth(20.w),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  text18w400c3A3472('₹ 500'),
+                                  sizedBoxHeight(10.h),
+                                  text18w400c3A3472('1 June, 2024'),
+                                  sizedBoxHeight(10.h),
+                                  Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                        color: Color(0xffE8E5FF)),
+                                    child: const Text(
+                                      'Paid from food wallet',
+                                      style: TextStyle(
+                                          color: Color(0xff3725EA),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  )
                                 ],
                               ),
                             ],
                           ),
-                          IconButton(
-                            onPressed: () async {
-                              await _downloadFile(
-                                'https://example.com/path_to_file/dine_in.jpg',
-                                context,
-                              );
-                            },
-                            icon: const Icon(
-                              Icons.file_download_outlined,
-                              color: Color(0xff3725EA),
-                              size: 30,
+                          sizedBoxHeight(10.h),
+                          Container(
+                            padding: const EdgeInsets.all(5),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(31, 133, 128, 198),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5),
+                              ),
                             ),
-                          ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/png/bill.png',
+                                      width: 50.w,
+                                      height: 50.h,
+                                    ),
+                                    sizedBoxWidth(10.w),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        text18w400c3A3472('dine in.jpg'),
+                                        text14w400cF4F4F4('20kb')
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                IconButton(
+                                  onPressed: () async {
+                                    await _downloadFile(
+                                      'https://example.com/path_to_file/dine_in.jpg',
+                                      context,
+                                    );
+                                  },
+                                  icon: const Icon(
+                                    Icons.file_download_outlined,
+                                    color: Color(0xff3725EA),
+                                    size: 30,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

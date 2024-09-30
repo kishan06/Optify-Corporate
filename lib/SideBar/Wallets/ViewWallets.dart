@@ -23,6 +23,9 @@ class ViewWallets extends StatefulWidget {
 }
 
 class _ViewWalletsState extends State<ViewWallets> {
+
+
+
   @override
   Widget build(BuildContext context) {
     double totalAmount = 200000;
@@ -64,6 +67,7 @@ class _ViewWalletsState extends State<ViewWallets> {
                 Image.asset(
                   'assets/images/png/img1.png',
                   width: 70.w,
+                  height: 70.h,
                 ),
                 sizedBoxHeight(15.h),
                 text24w600cwhite('Food'),
@@ -72,8 +76,8 @@ class _ViewWalletsState extends State<ViewWallets> {
                   children: [
                     text14w400cF4F4F4('Created on 12 June 2024'),
                     Container(
-                      width: 8.w,
-                      height: 8.h,
+                      width: 6.w,
+                      height: 6.h,
                       decoration: const BoxDecoration(
                           color: Color(0xffF4F4F4),
                           borderRadius: BorderRadius.all(Radius.circular(50))),
@@ -98,14 +102,14 @@ class _ViewWalletsState extends State<ViewWallets> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         text16w400cEBEBEB('Wallet amount'),
-                        text20w600cwhite('₹ 50,000')
+                        text20w800cwhite('₹ 50,000')
                       ],
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         text16w400cEBEBEB('Remaining amount'),
-                        text20w600cwhite('₹ 25,000')
+                        text20w800cwhite('₹ 25,000')
                       ],
                     ),
                   ],
@@ -123,7 +127,7 @@ class _ViewWalletsState extends State<ViewWallets> {
                     sizedBoxHeight(10.h),
                     Row(
                       children: [
-                        text20w600c252C32('Members'),
+                        text20w400c252C32('Members'),
                       ],
                     ),
                     sizedBoxHeight(20.h),
@@ -156,7 +160,8 @@ class _ViewWalletsState extends State<ViewWallets> {
                           child: Container(
                             padding: const EdgeInsets.all(10),
                             decoration:
-                                const BoxDecoration(color: Color(0xffF2EEF8)),
+                                 BoxDecoration(
+                                  color: Color(0xffF2EEF8)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -265,8 +270,7 @@ class _ViewWalletsState extends State<ViewWallets> {
     );
   }
 }
-
-class ExpenseBenefitesWallet extends StatelessWidget {
+class ExpenseBenefitesWallet extends StatefulWidget {
   final String title1;
   final String title2;
   final String title3;
@@ -275,6 +279,7 @@ class ExpenseBenefitesWallet extends StatelessWidget {
   final String header;
   final String mail;
   final String image;
+  
   const ExpenseBenefitesWallet({
     super.key,
     required this.title1,
@@ -288,8 +293,20 @@ class ExpenseBenefitesWallet extends StatelessWidget {
   });
 
   @override
+  _ExpenseBenefitesWalletState createState() => _ExpenseBenefitesWalletState();
+}
+
+class _ExpenseBenefitesWalletState extends State<ExpenseBenefitesWallet> {
+  bool isExpanded = false;
+
+  @override
   Widget build(BuildContext context) {
     return GFAccordion(
+      onToggleCollapsed: (value) {
+        setState(() {
+          isExpanded = value;
+        });
+      },
       contentChild: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -298,37 +315,52 @@ class ExpenseBenefitesWallet extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  text16w400c585858(title1),
+                  text16w400c585858(widget.title1),
                   sizedBoxHeight(10),
-                  text16w400c585858(title2),
+                  text16w400c585858(widget.title2),
                   sizedBoxHeight(10),
-                  text16w400c585858(title3),
+                  text16w400c585858(widget.title3),
                 ],
               ),
               const SizedBox(width: 30),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  text16w400cblack(subtitle1),
+                  text16w400cblack(widget.subtitle1),
                   sizedBoxHeight(10),
-                  text16w400cblack(subtitle2),
+                  text16w400cblack(widget.subtitle2),
                   sizedBoxHeight(10),
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(
                         Radius.circular(50),
                       ),
                       border: Border.all(color: const Color(0xff00A438)),
+                      color: Color.fromRGBO(0, 164, 56, 0.08),
                     ),
-                    child: const Text(
-                      'Approved',
-                      style: TextStyle(
-                        color: Color(0xff00A438),
-                      ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: const Color(0xff00A438),
+                            shape: BoxShape.circle,
+                          ),
+                          height: 5.h,
+                          width: 5.h,
+                        ),
+                        sizedBoxWidth(8.w),
+                        const Text(
+                          'Approved',
+                          style: TextStyle(
+                            color: Color(0xff00A438),
+                          ),
+                        ),
+                      ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ],
@@ -340,7 +372,7 @@ class ExpenseBenefitesWallet extends StatelessWidget {
             ontap: () {
               Get.toNamed(RouteName.viewreport);
             },
-          )
+          ),
         ],
       ),
       titleChild: Row(
@@ -349,9 +381,18 @@ class ExpenseBenefitesWallet extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 21.h,
+                width: 21.h,
+                child: Image.asset(
+                  isExpanded 
+                    ? 'assets/images/png/arrow_up.png'
+                    : 'assets/images/png/arrow_down.png',
+                ),
+              ),
               sizedBoxWidth(10),
               Image.asset(
-                image,
+                widget.image,
                 width: 50,
               ),
               const SizedBox(width: 10),
@@ -360,15 +401,15 @@ class ExpenseBenefitesWallet extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    header,
+                    widget.header,
                     style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w600),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   sizedBoxWidth(5),
-                  Text(
-                    mail,
-                    style: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.w400),
+                  text16w400cA0ABBB(
+                    widget.mail,
                   ),
                 ],
               ),
@@ -376,16 +417,7 @@ class ExpenseBenefitesWallet extends StatelessWidget {
           ),
         ],
       ),
-      collapsedIcon: const CircleAvatar(
-        minRadius: 10,
-        backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-        child: Icon(Icons.keyboard_arrow_down_outlined),
-      ),
-      expandedIcon: const CircleAvatar(
-        minRadius: 10,
-        backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-        child: Icon(Icons.keyboard_arrow_up_outlined),
-      ),
+ 
       collapsedTitleBackgroundColor: Colors.transparent,
       expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
@@ -393,6 +425,8 @@ class ExpenseBenefitesWallet extends StatelessWidget {
       titlePadding: const EdgeInsets.all(16.0),
       contentPadding: const EdgeInsets.all(16.0),
       showAccordion: false,
+      collapsedIcon: const SizedBox.shrink(), 
+      expandedIcon: const SizedBox.shrink(), 
       margin: const EdgeInsets.all(0),
     );
   }

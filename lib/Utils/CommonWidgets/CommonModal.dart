@@ -254,13 +254,39 @@ deletewidget() {
                 ],
               ),
               sizedBoxHeight(10.h),
-              text18w400cblack(
+              text16w400cblack(
                 "Are you sure you want delete approver?",
               ),
               sizedBoxHeight(20.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      width: 130.w,
+                      height: 40.h,
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 231, 229, 237),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5),
+                        ),
+                      ),
+                      child: Text(
+                        'No, don’t',
+                        style: TextStyle(
+                          color: const Color(0xff344054),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Gilroy-Medium',
+                        ),
+                      ),
+                    ),
+                  ),
+                  sizedBoxWidth(10),
                   InkWell(
                     onTap: () {
                       Get.back();
@@ -284,32 +310,6 @@ deletewidget() {
                             fontWeight: FontWeight.w400,
                             fontFamily: 'Gilroy-Medium',
                           ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  sizedBoxWidth(10),
-                  InkWell(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Container(
-                      width: 130.w,
-                      height: 40.h,
-                      alignment: Alignment.center,
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 231, 229, 237),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                      ),
-                      child: Text(
-                        'No, don’t',
-                        style: TextStyle(
-                          color: const Color(0xff344054),
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'Gilroy-Medium',
                         ),
                       ),
                     ),

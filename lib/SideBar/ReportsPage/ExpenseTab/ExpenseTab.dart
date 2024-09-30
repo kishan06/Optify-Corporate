@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mat_month_picker_dialog/mat_month_picker_dialog.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -107,65 +108,68 @@ class _ExpenseTabState extends State<ExpenseTab> {
                     const Expanded(child: ExportDropdown()),
                   ],
                 ),
-                sizedBoxHeight(44.h),
+                sizedBoxHeight(16.h),
                 text20w400c343C6A('Spend summary'),
+                sizedBoxHeight(8.h),
                 _buildSplineChart(),
-                sizedBoxHeight(24.h),
+                sizedBoxHeight(16.h),
                 text20w400c343C6A('Total spent by category'),
                 DoughnutChartWithCenterText(
                   dataSource: _chartData,
                   tooltipBehavior: _tooltipBehavior,
                   totalAmount: _calculateTotalSpent(),
                 ),
-
-                // Horizontal scrolling for the first Row
-                SingleChildScrollView(
+                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      const CustomColorAndCategory(
-                        color: Color(0xff4C78FF),
-                        categoryName: 'Food',
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const CustomColorAndCategory(
+                            color: Color(0xff4C78FF),
+                            categoryName: 'Food',
+                          ),
+                          const CustomColorAndCategory(
+                            color: Color(0xff16DBCC),
+                            categoryName: 'Fuel',
+                          ),
+                        ],
                       ),
-                      sizedBoxWidth(30.w),
-                      const CustomColorAndCategory(
-                        color: Color(0xffFF82AC),
-                        categoryName: 'Travel',
+                      sizedBoxWidth(12.w),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const CustomColorAndCategory(
+                            color: Color(0xffFF82AC),
+                            categoryName: 'Travel',
+                          ),
+                          const CustomColorAndCategory(
+                            color: Color(0xffFFBB38),
+                            categoryName: 'Gift & voucher',
+                          ),
+                        ],
                       ),
-                      sizedBoxWidth(30.w),
-                      const CustomColorAndCategory(
-                        color: Color(0xff4C78FF),
-                        categoryName: 'Telecom',
+                       sizedBoxWidth(12.w),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const CustomColorAndCategory(
+                            color: Color(0xff4C78FF),
+                            categoryName: 'Telecom',
+                          ),
+                          const CustomColorAndCategory(
+                            color: Color(0xff16DBCC),
+                            categoryName: 'Books & periodicals',
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ),
-
-                sizedBoxHeight(15.h),
-
-                // Horizontal scrolling for the second Row
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      const CustomColorAndCategory(
-                        color: Color(0xff16DBCC),
-                        categoryName: 'Fuel',
-                      ),
-                      sizedBoxWidth(30.w),
-                      const CustomColorAndCategory(
-                        color: Color(0xffFFBB38),
-                        categoryName: 'Gift & voucher',
-                      ),
-                      sizedBoxWidth(30.w),
-                      const CustomColorAndCategory(
-                        color: Color(0xff16DBCC),
-                        categoryName: 'Books & periodicals',
-                      ),
-                    ],
-                  ),
-                ),
-                sizedBoxHeight(100.h),
+                )
               ],
             ),
           ),
@@ -179,14 +183,28 @@ class _ExpenseTabState extends State<ExpenseTab> {
     return SizedBox(
       height: 287.h,
       child: SfCartesianChart(
-        primaryXAxis: const CategoryAxis(),
+        primaryXAxis: const CategoryAxis(
+          labelPlacement: LabelPlacement.onTicks,
+          edgeLabelPlacement: EdgeLabelPlacement.shift,
+          labelAlignment: LabelAlignment.start,
+          plotOffset: 0,
+        ),
         tooltipBehavior: _tooltipBehavior,
         series: <CartesianSeries>[
-          SplineSeries<SalesData, String>(
+          SplineAreaSeries<SalesData, String>(
             dataSource: _getSalesData(),
-            color: const Color(0xff1814F3),
             xValueMapper: (SalesData sales, _) => sales.day,
             yValueMapper: (SalesData sales, _) => sales.amount,
+            gradient: LinearGradient(
+              colors: [
+                Color(0xff1814F3).withOpacity(0.5), // Top of gradient
+                Color(0xff1814F3).withOpacity(0.0), // Bottom of gradient
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+            borderColor: Color(0xff1814F3),
+            borderWidth: 3.w, // Spline line width
           ),
         ],
       ),
@@ -202,8 +220,8 @@ class _ExpenseTabState extends State<ExpenseTab> {
   List<SalesData> _getSalesData() {
     return [
       SalesData('Mon', 12),
-      SalesData('Tue', 22),
-      SalesData('Wed', 30),
+      SalesData('Tue', 4),
+      SalesData('Wed', 25),
       SalesData('Thu', 50),
       SalesData('Fri', 10),
       SalesData('Sat', 35),
@@ -408,7 +426,7 @@ class _ExportDropdownState extends State<ExportDropdown> {
       default:
         return Image.asset(
           'assets/images/png/export.png',
-          width: 20,
+          width: 15,
         );
     }
   }
