@@ -308,8 +308,30 @@ Widget text20w600cwhite(String text) {
     ),
   );
 }
+Widget text20w800cwhite(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xffffffff),
+      fontWeight: FontWeight.w800,
+      fontFamily: 'TT Commons',
+    ),
+  );
+}
 
 Widget text20w600c252C32(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 20.sp,
+      color: const Color(0xff252C32),
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Gilroy-SemiBold',
+    ),
+  );
+}
+Widget text20w400c252C32(String text) {
   return Text(
     text,
     style: TextStyle(
@@ -676,17 +698,17 @@ Widget text20w400cA0ABBB(String text) {
   );
 }
 
-Widget text20w400c252C32(String text) {
-  return Text(
-    text,
-    style: TextStyle(
-      fontSize: 20.sp,
-      color: const Color(0xff252C32),
-      fontWeight: FontWeight.w400,
-      fontFamily: 'TT Commons',
-    ),
-  );
-}
+// Widget text20w400c252C32(String text) {
+//   return Text(
+//     text,
+//     style: TextStyle(
+//       fontSize: 20.sp,
+//       color: const Color(0xff252C32),
+//       fontWeight: FontWeight.w400,
+//       fontFamily: 'TT Commons',
+//     ),
+//   );
+// }
 
 Widget text16w400c252C32(String text) {
   return Text(

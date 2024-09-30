@@ -6,6 +6,7 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -465,7 +466,8 @@ class ExpenseBenefitesWallet extends StatelessWidget {
               sizedBoxWidth(10),
               Image.asset(
                 image,
-                width: 50,
+                width: 66.h,
+                height: 66.h,
               ),
               const SizedBox(width: 10),
               Column(
@@ -478,14 +480,25 @@ class ExpenseBenefitesWallet extends StatelessWidget {
                       Text(
                         header,
                         style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
+                            fontSize: 18, fontWeight: FontWeight.w400),
                       ),
-                      sizedBoxWidth(5),
+                      sizedBoxWidth(8.w),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xff00A438),
+                          shape: BoxShape.circle
+                        ),
+                        height: 5.h,
+                        width: 5.h,
+                        
+                      ),
+                      sizedBoxWidth(4.w),
                       Text(
                         active,
                         style: const TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w600,
+                            fontFamily: 'TT Commons',
+                            fontWeight: FontWeight.w400,
                             color: Color(0xff00A438)),
                       ),
                     ],
@@ -493,7 +506,8 @@ class ExpenseBenefitesWallet extends StatelessWidget {
                   Text(
                     mail,
                     style: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.w400),
+                        fontSize: 16,fontFamily: 'TT Commons', 
+                        fontWeight: FontWeight.w400,color: Color(0xff667085)),
                   ),
                 ],
               ),
@@ -501,21 +515,21 @@ class ExpenseBenefitesWallet extends StatelessWidget {
           ),
         ],
       ),
-      collapsedIcon: const CircleAvatar(
-        minRadius: 10,
-        backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-        child: Icon(Icons.keyboard_arrow_down_outlined),
+      collapsedIcon:  SizedBox(
+        height: 21.h,
+        width: 21.w,
+        child: Image.asset('assets/images/png/arrow_down.png'),
       ),
-      expandedIcon: const CircleAvatar(
-        minRadius: 10,
-        backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-        child: Icon(Icons.keyboard_arrow_up_outlined),
-      ),
+      expandedIcon: SizedBox(
+        height: 21.h,
+        width: 21.w,
+        child: Image.asset('assets/images/png/arrow_up.png'),
+      ), 
       collapsedTitleBackgroundColor: Colors.transparent,
       expandedTitleBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       contentBackgroundColor: const Color.fromRGBO(99, 17, 203, 0.04),
       titleBorderRadius: BorderRadius.circular(0),
-      titlePadding: const EdgeInsets.all(16.0),
+      titlePadding: const EdgeInsets.only(top: 8,left: 8,right: 8),
       contentPadding: const EdgeInsets.all(16.0),
       showAccordion: false,
       margin: const EdgeInsets.all(0),

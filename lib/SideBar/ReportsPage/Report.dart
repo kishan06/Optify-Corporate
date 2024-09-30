@@ -23,13 +23,15 @@ class _ReportState extends State<Report> {
         length: 3,
         child: Column(
           children: [
-            const CommonTabBar(tabs: [
+            const CommonTabBar(
+              tabs: [
               Tab(text: 'Expense'),
+            
               Tab(text: 'Benefit'),
               Tab(text: 'Gift & Voucher'),
             ]),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.82,
+              height: MediaQuery.of(context).size.height * 0.79,
               child: const TabBarView(
                 children: [
                   ExpenseTab(),

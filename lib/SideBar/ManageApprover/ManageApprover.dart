@@ -4,6 +4,7 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonModal.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/SearchBar_Filter.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
@@ -22,7 +23,7 @@ class MangeApprove extends StatefulWidget {
 class _MangeApproveState extends State<MangeApprove> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       appBar: CommonAppbar(titleTxt: 'Approvers'),
       body: SingleChildScrollView(
@@ -43,7 +44,8 @@ class _MangeApproveState extends State<MangeApprove> {
                   Padding(
                     padding: EdgeInsets.all(16),
                     child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.9, // Height for the TabBarView
+                      height: MediaQuery.of(context).size.height *
+                          0.9, // Height for the TabBarView
                       child: TabBarView(
                         children: [
                           Expense(),
@@ -77,33 +79,10 @@ class Expense extends StatefulWidget {
 }
 
 class _ExpenseState extends State<Expense> {
-  final List<String> departments = [
-    'Design',
-    'Finance',
-    'IT',
-    'Development',
-    'Sales',
-    'QA',
-  ];
-  final List<String> departments2 = [
-    'Design',
-    'Finance',
-    'IT',
-    'Development',
-    'Sales',
-    'QA',
-  ];
 
-  List<bool> departmentChecked = [];
-  List<bool> departmentChecked2 = [];
 
-  @override
-  void initState() {
-    super.initState();
-    // Initially, all checkboxes are unchecked
-    departmentChecked = List<bool>.filled(departments.length, false);
-    departmentChecked2 = List<bool>.filled(departments2.length, false);
-  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -121,196 +100,7 @@ class _ExpenseState extends State<Expense> {
             ),
           ),
           sizedBoxHeight(30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: SizedBox(
-                  height: 55.h,
-                  child: TextFormField(
-                    textAlignVertical: TextAlignVertical.center,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Color(0xffA0ABBB),
-                        size: 25,
-                      ),
-                      hintText: 'Search',
-                      hintStyle: TextStyle(
-                          color: Color(0xffA0ABBB),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                        borderSide: BorderSide(
-                          color: Color(0xffCDCDCD),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                  width: 10.w), // Adding spacing between search and filter icon
-              PopupMenuButton<String>(
-                color: Colors.white,
-                icon: Image.asset(
-                  'assets/images/png/filter.png',
-                  width: 25.w,
-                ),
-                onSelected: (value) {
-                  // Handle the selected filter option
-                  print("Selected filter: $value");
-                },
-                itemBuilder: (BuildContext context) {
-                  return <PopupMenuEntry<String>>[
-                    PopupMenuItem<String>(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                const Image(
-                                  width: 20,
-                                  image: AssetImage(
-                                    'assets/images/png/filter.png',
-                                  ),
-                                ),
-                                sizedBoxWidth(10),
-                                text20w400cblack('Filter')
-                              ],
-                            ),
-                            const Divider(),
-                          ],
-                        ),
-                      ),
-                    ),
-                    PopupMenuItem<String>(
-                      child: GFAccordion(
-                        titleChild: const SizedBox(
-                          width: 200,
-                          child: Text(
-                            'Department',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Color(0xff3A3A3A),
-                            ),
-                          ),
-                        ),
-                        contentChild: Column(
-                          children: List.generate(departments.length, (index) {
-                            return CheckboxListTile(
-                              title: Text(
-                                departments[index],
-                                style: const TextStyle(
-                                    color: Color(
-                                      0xff646464,
-                                    ),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              value: departmentChecked[index],
-                              onChanged: (bool? value) {
-                                // Use setState from StatefulBuilder to update the checkbox
-                                setState(() {
-                                  departmentChecked[index] = value ?? false;
-                                });
-                              },
-                              controlAffinity: ListTileControlAffinity.leading,
-                              activeColor: const Color(0xff6311CB),
-                              checkColor: const Color(0xffffffff),
-                            );
-                          }),
-                        ),
-                        collapsedIcon: const Icon(Icons.keyboard_arrow_down),
-                        expandedIcon: const Icon(Icons.keyboard_arrow_up),
-                        collapsedTitleBackgroundColor: Colors.transparent,
-                        expandedTitleBackgroundColor: Colors.transparent,
-                        contentBackgroundColor: Colors.transparent,
-                        titleBorderRadius: BorderRadius.circular(0),
-                        titlePadding: const EdgeInsets.all(10.0),
-                        contentPadding: const EdgeInsets.all(0.0),
-                        showAccordion: false,
-                        margin: const EdgeInsets.all(0),
-                      ),
-                    ),
-                    PopupMenuItem<String>(
-                      child: GFAccordion(
-                        titleChild: const SizedBox(
-                          width: 200,
-                          child: Text(
-                            'Status',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Color(0xff3A3A3A),
-                            ),
-                          ),
-                        ),
-                        contentChild: Column(
-                          children: List.generate(departments2.length, (index) {
-                            return CheckboxListTile(
-                              title: Text(
-                                departments2[index],
-                                style: const TextStyle(
-                                    color: Color(
-                                      0xff646464,
-                                    ),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              value: departmentChecked2[index],
-                              onChanged: (bool? value) {
-                                // Use setState from StatefulBuilder to update the checkbox
-                                setState(() {
-                                  departmentChecked2[index] = value ?? false;
-                                });
-                              },
-                              controlAffinity: ListTileControlAffinity.leading,
-                              activeColor: const Color(0xff6311CB),
-                              checkColor: const Color(0xffffffff),
-                            );
-                          }),
-                        ),
-                        collapsedIcon: const Icon(Icons.keyboard_arrow_down),
-                        expandedIcon: const Icon(Icons.keyboard_arrow_up),
-                        collapsedTitleBackgroundColor: Colors.transparent,
-                        expandedTitleBackgroundColor: Colors.transparent,
-                        contentBackgroundColor: Colors.transparent,
-                        titleBorderRadius: BorderRadius.circular(0),
-                        titlePadding: const EdgeInsets.all(10.0),
-                        contentPadding: const EdgeInsets.all(0.0),
-                        showAccordion: false,
-                        margin: const EdgeInsets.all(0),
-                      ),
-                    ),
-                    const PopupMenuItem<String>(
-                      child: Column(
-                        children: [
-                          Divider(),
-                          Row(
-                            children: [
-                              Expanded(
-                                  flex: 1,
-                                  child: CustomGreyButton(
-                                    text: 'Reset',
-                                  )),
-                              Expanded(
-                                flex: 1,
-                                child: CustomButton(text: 'Filter'),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ];
-                },
-              ),
-            ],
-          ),
+          SearchBarFilter(),
           sizedBoxHeight(25),
           const ExpenseBenefites(
             tite1: 'Department',
@@ -396,7 +186,7 @@ class _ExpenseState extends State<Expense> {
   }
 }
 
-class ExpenseBenefites extends StatelessWidget {
+class ExpenseBenefites extends StatefulWidget {
   final String tite1;
   final String tite2;
   final String tite3;
@@ -422,8 +212,21 @@ class ExpenseBenefites extends StatelessWidget {
   });
 
   @override
+  State<ExpenseBenefites> createState() => _ExpenseBenefitesState();
+}
+
+class _ExpenseBenefitesState extends State<ExpenseBenefites> {
+  bool isExpanded = true; 
+
+  @override
   Widget build(BuildContext context) {
     return GFAccordion(
+      onToggleCollapsed: (value) {
+        // Use the callback to update the state
+        setState(() {
+          isExpanded = !value;
+        });
+      },
       contentChild: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -432,26 +235,26 @@ class ExpenseBenefites extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  text16w400c585858(tite1),
+                  text16w400c585858(widget.tite1),
                   sizedBoxHeight(10),
-                  text16w400c585858(tite2),
+                  text16w400c585858(widget.tite2),
                   sizedBoxHeight(10),
-                  text16w400c585858(tite3),
+                  text16w400c585858(widget.tite3),
                   sizedBoxHeight(10),
-                  text16w400c585858(tite4),
+                  text16w400c585858(widget.tite4),
                 ],
               ),
               const SizedBox(width: 30),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  text16w400cblack(subtitle1),
+                  text16w400cblack(widget.subtitle1),
                   sizedBoxHeight(10),
-                  text16w400cblack(subtitle2),
+                  text16w400cblack(widget.subtitle2),
                   sizedBoxHeight(10),
-                  text16w400cblack(subtitle3),
+                  text16w400cblack(widget.subtitle3),
                   sizedBoxHeight(10),
-                  text16w400cblack(subtitle4),
+                  text16w400cblack(widget.subtitle4),
                 ],
               ),
             ],
@@ -463,10 +266,14 @@ class ExpenseBenefites extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleAvatar(
-                minRadius: 10,
-                backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                child: Icon(Icons.arrow_drop_down),
+              SizedBox(
+                height: 21.h,
+                width: 21.h,
+                child: Image.asset(
+                  isExpanded
+                      ? 'assets/images/png/arrow_down.png'
+                      : 'assets/images/png/arrow_up.png',
+                ),
               ),
               sizedBoxWidth(10),
               Image.asset(
@@ -478,12 +285,12 @@ class ExpenseBenefites extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    header,
+                    widget.header,
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    mail,
+                    widget.mail,
                     style: const TextStyle(
                         fontSize: 15, fontWeight: FontWeight.w400),
                   ),
@@ -492,18 +299,16 @@ class ExpenseBenefites extends StatelessWidget {
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               InkWell(
-                onTap: () {
-                  Get.toNamed(RouteName.editdetails);
-                },
-                child: const Icon(
-                  Icons.edit_sharp,
-                  color: Color(0xff6311CB),
-                  size: 25,
-                ),
-              ),
+                  onTap: () {
+                    Get.toNamed(RouteName.editdetails);
+                  },
+                  child: Image.asset(
+                    'assets/images/png/edit.png',
+                    height: 24.h,
+                    width: 24.w,
+                  )),
               sizedBoxWidth(5),
               InkWell(
                 onTap: () {
@@ -543,33 +348,8 @@ class Benefit extends StatefulWidget {
 }
 
 class _BenefitState extends State<Benefit> {
-  final List<String> departments3 = [
-    'Design',
-    'Finance',
-    'IT',
-    'Development',
-    'Sales',
-    'QA',
-  ];
-  final List<String> departments4 = [
-    'Design',
-    'Finance',
-    'IT',
-    'Development',
-    'Sales',
-    'QA',
-  ];
 
-  List<bool> departmentChecked3 = [];
-  List<bool> departmentChecked4 = [];
 
-  @override
-  void initState() {
-    super.initState();
-    // Initially, all checkboxes are unchecked
-    departmentChecked3 = List<bool>.filled(departments3.length, false);
-    departmentChecked4 = List<bool>.filled(departments4.length, false);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -587,196 +367,7 @@ class _BenefitState extends State<Benefit> {
             ),
           ),
           sizedBoxHeight(30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: SizedBox(
-                  height: 55.h,
-                  child: TextFormField(
-                    textAlignVertical: TextAlignVertical.center,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Color(0xffA0ABBB),
-                        size: 25,
-                      ),
-                      hintText: 'Search',
-                      hintStyle: TextStyle(
-                          color: Color(0xffA0ABBB),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                        borderSide: BorderSide(
-                          color: Color(0xffCDCDCD),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                  width: 10.w), // Adding spacing between search and filter icon
-              PopupMenuButton<String>(
-                color: Colors.white,
-                icon: Image.asset(
-                  'assets/images/png/filter.png',
-                  width: 25.w,
-                ),
-                onSelected: (value) {
-                  // Handle the selected filter option
-                  print("Selected filter: $value");
-                },
-                itemBuilder: (BuildContext context) {
-                  return <PopupMenuEntry<String>>[
-                    PopupMenuItem<String>(
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                const Image(
-                                  width: 20,
-                                  image: AssetImage(
-                                    'assets/images/png/filter.png',
-                                  ),
-                                ),
-                                sizedBoxWidth(10),
-                                text20w400cblack('Filter')
-                              ],
-                            ),
-                            const Divider(),
-                          ],
-                        ),
-                      ),
-                    ),
-                    PopupMenuItem<String>(
-                      child: GFAccordion(
-                        titleChild: const SizedBox(
-                          width: 200,
-                          child: Text(
-                            'Department',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Color(0xff3A3A3A),
-                            ),
-                          ),
-                        ),
-                        contentChild: Column(
-                          children: List.generate(departments3.length, (index) {
-                            return CheckboxListTile(
-                              title: Text(
-                                departments3[index],
-                                style: const TextStyle(
-                                    color: Color(
-                                      0xff646464,
-                                    ),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              value: departmentChecked3[index],
-                              onChanged: (bool? value) {
-                                // Use setState from StatefulBuilder to update the checkbox
-                                setState(() {
-                                  departmentChecked3[index] = value ?? false;
-                                });
-                              },
-                              controlAffinity: ListTileControlAffinity.leading,
-                              activeColor: const Color(0xff6311CB),
-                              checkColor: const Color(0xffffffff),
-                            );
-                          }),
-                        ),
-                        collapsedIcon: const Icon(Icons.keyboard_arrow_down),
-                        expandedIcon: const Icon(Icons.keyboard_arrow_up),
-                        collapsedTitleBackgroundColor: Colors.transparent,
-                        expandedTitleBackgroundColor: Colors.transparent,
-                        contentBackgroundColor: Colors.transparent,
-                        titleBorderRadius: BorderRadius.circular(0),
-                        titlePadding: const EdgeInsets.all(10.0),
-                        contentPadding: const EdgeInsets.all(0.0),
-                        showAccordion: false,
-                        margin: const EdgeInsets.all(0),
-                      ),
-                    ),
-                    PopupMenuItem<String>(
-                      child: GFAccordion(
-                        titleChild: const SizedBox(
-                          width: 200,
-                          child: Text(
-                            'Status',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Color(0xff3A3A3A),
-                            ),
-                          ),
-                        ),
-                        contentChild: Column(
-                          children: List.generate(departments4.length, (index) {
-                            return CheckboxListTile(
-                              title: Text(
-                                departments4[index],
-                                style: const TextStyle(
-                                    color: Color(
-                                      0xff646464,
-                                    ),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              value: departmentChecked4[index],
-                              onChanged: (bool? value) {
-                                // Use setState from StatefulBuilder to update the checkbox
-                                setState(() {
-                                  departmentChecked4[index] = value ?? false;
-                                });
-                              },
-                              controlAffinity: ListTileControlAffinity.leading,
-                              activeColor: const Color(0xff6311CB),
-                              checkColor: const Color(0xffffffff),
-                            );
-                          }),
-                        ),
-                        collapsedIcon: const Icon(Icons.keyboard_arrow_down),
-                        expandedIcon: const Icon(Icons.keyboard_arrow_up),
-                        collapsedTitleBackgroundColor: Colors.transparent,
-                        expandedTitleBackgroundColor: Colors.transparent,
-                        contentBackgroundColor: Colors.transparent,
-                        titleBorderRadius: BorderRadius.circular(0),
-                        titlePadding: const EdgeInsets.all(10.0),
-                        contentPadding: const EdgeInsets.all(0.0),
-                        showAccordion: false,
-                        margin: const EdgeInsets.all(0),
-                      ),
-                    ),
-                    const PopupMenuItem<String>(
-                      child: Column(
-                        children: [
-                          Divider(),
-                          Row(
-                            children: [
-                              Expanded(
-                                  flex: 1,
-                                  child: CustomGreyButton(
-                                    text: 'Reset',
-                                  )),
-                              Expanded(
-                                flex: 1,
-                                child: CustomButton(text: 'Filter'),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ];
-                },
-              ),
-            ],
-          ),
+            SearchBarFilter(),
           sizedBoxHeight(25),
           const ExpenseBenefites(
             tite1: 'Department',

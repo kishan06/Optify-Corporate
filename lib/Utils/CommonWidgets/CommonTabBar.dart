@@ -38,7 +38,11 @@ class CommonTabBar extends StatelessWidget {
             fontFamily: 'Gilroy-Regular',
           ),
           overlayColor: MaterialStateProperty.all(Colors.transparent),
-          tabs: tabs),
+          tabs: tabs,
+          labelPadding: EdgeInsets.all(0),
+
+          padding: EdgeInsets.all(0),
+          indicatorPadding: EdgeInsets.all(0)),
     );
   }
 }
