@@ -4,6 +4,7 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ApproverDetails extends StatefulWidget {
@@ -79,26 +80,52 @@ class _ApproverDetailsState extends State<ApproverDetails> {
                 children: [
                   Row(
                     children: [
-                      Checkbox(
-                        value: billapproved,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            billapproved = value ?? false;
-                          });
-                        },
+                      Transform.scale(
+                        scale: 1.05.h,
+                        child: Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          side: BorderSide(
+                              color: Color(0xffD0D5DD), width: 1.5.w),
+                          activeColor: const Color(0xff6311CB),
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(2.r)),
+                          ),
+                          value: billapproved,
+                          checkColor: Color(0xFFffffff),
+                          onChanged: (bool? value) {
+                            setState(() {
+                              billapproved = value ?? false;
+                            });
+                          },
+                        ),
                       ),
                       text16w400c667085("Bill approver"),
                     ],
                   ),
                   Row(
                     children: [
-                      Checkbox(
-                        value: reimbursement,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            reimbursement = value ?? false;
-                          });
-                        },
+                      Transform.scale(
+                        scale: 1.05.h,
+                        child: Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          side: BorderSide(
+                              color: Color(0xffD0D5DD), width: 1.5.w),
+                          activeColor: const Color(0xff6311CB),
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(2.r)),
+                          ),
+                          value: reimbursement,
+                          checkColor: Color(0xFFffffff),
+                          onChanged: (bool? value) {
+                            setState(() {
+                              reimbursement = value ?? false;
+                            });
+                          },
+                        ),
                       ),
                       text16w400c667085("Reimbursement approver"),
                     ],
@@ -188,12 +215,28 @@ class _ExpenseCheckboxState extends State<ExpenseCheckbox> {
       children: [
         Row(
           children: [
-            Checkbox(
-              value: isExpenseChecked,
-              onChanged: (bool? value) {
-                toggleSelectAll(value);
-              },
-            ),
+
+                Transform.scale(
+                        scale: 1.05.h,
+                        child: Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          side: BorderSide(
+                              color: Color(0xffD0D5DD), width: 1.5.w),
+                          activeColor: const Color(0xff6311CB),
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(2.r)),
+                          ),
+                          value: isExpenseChecked,
+                          checkColor: Color(0xFFffffff),
+                          onChanged: (bool? value) {
+                            setState(() {
+                               toggleSelectAll(value);
+                            });
+                          },
+                        ),
+                      ),
             text18w400cblack('Expense'),
           ],
         ),
@@ -203,52 +246,92 @@ class _ExpenseCheckboxState extends State<ExpenseCheckbox> {
             children: [
               Row(
                 children: [
-                  Checkbox(
-                    value: isFoodChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isFoodChecked = value ?? false;
-                      });
-                    },
+                  Transform.scale(
+                    scale: 1.05.h,
+                    child: Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      side: BorderSide(color: Color(0xffD0D5DD), width: 1.5.w),
+                      activeColor: const Color(0xff6311CB),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                      ),
+                      value: isFoodChecked,
+                      checkColor: Color(0xFFffffff),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isFoodChecked = value ?? false;
+                        });
+                      },
+                    ),
                   ),
                   text16w400c667085('Food'),
                 ],
               ),
               Row(
                 children: [
-                  Checkbox(
-                    value: isFuelChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isFuelChecked = value ?? false;
-                      });
-                    },
+                  Transform.scale(
+                    scale: 1.05.h,
+                    child: Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      side: BorderSide(color: Color(0xffD0D5DD), width: 1.5.w),
+                      activeColor: const Color(0xff6311CB),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                      ),
+                      value: isFuelChecked,
+                      checkColor: Color(0xFFffffff),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isFuelChecked = value ?? false;
+                        });
+                      },
+                    ),
                   ),
                   text16w400c667085('Fuel'),
                 ],
               ),
               Row(
                 children: [
-                  Checkbox(
-                    value: isTravelChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isTravelChecked = value ?? false;
-                      });
-                    },
+                  Transform.scale(
+                    scale: 1.05.h,
+                    child: Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      side: BorderSide(color: Color(0xffD0D5DD), width: 1.5.w),
+                      activeColor: const Color(0xff6311CB),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                      ),
+                      value: isTravelChecked,
+                      checkColor: Color(0xFFffffff),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isTravelChecked = value ?? false;
+                        });
+                      },
+                    ),
                   ),
                   text16w400c667085('Travel'),
                 ],
               ),
               Row(
                 children: [
-                  Checkbox(
-                    value: isBookChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isBookChecked = value ?? false;
-                      });
-                    },
+                  Transform.scale(
+                    scale: 1.05.h,
+                    child: Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      side: BorderSide(color: Color(0xffD0D5DD), width: 1.5.w),
+                      activeColor: const Color(0xff6311CB),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                      ),
+                      value: isBookChecked,
+                      checkColor: Color(0xFFffffff),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isBookChecked = value ?? false;
+                        });
+                      },
+                    ),
                   ),
                   text16w400c667085('Book & Periodicals'),
                 ],
@@ -299,11 +382,23 @@ class _BenefitsCheckboxState extends State<BenefitsCheckbox> {
       children: [
         Row(
           children: [
-            Checkbox(
-              value: isExpenseChecked,
-              onChanged: (bool? value) {
-                toggleSelectAll(value);
-              },
+            Transform.scale(
+              scale: 1.05.h,
+              child: Checkbox(
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                side: BorderSide(color: Color(0xffD0D5DD), width: 1.5.w),
+                activeColor: const Color(0xff6311CB),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                ),
+                value: isExpenseChecked,
+                checkColor: Color(0xFFffffff),
+                onChanged: (bool? value) {
+                  setState(() {
+                    toggleSelectAll(value);
+                  });
+                },
+              ),
             ),
             text18w400cblack('Benefit'),
           ],
@@ -314,52 +409,92 @@ class _BenefitsCheckboxState extends State<BenefitsCheckbox> {
             children: [
               Row(
                 children: [
-                  Checkbox(
-                    value: isFoodChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isFoodChecked = value ?? false;
-                      });
-                    },
+                  Transform.scale(
+                    scale: 1.05.h,
+                    child: Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      side: BorderSide(color: Color(0xffD0D5DD), width: 1.5.w),
+                      activeColor: const Color(0xff6311CB),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                      ),
+                      value: isFoodChecked,
+                      checkColor: Color(0xFFffffff),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isFoodChecked = value ?? false;
+                        });
+                      },
+                    ),
                   ),
                   text16w400c667085('Food'),
                 ],
               ),
               Row(
                 children: [
-                  Checkbox(
-                    value: isFuelChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isFuelChecked = value ?? false;
-                      });
-                    },
+                  Transform.scale(
+                    scale: 1.05.h,
+                    child: Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      side: BorderSide(color: Color(0xffD0D5DD), width: 1.5.w),
+                      activeColor: const Color(0xff6311CB),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                      ),
+                      value: isFuelChecked,
+                      checkColor: Color(0xFFffffff),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isFuelChecked = value ?? false;
+                        });
+                      },
+                    ),
                   ),
                   text16w400c667085('Fuel'),
                 ],
               ),
               Row(
                 children: [
-                  Checkbox(
-                    value: isTravelChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isTravelChecked = value ?? false;
-                      });
-                    },
+                  Transform.scale(
+                    scale: 1.05.h,
+                    child: Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      side: BorderSide(color: Color(0xffD0D5DD), width: 1.5.w),
+                      activeColor: const Color(0xff6311CB),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                      ),
+                      value: isTravelChecked,
+                      checkColor: Color(0xFFffffff),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isTravelChecked = value ?? false;
+                        });
+                      },
+                    ),
                   ),
                   text16w400c667085('Travel'),
                 ],
               ),
               Row(
                 children: [
-                  Checkbox(
-                    value: isBookChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isBookChecked = value ?? false;
-                      });
-                    },
+                  Transform.scale(
+                    scale: 1.05.h,
+                    child: Checkbox(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      side: BorderSide(color: Color(0xffD0D5DD), width: 1.5.w),
+                      activeColor: const Color(0xff6311CB),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                      ),
+                      value: isBookChecked,
+                      checkColor: Color(0xFFffffff),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isBookChecked = value ?? false;
+                        });
+                      },
+                    ),
                   ),
                   text16w400c667085('Book & Periodicals'),
                 ],

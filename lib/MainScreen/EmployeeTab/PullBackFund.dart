@@ -5,6 +5,7 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonAppBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonModal.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
+import 'package:Optifii_Corporate/Utils/CommonWidgets/SearchBar_Filter.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
@@ -70,34 +71,10 @@ class Expense extends StatefulWidget {
 }
 
 class _ExpenseState extends State<Expense> {
-  final List<String> departments = [
-    'Design',
-    'Finance',
-    'IT',
-    'Development',
-    'Sales',
-    'QA',
-  ];
-  final List<String> departments2 = [
-    'Design',
-    'Finance',
-    'IT',
-    'Development',
-    'Sales',
-    'QA',
-  ];
+ 
 
-  List<bool> departmentChecked = [];
-  List<bool> departmentChecked2 = [];
 
-  @override
-  void initState() {
-    super.initState();
-    // Initially, all checkboxes are unchecked
-    departmentChecked = List<bool>.filled(departments.length, false);
-    departmentChecked2 = List<bool>.filled(departments2.length, false);
-  }
-
+ 
   bool isExpenseChecked = false;
 
   void toggleSelectAll(bool? value) {
@@ -114,199 +91,7 @@ class _ExpenseState extends State<Expense> {
           sizedBoxHeight(15),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: SizedBox(
-                    height: 55.h,
-                    child: TextFormField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Color(0xffA0ABBB),
-                          size: 25,
-                        ),
-                        hintText: 'Search',
-                        hintStyle: TextStyle(
-                            color: Color(0xffA0ABBB),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                          borderSide: BorderSide(
-                            color: Color(0xffCDCDCD),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10.w),
-                PopupMenuButton<String>(
-                  color: Colors.white,
-                  icon: Image.asset(
-                    'assets/images/png/filter.png',
-                    width: 25.w,
-                  ),
-                  onSelected: (value) {
-                    // Handle the selected filter option
-                    print("Selected filter: $value");
-                  },
-                  itemBuilder: (BuildContext context) {
-                    return <PopupMenuEntry<String>>[
-                      PopupMenuItem<String>(
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  const Image(
-                                    width: 20,
-                                    image: AssetImage(
-                                      'assets/images/png/filter.png',
-                                    ),
-                                  ),
-                                  sizedBoxWidth(10),
-                                  text20w400cblack('Filter')
-                                ],
-                              ),
-                              const Divider(),
-                            ],
-                          ),
-                        ),
-                      ),
-                      PopupMenuItem<String>(
-                        child: GFAccordion(
-                          titleChild: const SizedBox(
-                            width: 200,
-                            child: Text(
-                              'Department',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xff3A3A3A),
-                              ),
-                            ),
-                          ),
-                          contentChild: Column(
-                            children:
-                                List.generate(departments.length, (index) {
-                              return CheckboxListTile(
-                                title: Text(
-                                  departments[index],
-                                  style: const TextStyle(
-                                      color: Color(
-                                        0xff646464,
-                                      ),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                                value: departmentChecked[index],
-                                onChanged: (bool? value) {
-                                  // Use setState from StatefulBuilder to update the checkbox
-                                  setState(() {
-                                    departmentChecked[index] = value ?? false;
-                                  });
-                                },
-                                controlAffinity:
-                                    ListTileControlAffinity.leading,
-                                activeColor: const Color(0xff6311CB),
-                                checkColor: const Color(0xffffffff),
-                              );
-                            }),
-                          ),
-                          collapsedIcon: const Icon(Icons.keyboard_arrow_down),
-                          expandedIcon: const Icon(Icons.keyboard_arrow_up),
-                          collapsedTitleBackgroundColor: Colors.transparent,
-                          expandedTitleBackgroundColor: Colors.transparent,
-                          contentBackgroundColor: Colors.transparent,
-                          titleBorderRadius: BorderRadius.circular(0),
-                          titlePadding: const EdgeInsets.all(10.0),
-                          contentPadding: const EdgeInsets.all(0.0),
-                          showAccordion: false,
-                          margin: const EdgeInsets.all(0),
-                        ),
-                      ),
-                      PopupMenuItem<String>(
-                        child: GFAccordion(
-                          titleChild: const SizedBox(
-                            width: 200,
-                            child: Text(
-                              'Status',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xff3A3A3A),
-                              ),
-                            ),
-                          ),
-                          contentChild: Column(
-                            children:
-                                List.generate(departments2.length, (index) {
-                              return CheckboxListTile(
-                                title: Text(
-                                  departments2[index],
-                                  style: const TextStyle(
-                                      color: Color(
-                                        0xff646464,
-                                      ),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                                value: departmentChecked2[index],
-                                onChanged: (bool? value) {
-                                  // Use setState from StatefulBuilder to update the checkbox
-                                  setState(() {
-                                    departmentChecked2[index] = value ?? false;
-                                  });
-                                },
-                                controlAffinity:
-                                    ListTileControlAffinity.leading,
-                                activeColor: const Color(0xff6311CB),
-                                checkColor: const Color(0xffffffff),
-                              );
-                            }),
-                          ),
-                          collapsedIcon: const Icon(Icons.keyboard_arrow_down),
-                          expandedIcon: const Icon(Icons.keyboard_arrow_up),
-                          collapsedTitleBackgroundColor: Colors.transparent,
-                          expandedTitleBackgroundColor: Colors.transparent,
-                          contentBackgroundColor: Colors.transparent,
-                          titleBorderRadius: BorderRadius.circular(0),
-                          titlePadding: const EdgeInsets.all(10.0),
-                          contentPadding: const EdgeInsets.all(0.0),
-                          showAccordion: false,
-                          margin: const EdgeInsets.all(0),
-                        ),
-                      ),
-                      const PopupMenuItem<String>(
-                        child: Column(
-                          children: [
-                            Divider(),
-                            Row(
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: CustomGreyButton(
-                                      text: 'Reset',
-                                    )),
-                                Expanded(
-                                  flex: 1,
-                                  child: CustomButton(text: 'Filter'),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ];
-                  },
-                ),
-              ],
-            ),
+            child: SearchBarFilter()
           ),
 
           Row(
@@ -334,16 +119,6 @@ class _ExpenseState extends State<Expense> {
           ),
           const Divider(),
           ExpenseBenefites(
-            // tite1: 'Department',
-            // tite2: 'Approver for',
-            // tite3: 'Wallet type',
-            // tite4: 'Wallet assigned',
-            // subtitle1: ': Design',
-            // subtitle2: ': Bills',
-            // subtitle3: ': Expense',
-            // subtitle4: ': Fuel, food, travel',
-            // header: 'Reethik thota',
-            // mail: 'WD-0956',
             isChecked: isExpenseChecked, // Pass the "Select All" state
             onCheckedChanged: (bool? value) {
               setState(() {
@@ -352,16 +127,7 @@ class _ExpenseState extends State<Expense> {
             },
           ),
           const Divider(),ExpenseBenefites(
-            // tite1: 'Department',
-            // tite2: 'Approver for',
-            // tite3: 'Wallet type',
-            // tite4: 'Wallet assigned',
-            // subtitle1: ': Design',
-            // subtitle2: ': Bills',
-            // subtitle3: ': Expense',
-            // subtitle4: ': Fuel, food, travel',
-            // header: 'Reethik thota',
-            // mail: 'WD-0956',
+         
             isChecked: isExpenseChecked, // Pass the "Select All" state
             onCheckedChanged: (bool? value) {
               setState(() {
@@ -371,16 +137,7 @@ class _ExpenseState extends State<Expense> {
           ),
           const Divider(),
           ExpenseBenefites(
-            // tite1: 'Department',
-            // tite2: 'Approver for',
-            // tite3: 'Wallet type',
-            // tite4: 'Wallet assigned',
-            // subtitle1: ': Design',
-            // subtitle2: ': Bills',
-            // subtitle3: ': Expense',
-            // subtitle4: ': Fuel, food, travel',
-            // header: 'Reethik thota',
-            // mail: 'WD-0956',
+         
             isChecked: isExpenseChecked, // Pass the "Select All" state
             onCheckedChanged: (bool? value) {
               setState(() {
@@ -390,16 +147,7 @@ class _ExpenseState extends State<Expense> {
           ),
           const Divider(),
           ExpenseBenefites(
-            // tite1: 'Department',
-            // tite2: 'Approver for',
-            // tite3: 'Wallet type',
-            // tite4: 'Wallet assigned',
-            // subtitle1: ': Design',
-            // subtitle2: ': Bills',
-            // subtitle3: ': Expense',
-            // subtitle4: ': Fuel, food, travel',
-            // header: 'Reethik thota',
-            // mail: 'WD-0956',
+ 
             isChecked: isExpenseChecked, // Pass the "Select All" state
             onCheckedChanged: (bool? value) {
               setState(() {
@@ -409,16 +157,7 @@ class _ExpenseState extends State<Expense> {
           ),
           const Divider(),
           ExpenseBenefites(
-            // tite1: 'Department',
-            // tite2: 'Approver for',
-            // tite3: 'Wallet type',
-            // tite4: 'Wallet assigned',
-            // subtitle1: ': Design',
-            // subtitle2: ': Bills',
-            // subtitle3: ': Expense',
-            // subtitle4: ': Fuel, food, travel',
-            // header: 'Reethik thota',
-            // mail: 'WD-0956',
+
             isChecked: isExpenseChecked, // Pass the "Select All" state
             onCheckedChanged: (bool? value) {
               setState(() {
@@ -462,7 +201,7 @@ class _ExpenseBenefitesState extends State<ExpenseBenefites> {
   //   }
   // }
 
-  bool isExpanded = false;
+  bool isExpanded = true;
   bool isExpenseChecked = false;
 
   void toggleSelectAll(bool? value) {

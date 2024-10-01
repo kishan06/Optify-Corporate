@@ -110,6 +110,10 @@ class _AddApproversState extends State<AddApprovers> {
   }
 }
 
+
+
+
+
 class AddApprover extends StatefulWidget {
   final String header;
   final String mail;
@@ -159,7 +163,9 @@ class _AddApproverState extends State<AddApprover> {
                   Text(
                     widget.mail,
                     style: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.w400),
+                      fontFamily: 'TT Commons',
+                      color: Color(0xffA0ABBB),
+                        fontSize: 16, fontWeight: FontWeight.w400),
                   ),
                 ],
               ),

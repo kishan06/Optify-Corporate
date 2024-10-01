@@ -8,6 +8,7 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonBottomNavigationBar.
 import 'package:Optifii_Corporate/Utils/CommonWidgets/CommonTabBar.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/MainScreen.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
+import 'package:Optifii_Corporate/Utils/Helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,7 +30,20 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
       extendBody: true,
       bottomNavigationBar:
           CustomBottomNavigationBar(mainController: mainController),
-      appBar: const CommonAppbar(titleTxt: 'Gift card & voucher'),
+      appBar: AppBar(
+        centerTitle: false,
+        automaticallyImplyLeading: false, // Ensures no leading widget appears
+        backgroundColor: AppColors.primary,
+        title: Text(
+          'Gift card & voucher',
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+            fontFamily: 'Gilroy-SemiBold',
+          ),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
