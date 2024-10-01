@@ -13,8 +13,11 @@ class Digitaltab extends StatefulWidget {
   @override
   State<Digitaltab> createState() => _DigitaltabState();
 }
-
+ 
 class _DigitaltabState extends State<Digitaltab> {
+
+
+
   // Create a list of order data
   final List<OrderData> orders = [
     OrderData(
@@ -73,6 +76,8 @@ class _DigitaltabState extends State<Digitaltab> {
     ),
   ];
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +90,10 @@ class _DigitaltabState extends State<Digitaltab> {
             sizedBoxHeight(38.h),
             const Padding(
               padding: EdgeInsets.only(left: 16, right: 22),
-              child: SearchBarFilter(),
+
+              child: SearchBarFilter(
+            //   isChecked: ,
+              ),
             ),
             sizedBoxHeight(4.h),
             Column(
