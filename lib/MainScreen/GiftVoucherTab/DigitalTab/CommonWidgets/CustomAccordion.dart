@@ -29,7 +29,7 @@ class CustomAccordion extends StatefulWidget {
 
 class _CustomAccordionState extends State<CustomAccordion> {
 
-  bool isExpanded = false; // Initial state is collapsed
+  bool isExpanded = true; // Initial state is collapsed
 
   // Method to get status colors based on the status
   Map<String, dynamic> getStatusColors(String status) {
@@ -91,10 +91,14 @@ class _CustomAccordionState extends State<CustomAccordion> {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                minRadius: 10,
-                backgroundColor: const Color.fromRGBO(98, 17, 203, 0.178),
-                child: Icon(isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down),
+               SizedBox(
+                height: 21.h,
+                width: 21.h,
+                child: Image.asset(
+                  isExpanded
+                      ? 'assets/images/png/arrow_down.png'
+                      : 'assets/images/png/arrow_up.png',
+                ),
               ),
               const SizedBox(width: 12),
               Column(

@@ -52,7 +52,8 @@ class _AllTabState extends State<AllTab> {
               headerBackgroundColor: isExpanded ? Color(0xff3725EA) : Colors.white,
               contentBackgroundColor: Colors.white,
               headerBorderRadius: 8,
-              rightIcon: isExpanded ? Icon(Icons.arrow_drop_down_outlined , color: Colors.white,) : Icon(Icons.arrow_drop_down_outlined),
+  
+              rightIcon: isExpanded ? Icon(Icons.keyboard_arrow_up , color: Colors.white,) : Icon(Icons.keyboard_arrow_down),
               headerPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               header: Text(
                 accordionData[index]['title']!,

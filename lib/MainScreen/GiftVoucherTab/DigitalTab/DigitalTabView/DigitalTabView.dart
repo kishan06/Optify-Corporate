@@ -127,7 +127,7 @@ class _DigitaltabviewState extends State<Digitaltabview> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      text25w500c3725EA('#47954524'),
+                      text25w600c3725EA('#47954524'),
                       text20w400cA0ABBB('Order ID'),
                     ],
                   ),

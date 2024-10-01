@@ -23,7 +23,7 @@ class Customaccordionofdigitaltabview extends StatefulWidget {
 }
 
 class _CustomaccordionofdigitaltabviewState extends State<Customaccordionofdigitaltabview> {
-  bool isExpanded = false;
+  bool isExpanded = true;
  // Initial state is collapsed
   @override
   Widget build(BuildContext context) {
@@ -31,11 +31,15 @@ class _CustomaccordionofdigitaltabviewState extends State<Customaccordionofdigit
       titleChild: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CircleAvatar(
-            minRadius: 10,
-            backgroundColor: const Color.fromRGBO(98, 17, 203, 0.178),
-            child: Icon(isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down),
-          ),
+            SizedBox(
+                height: 21.h,
+                width: 21.h,
+                child: Image.asset(
+                  isExpanded
+                      ? 'assets/images/png/arrow_down.png'
+                      : 'assets/images/png/arrow_up.png',
+                ),
+              ),
           sizedBoxWidth(11.w),
 
           Container(

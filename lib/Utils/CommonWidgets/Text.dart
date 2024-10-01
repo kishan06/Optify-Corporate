@@ -686,6 +686,18 @@ Widget text25w500c3725EA(String text) {
   );
 }
 
+Widget text25w600c3725EA(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 25.sp,
+      color: const Color(0xff3725EA),
+      fontWeight: FontWeight.w600,
+      fontFamily: 'TTCommons-Regular',
+    ),
+  );
+}
+
 Widget text20w400cA0ABBB(String text) {
   return Text(
     text,

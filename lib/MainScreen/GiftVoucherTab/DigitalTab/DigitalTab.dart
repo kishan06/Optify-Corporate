@@ -87,7 +87,7 @@ class _DigitaltabState extends State<Digitaltab> {
               padding: EdgeInsets.only(left: 16, right: 22),
               child: SearchBarFilter(),
             ),
-            sizedBoxHeight(25.h),
+            sizedBoxHeight(4.h),
             Column(
               children: orders.map((order) {
                 return Column(

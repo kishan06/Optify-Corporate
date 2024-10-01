@@ -90,7 +90,7 @@ class _CustomAccordionOfVoucherTabState
     }
   }
 
-  bool isExpanded = false; // Initial state is collapsed
+  bool isExpanded = true; // Initial state is collapsed
 
   @override
   Widget build(BuildContext context) {
@@ -98,16 +98,21 @@ class _CustomAccordionOfVoucherTabState
     var statusColors = getStatusColors(widget.status);
 
     return GFAccordion(
+      collapsedIcon: SizedBox.shrink(),
+      expandedIcon: SizedBox.shrink(),
       titleChild: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              CircleAvatar(
-                minRadius: 10,
-                backgroundColor: const Color.fromRGBO(98, 17, 203, 0.178),
-                child: Icon(
-                    isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down),
+                SizedBox(
+                height: 21.h,
+                width: 21.h,
+                child: Image.asset(
+                  isExpanded
+                      ? 'assets/images/png/arrow_down.png'
+                      : 'assets/images/png/arrow_up.png',
+                ),
               ),
               const SizedBox(width: 11),
               Container(

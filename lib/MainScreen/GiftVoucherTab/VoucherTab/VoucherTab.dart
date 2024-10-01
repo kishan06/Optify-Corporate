@@ -70,7 +70,7 @@ class _VouchertabState extends State<Vouchertab> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            sizedBoxHeight(16.h),
+            sizedBoxHeight(4.h),
             
             Column(
               children: voucher.map((voucherData) {

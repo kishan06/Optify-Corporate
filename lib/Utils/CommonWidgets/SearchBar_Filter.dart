@@ -2,9 +2,9 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
-
 class SearchBarFilter extends StatefulWidget {
   final bool? isChecked;
   final ValueChanged<bool?>? onCheckedChanged;
@@ -34,6 +34,10 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
   List<bool> departmentChecked = [];
   List<bool> statusChecked = [];
 
+  // State for accordion expansion
+  bool isDepartmentExpanded = false;
+  bool isStatusExpanded = false;
+
   @override
   void initState() {
     super.initState();
@@ -59,7 +63,7 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
     );
   }
 
-  // Extract the SearchBar into its own widget
+  // SearchBar widget
   Widget _buildSearchBar() {
     return TextFormField(
       textAlignVertical: TextAlignVertical.center,
@@ -87,7 +91,7 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
     );
   }
 
-  // Extract the filter menu into its own widget
+  // PopupMenu widget
   Widget _buildFilterPopupMenu() {
     return PopupMenuButton<String>(
       color: Colors.white,
@@ -96,7 +100,6 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
         width: 25.w,
       ),
       onSelected: (value) {
-        // Handle the selected filter option
         print("Selected filter: $value");
       },
       itemBuilder: (BuildContext context) {
@@ -110,7 +113,7 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
     );
   }
 
-  // Extract the filter header into a reusable widget
+  // Filter header widget
   PopupMenuItem<String> _buildPopupHeader() {
     return PopupMenuItem<String>(
       child: SizedBox(
@@ -134,18 +137,28 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
     );
   }
 
-  // Build the Department Accordion
+  // Department Accordion with dynamic icon toggle
   PopupMenuItem<String> _buildDepartmentAccordion() {
     return PopupMenuItem<String>(
       child: GFAccordion(
-        titleChild: const SizedBox(
+        titleChild: SizedBox(
           width: 200,
-          child: Text(
-            'Department',
-            style: TextStyle(
-              fontSize: 20,
-              color: Color(0xff3A3A3A),
-            ),
+          child: Row(
+            children: [
+              Icon(
+                isDepartmentExpanded
+                    ? Icons.keyboard_arrow_up
+                    : Icons.keyboard_arrow_down,
+              ),
+              const SizedBox(width: 8),
+              const Text(
+                'Department',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Color(0xff3A3A3A),
+                ),
+              ),
+            ],
           ),
         ),
         contentChild: Column(
@@ -171,8 +184,8 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
             );
           }),
         ),
-        collapsedIcon: const Icon(Icons.keyboard_arrow_down),
-        expandedIcon: const Icon(Icons.keyboard_arrow_up),
+        collapsedIcon: const SizedBox.shrink(),
+        expandedIcon: const SizedBox.shrink(),
         collapsedTitleBackgroundColor: Colors.transparent,
         expandedTitleBackgroundColor: Colors.transparent,
         contentBackgroundColor: Colors.transparent,
@@ -181,22 +194,37 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
         contentPadding: const EdgeInsets.all(0.0),
         showAccordion: false,
         margin: const EdgeInsets.all(0),
+        onToggleCollapsed: (expanded) {
+          setState(() {
+            isDepartmentExpanded = expanded;
+          });
+        },
       ),
     );
   }
 
-  // Build the Status Accordion
+  // Status Accordion with dynamic icon toggle
   PopupMenuItem<String> _buildStatusAccordion() {
     return PopupMenuItem<String>(
       child: GFAccordion(
-        titleChild: const SizedBox(
+        titleChild: SizedBox(
           width: 200,
-          child: Text(
-            'Status',
-            style: TextStyle(
-              fontSize: 20,
-              color: Color(0xff3A3A3A),
-            ),
+          child: Row(
+            children: [
+              Icon(
+                isStatusExpanded
+                    ? Icons.keyboard_arrow_up
+                    : Icons.keyboard_arrow_down,
+              ),
+              const SizedBox(width: 8),
+              const Text(
+                'Status',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Color(0xff3A3A3A),
+                ),
+              ),
+            ],
           ),
         ),
         contentChild: Column(
@@ -222,8 +250,8 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
             );
           }),
         ),
-        collapsedIcon: const Icon(Icons.keyboard_arrow_down),
-        expandedIcon: const Icon(Icons.keyboard_arrow_up),
+        collapsedIcon: const SizedBox.shrink(),
+        expandedIcon: const SizedBox.shrink(),
         collapsedTitleBackgroundColor: Colors.transparent,
         expandedTitleBackgroundColor: Colors.transparent,
         contentBackgroundColor: Colors.transparent,
@@ -232,11 +260,16 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
         contentPadding: const EdgeInsets.all(0.0),
         showAccordion: false,
         margin: const EdgeInsets.all(0),
+        onToggleCollapsed: (expanded) {
+          setState(() {
+            isStatusExpanded = expanded;
+          });
+        },
       ),
     );
   }
 
-  // Build the footer with reset and filter buttons
+  // Footer widget
   PopupMenuItem<String> _buildFooter() {
     return const PopupMenuItem<String>(
       child: Column(

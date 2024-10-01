@@ -24,9 +24,8 @@ class _FaqState extends State<Faq> with SingleTickerProviderStateMixin {
             Container(
               height: 42.h,
               child: TabBar(
-                isScrollable: true,
+                isScrollable: false,
                 labelPadding: EdgeInsets.zero,
-
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(21),
                   gradient: const LinearGradient(
@@ -38,6 +37,7 @@ class _FaqState extends State<Faq> with SingleTickerProviderStateMixin {
                 labelColor: Colors.white,
                 unselectedLabelColor: const Color(0xff5B5B5B),
                 dividerColor: Colors.transparent,
+                automaticIndicatorColorAdjustment: false,
                 indicatorPadding: const EdgeInsets.only(
                     top: 1,
                     right: 7,
