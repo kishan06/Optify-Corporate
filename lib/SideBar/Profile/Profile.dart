@@ -5,6 +5,7 @@ import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:Optifii_Corporate/routes/route_name.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
 // import 'package:getflutter/getflutter.dart';
@@ -32,11 +33,12 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Column(
               children: [
                 const CircleAvatar(
-                  maxRadius: 50,
+                  maxRadius: 70,
                   backgroundImage: AssetImage(
                     'assets/images/png/Avatar.png',
                   ),
                 ),
+                sizedBoxHeight(10.h),
                 text22w400c383838('Reethik thota'),
                 text16w400c585858('Finance - Sr. Manager'),
                 sizedBoxHeight(20),
@@ -77,46 +79,58 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Row(
                         children: [
-                          text16w400c585858('Employee ID : '),
+                          Expanded(
+                              flex: 1,
+                              child: text16w400c585858('Employee ID : ')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
-                          text16w400cblack('WD-974'),
+                          Expanded(flex: 1, child: text16w400cblack('WD-974')),
                         ],
                       ),
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          text16w400c585858('Member since : '),
+                          Expanded(
+                              flex: 1,
+                              child: text16w400c585858('Member since : ')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
-                          text16w400cblack('20 June 2022'),
+                          Expanded(
+                              flex: 1, child: text16w400cblack('20 June 2022')),
                         ],
                       ),
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          text16w400c585858('Phone : '),
+                          Expanded(
+                              flex: 1, child: text16w400c585858('Phone : ')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
-                          text16w400cblack('+91 4578451245'),
+                          Expanded(
+                              flex: 1,
+                              child: text16w400cblack('+91 4578451245')),
                         ],
                       ),
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          text16w400c585858('Email : '),
+                          Expanded(
+                              flex: 1, child: text16w400c585858('Email : ')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
-                          text16w400cblack('poojashah@wdipl.com'),
+                          Expanded(
+                              flex: 1,
+                              child: text16w400cblack('poojashah@wdipl.com')),
                         ],
                       ),
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          text16w400c585858('Grade : '),
+                          Expanded(
+                              flex: 1, child: text16w400c585858('Grade : ')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
-                          text16w400cblack('A01'),
+                          Expanded(flex: 1, child: text16w400cblack('A01')),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -132,7 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       const Text(
                         'Personal Information',
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
+                            fontSize: 18, fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -145,12 +159,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   collapsedIcon: const CircleAvatar(
                     minRadius: 10,
                     backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                    child: Icon(Icons.arrow_drop_down),
+                    child: Icon(
+                      Icons.keyboard_arrow_down_outlined,
+                      color: Color(0xff6311CB),
+                    ),
                   ),
                   expandedIcon: const CircleAvatar(
                       minRadius: 10,
                       backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                      child: Icon(Icons.arrow_drop_up)),
+                      child: Icon(
+                        Icons.keyboard_arrow_up_outlined,
+                        color: Color(0xff6311CB),
+                      )),
                   titlePadding: const EdgeInsets.all(10.0),
                   contentPadding: const EdgeInsets.all(10.0),
                   showAccordion: false,
@@ -164,10 +184,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Row(
                         children: [
-                          text16w400c585858('Role :'),
+                          Expanded(flex: 1, child: text16w400c585858('Role :')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
-                          text16w400cblack('Approver'),
+                          Expanded(
+                              flex: 1, child: text16w400cblack('Approver')),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -175,10 +196,13 @@ class _ProfilePageState extends State<ProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          text16w400c585858('Permissions :'),
+                          Expanded(
+                              flex: 1,
+                              child: text16w400c585858('Permissions :')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
                           const Expanded(
+                            flex: 1,
                             child: Wrap(
                               verticalDirection: VerticalDirection.up,
                               spacing: 4.0, // Space between tags
@@ -206,7 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       const Text(
                         'Roles & permissions',
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
+                            fontSize: 18, fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -219,12 +243,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   collapsedIcon: const CircleAvatar(
                     minRadius: 10,
                     backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                    child: Icon(Icons.arrow_drop_down),
+                    child: Icon(
+                      Icons.keyboard_arrow_down_outlined,
+                      color: Color(0xff6311CB),
+                    ),
                   ),
                   expandedIcon: const CircleAvatar(
                       minRadius: 10,
                       backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                      child: Icon(Icons.arrow_drop_up)),
+                      child: Icon(
+                        Icons.keyboard_arrow_up_outlined,
+                        color: Color(0xff6311CB),
+                      )),
                   titlePadding: const EdgeInsets.all(16.0),
                   contentPadding: const EdgeInsets.all(16.0),
                   showAccordion: false,
@@ -238,28 +268,39 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Row(
                         children: [
-                          text16w400c585858('Company name : '),
+                          Expanded(
+                              flex: 1,
+                              child: text16w400c585858('Company name : ')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
-                          text16w400cblack('Website Developers India'),
+                          Expanded(
+                              flex: 1,
+                              child:
+                                  text16w400cblack('Website Developers India')),
                         ],
                       ),
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          text16w400c585858('Industry :  '),
+                          Expanded(
+                              flex: 1,
+                              child: text16w400c585858('Industry :  ')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
-                          text16w400cblack('Fintech'),
+                          Expanded(flex: 1, child: text16w400cblack('Fintech')),
                         ],
                       ),
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          text16w400c585858('Type : '),
+                          Expanded(
+                              flex: 1, child: text16w400c585858('Type : ')),
                           const SizedBox(height: 10),
                           sizedBoxWidth(10),
-                          text16w400cblack('Private limited company'),
+                          Expanded(
+                              flex: 1,
+                              child:
+                                  text16w400cblack('Private limited company')),
                         ],
                       ),
                     ],
@@ -274,7 +315,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       const Text(
                         'Company details',
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
+                            fontSize: 18, fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -287,12 +328,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   collapsedIcon: const CircleAvatar(
                     minRadius: 10,
                     backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                    child: Icon(Icons.arrow_drop_down),
+                    child: Icon(
+                      Icons.keyboard_arrow_down_outlined,
+                      color: Color(0xff6311CB),
+                    ),
                   ),
                   expandedIcon: const CircleAvatar(
                       minRadius: 10,
                       backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                      child: Icon(Icons.arrow_drop_up)),
+                      child: Icon(
+                        Icons.keyboard_arrow_up_outlined,
+                        color: Color(0xff6311CB),
+                      )),
                   titlePadding: const EdgeInsets.all(16.0),
                   contentPadding: const EdgeInsets.all(16.0),
                   showAccordion: false,
@@ -315,7 +362,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       const Text(
                         'Package details',
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w600),
+                            fontSize: 18, fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -328,12 +375,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   collapsedIcon: const CircleAvatar(
                     minRadius: 10,
                     backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                    child: Icon(Icons.arrow_drop_down),
+                    child: Icon(
+                      Icons.keyboard_arrow_down_outlined,
+                      color: Color(0xff6311CB),
+                    ),
                   ),
                   expandedIcon: const CircleAvatar(
                       minRadius: 10,
                       backgroundColor: Color.fromRGBO(98, 17, 203, 0.178),
-                      child: Icon(Icons.arrow_drop_up)),
+                      child: Icon(
+                        Icons.keyboard_arrow_up_outlined,
+                        color: Color(0xff6311CB),
+                      )),
                   titlePadding: const EdgeInsets.all(16.0),
                   contentPadding: const EdgeInsets.all(16.0),
                   showAccordion: false,

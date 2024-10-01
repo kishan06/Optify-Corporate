@@ -23,6 +23,7 @@ class _ViewStatementState extends State<ViewStatement> {
   final String _selectedDepartment = 'Select department';
   List<String> options = ['Weekly', 'Monthly', 'Yearly'];
   String selectedOption = 'Weekly';
+
   @override
   Widget build(BuildContext context) {
     double totalAmount = 200000;
@@ -41,7 +42,8 @@ class _ViewStatementState extends State<ViewStatement> {
               children: [
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.only(
+                        top: 0, left: 16, right: 16, bottom: 16),
                     decoration: const BoxDecoration(
                       color: Color(0xffffffff),
                       boxShadow: [
@@ -55,6 +57,12 @@ class _ViewStatementState extends State<ViewStatement> {
                     ),
                     child: Column(
                       children: [
+                        Row(
+                          children: [
+                            text18w400c343C6A('Balance Overview'),
+                          ],
+                        ),
+                        sizedBoxHeight(10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -122,7 +130,6 @@ class _ViewStatementState extends State<ViewStatement> {
                           ),
                           child: Container(
                             height: 50.h,
-                            // padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: const Color(0xFFffffff),
                               border: Border.all(
@@ -145,17 +152,21 @@ class _ViewStatementState extends State<ViewStatement> {
                                     DropdownButtonHideUnderline(
                                       child: DropdownButton<String>(
                                         value: selectedOption,
+                                        icon: null,
                                         items: options
                                             .map<DropdownMenuItem<String>>(
                                                 (String value) {
                                           return DropdownMenuItem<String>(
                                             value: value,
-                                            child: Text(
-                                              value,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.black,
+                                            child: SizedBox(
+                                              width: 100.w,
+                                              child: Text(
+                                                value,
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.black,
+                                                ),
                                               ),
                                             ),
                                           );
@@ -168,10 +179,6 @@ class _ViewStatementState extends State<ViewStatement> {
                                       ),
                                     ),
                                   ],
-                                ),
-                                const Icon(
-                                  Icons.arrow_drop_down,
-                                  color: Color(0xff000000),
                                 ),
                               ],
                             ),
@@ -251,7 +258,7 @@ class _ExportDropdownState extends State<ExportDropdown> {
     'Export as Excel'
   ];
 
-  String? _selectedExportOption;
+  String? _selectedExportOption = 'Export';
 
   @override
   Widget build(BuildContext context) {
@@ -269,7 +276,7 @@ class _ExportDropdownState extends State<ExportDropdown> {
       child: DropdownButton<String>(
         value: _selectedExportOption,
         isExpanded: true,
-        hint: const Text('Export'),
+        // hint: const Text('Export'),
         onChanged: (String? newValue) {
           setState(() {
             _selectedExportOption = newValue!;

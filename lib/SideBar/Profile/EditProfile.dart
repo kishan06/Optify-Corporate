@@ -189,25 +189,46 @@ class _EditProfileState extends State<EditProfile> {
 
                 // Member Since Field
                 text20w400cblack('Member since'),
-                CustomTextFormField(
-                  controller: _memberSinceController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please enter the membership date";
-                    }
-                    return null;
-                  },
-                  texttype: TextInputType.datetime,
-                  inputFormatters: [RemoveEmojiInputFormatter()],
-                  hintText: "Enter membership date",
+                Stack(
+                  alignment:
+                      Alignment.centerRight, // Align the icon to the right
+                  children: [
+                    CustomTextFormField(
+                      texttype: TextInputType.datetime,
+                      controller: _memberSinceController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please enter the membership date";
+                        }
+                        return null;
+                      },
+                      inputFormatters: [RemoveEmojiInputFormatter()],
+                      hintText: "Enter membership date",
+                    ),
+                    // Add the calendar icon
+                    IconButton(
+                      icon:
+                          const Icon(Icons.calendar_today, color: Colors.grey),
+                      onPressed: () {
+                        // Open the date picker
+                        showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2100),
+                        ).then((selectedDate) {
+                          if (selectedDate != null) {
+                            _memberSinceController.text =
+                                "${selectedDate.day}-${selectedDate.month}-${selectedDate.year}";
+                          }
+                        });
+                      },
+                    ),
+                  ],
                 ),
                 sizedBoxHeight(40.h),
-
-                // Company Information Section
                 text20w600c343C6A('Company Information'),
                 sizedBoxHeight(20.h),
-
-                // Company Name Field
                 text20w400cblack('Company Name'),
                 CustomTextFormField(
                   controller: _companyNameController,

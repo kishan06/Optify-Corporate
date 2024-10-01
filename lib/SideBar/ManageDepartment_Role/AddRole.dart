@@ -89,7 +89,7 @@ class _AddRoleState extends State<AddRole> {
                   },
                 ),
                 SizedBox(height: 20.h),
-                text20w400cblack('Select department'),
+                text20w400cblack('Add department'),
                 DropdownButtonFormField<String>(
                   value: _selectedDepartment, // Currently selected item
                   onChanged: (String? newValue) {
