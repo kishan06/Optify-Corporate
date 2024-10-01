@@ -23,6 +23,11 @@ class SearchBarFilter extends StatefulWidget {
   State<SearchBarFilter> createState() => _SearchBarFilterState();
 }
 
+
+
+
+
+
 class _SearchBarFilterState extends State<SearchBarFilter> {
   final List<String> departments = [
     'Design',
