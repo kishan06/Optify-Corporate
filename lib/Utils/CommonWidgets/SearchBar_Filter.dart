@@ -1,10 +1,18 @@
+import 'dart:developer';
+
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Custombutton.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/Text.dart';
 import 'package:Optifii_Corporate/Utils/CommonWidgets/sized_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:getwidget/components/accordion/gf_accordion.dart';
+
+
 class SearchBarFilter extends StatefulWidget {
   final bool? isChecked;
   final ValueChanged<bool?>? onCheckedChanged;
@@ -14,6 +22,11 @@ class SearchBarFilter extends StatefulWidget {
   @override
   State<SearchBarFilter> createState() => _SearchBarFilterState();
 }
+
+
+
+
+
 
 class _SearchBarFilterState extends State<SearchBarFilter> {
   final List<String> departments = [
@@ -31,19 +44,19 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
     'Suspended',
   ];
 
-  List<bool> departmentChecked = [];
-  List<bool> statusChecked = [];
+  RxList departmentChecked = [].obs;
+  RxList statusChecked = [].obs;
 
   // State for accordion expansion
-  bool isDepartmentExpanded = false;
-  bool isStatusExpanded = false;
+  RxBool isDepartmentExpanded = false.obs;
+  RxBool isStatusExpanded = false.obs;
 
   @override
   void initState() {
     super.initState();
     departmentChecked =
-        List<bool>.filled(departments.length, false, growable: true);
-    statusChecked = List<bool>.filled(statuses.length, false, growable: true);
+        RxList.filled(departments.length, false, growable: true);
+    statusChecked = RxList.filled(statuses.length, false, growable: true);
   }
 
   @override
@@ -140,13 +153,12 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
   // Department Accordion with dynamic icon toggle
   PopupMenuItem<String> _buildDepartmentAccordion() {
     return PopupMenuItem<String>(
-      child: GFAccordion(
-        titleChild: SizedBox(
-          width: 200,
-          child: Row(
+      child: Obx(
+        () => GFAccordion(
+          titleChild: Row(
             children: [
               Icon(
-                isDepartmentExpanded
+                isDepartmentExpanded.value
                     ? Icons.keyboard_arrow_up
                     : Icons.keyboard_arrow_down,
               ),
@@ -160,45 +172,41 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
               ),
             ],
           ),
-        ),
-        contentChild: Column(
-          children: List.generate(departments.length, (index) {
-            return CheckboxListTile(
-              title: Text(
-                departments[index],
-                style: const TextStyle(
-                  color: Color(0xff646464),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
+          contentChild: Column(
+            children: List.generate(departments.length, (index) {
+              return CheckboxListTile(
+                title: Text(
+                  departments[index],
+                  style: const TextStyle(
+                    color: Color(0xff646464),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              value: departmentChecked[index],
-              onChanged: (bool? value) {
-                setState(() {
+                value: departmentChecked[index],
+                onChanged: (bool? value) {
                   departmentChecked[index] = value ?? false;
-                });
-              },
-              controlAffinity: ListTileControlAffinity.leading,
-              activeColor: const Color(0xff6311CB),
-              checkColor: const Color(0xffffffff),
-            );
-          }),
+                },
+                controlAffinity: ListTileControlAffinity.leading,
+                activeColor: const Color(0xff6311CB),
+                checkColor: const Color(0xffffffff),
+              );
+            }),
+          ),
+          collapsedIcon: const SizedBox.shrink(),
+          expandedIcon: const SizedBox.shrink(),
+          collapsedTitleBackgroundColor: Colors.transparent,
+          expandedTitleBackgroundColor: Colors.transparent,
+          contentBackgroundColor: Colors.transparent,
+          titleBorderRadius: BorderRadius.circular(0),
+          titlePadding: const EdgeInsets.all(10.0),
+          contentPadding: const EdgeInsets.all(0.0),
+          showAccordion: false,
+          margin: const EdgeInsets.all(0),
+          onToggleCollapsed: (expanded) {
+            isDepartmentExpanded.value = expanded;
+          },
         ),
-        collapsedIcon: const SizedBox.shrink(),
-        expandedIcon: const SizedBox.shrink(),
-        collapsedTitleBackgroundColor: Colors.transparent,
-        expandedTitleBackgroundColor: Colors.transparent,
-        contentBackgroundColor: Colors.transparent,
-        titleBorderRadius: BorderRadius.circular(0),
-        titlePadding: const EdgeInsets.all(10.0),
-        contentPadding: const EdgeInsets.all(0.0),
-        showAccordion: false,
-        margin: const EdgeInsets.all(0),
-        onToggleCollapsed: (expanded) {
-          setState(() {
-            isDepartmentExpanded = expanded;
-          });
-        },
       ),
     );
   }
@@ -206,13 +214,12 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
   // Status Accordion with dynamic icon toggle
   PopupMenuItem<String> _buildStatusAccordion() {
     return PopupMenuItem<String>(
-      child: GFAccordion(
-        titleChild: SizedBox(
-          width: 200,
-          child: Row(
+      child: Obx(
+        () => GFAccordion(
+          titleChild: Row(
             children: [
               Icon(
-                isStatusExpanded
+                isStatusExpanded.value
                     ? Icons.keyboard_arrow_up
                     : Icons.keyboard_arrow_down,
               ),
@@ -226,45 +233,41 @@ class _SearchBarFilterState extends State<SearchBarFilter> {
               ),
             ],
           ),
-        ),
-        contentChild: Column(
-          children: List.generate(statuses.length, (index) {
-            return CheckboxListTile(
-              title: Text(
-                statuses[index],
-                style: const TextStyle(
-                  color: Color(0xff646464),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
+          contentChild: Column(
+            children: List.generate(statuses.length, (index) {
+              return CheckboxListTile(
+                title: Text(
+                  statuses[index],
+                  style: const TextStyle(
+                    color: Color(0xff646464),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              value: statusChecked[index],
-              onChanged: (bool? value) {
-                setState(() {
+                value: statusChecked[index],
+                onChanged: (bool? value) {
                   statusChecked[index] = value ?? false;
-                });
-              },
-              controlAffinity: ListTileControlAffinity.leading,
-              activeColor: const Color(0xff6311CB),
-              checkColor: const Color(0xffffffff),
-            );
-          }),
+                },
+                controlAffinity: ListTileControlAffinity.leading,
+                activeColor: const Color(0xff6311CB),
+                checkColor: const Color(0xffffffff),
+              );
+            }),
+          ),
+          collapsedIcon: const SizedBox.shrink(),
+          expandedIcon: const SizedBox.shrink(),
+          collapsedTitleBackgroundColor: Colors.transparent,
+          expandedTitleBackgroundColor: Colors.transparent,
+          contentBackgroundColor: Colors.transparent,
+          titleBorderRadius: BorderRadius.circular(0),
+          titlePadding: const EdgeInsets.all(10.0),
+          contentPadding: const EdgeInsets.all(0.0),
+          showAccordion: false,
+          margin: const EdgeInsets.all(0),
+          onToggleCollapsed: (expanded) {
+            isStatusExpanded.value = expanded;
+          },
         ),
-        collapsedIcon: const SizedBox.shrink(),
-        expandedIcon: const SizedBox.shrink(),
-        collapsedTitleBackgroundColor: Colors.transparent,
-        expandedTitleBackgroundColor: Colors.transparent,
-        contentBackgroundColor: Colors.transparent,
-        titleBorderRadius: BorderRadius.circular(0),
-        titlePadding: const EdgeInsets.all(10.0),
-        contentPadding: const EdgeInsets.all(0.0),
-        showAccordion: false,
-        margin: const EdgeInsets.all(0),
-        onToggleCollapsed: (expanded) {
-          setState(() {
-            isStatusExpanded = expanded;
-          });
-        },
       ),
     );
   }
