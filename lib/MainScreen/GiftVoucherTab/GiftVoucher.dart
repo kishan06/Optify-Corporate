@@ -35,7 +35,7 @@ class _GiftVoucherPageState extends State<GiftVoucherPage> {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 16),
-            child: text18w400c0B0B0B('Application status'),
+            child: text20w600c252C32('Application status'),
           ),
           sizedBoxHeight(22),
           const DefaultTabController(
